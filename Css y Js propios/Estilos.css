@@ -13,17 +13,27 @@ body /*Esto es para que todo el fondo de la pagina cambie*/
     
     border: 5px;
     height: auto;
-    width: 400px;
+    width: 1240px;
     border-color: black;
-    border-style:ridge;
+    /*border-style:inset;*/
     border-left: -50px;
-    justify-content: center;
+    justify-content: left;
     display: flex;
-    text-align: center;/*Esto esta alineando el texto*/
-    margin: 0 auto;
+    text-align: left;/*Esto esta alineando el texto*/
+    margin: 10px ;
+    padding: 10px;
+    border-radius: 5%;
+    background-color: papayawhip;
     /*Checar bien lo de centrar el div*/
 }
 
+.EntradasForo
+{
+    width: 250%;
+    
+    background-color: cadetblue;
+    clear: both;
+}
 
 .miBoton:hover
 {

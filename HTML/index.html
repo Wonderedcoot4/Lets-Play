@@ -8,6 +8,8 @@
     <!--Al ser un folder por debajo del html, tengo que hacer referencia al padre de esta manera-->
     <link href="../libs/css/bootstrap.min.css" rel="stylesheet">
     <link href="../Css y Js propios/Estilos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <!--Checar donde conseguir esta librria de manera local porque si no el dropdown no jajal de bootstrap jsjs-->
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme = "dark" >
@@ -52,8 +54,8 @@
   <div class="contenedor">
     <form>
       <h3 class="alineacionIzq">Template post</h3>
-      <p style="text-align: center;">Elige el tema a discutir: </p>
-      <a style="text-align: left;">Prueba auto ccss</a>
+      <p>Elige el tema a discutir: </p>
+      <!--<a>Prueba auto ccss</a>-->
       <!--
       <ul class="list-group">
         <li class="list-group-item" >An item</li>
@@ -63,11 +65,39 @@
         <li class="list-group-item">And a fifth one</li>
       </ul>
     --> 
+    <div class="input-group mb-3" style="width: 1200px">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Seleccion</button>
+      <ul class="dropdown-menu" style="background-color: #B0C4DE;"> <!--De momento estoy forzando el color -->
+        <li><a class="dropdown-item" href="#">Juegos</a></li>
+        <li><a class="dropdown-item" href="#">Discusion</a></li>
+        <li><a class="dropdown-item" href="#">Recomendaciones</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Guia para postear </a></li>
+      </ul>
+      <input type="text" class="form-control" aria-label="Text input with dropdown button">
+      <button type="button" class="btn btn-dark">Postear</button><!--Mientas este en este div parece que se acoplara de manera automatica al div-->
+    
+    </div>
+  
+    
 
 
 
     </form>
   </div>
+
+  <div class="contenedor">
+    <img src="../Imagenes/Persona3.jpg" alt="Imagen.jpg" width="300px" height="300px" style="border-radius: 2%;">
+    <h2>Recomendaciones de JRPG, de la Saga Persona.... Persona 3</H2>
+    <br>
+    <br>
+    <br>
+
+    <p>LOREM IMPSUM, DORE MI KASHI MIRELE SUKU</p>
+    <P>Texto pendiente de alinear</P>
+    </div>
+    
+  
   <style class="FondoPagina">
 
   </style>
