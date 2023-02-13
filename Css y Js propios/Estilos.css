@@ -1,0 +1,47 @@
+body /*Esto es para que todo el fondo de la pagina cambie*/
+{
+    background-color: #FDF5E6;
+}
+
+.alineacionIzq
+{
+    text-align: left;
+}
+
+.contenedor
+{
+    
+    border: 5px;
+    height: auto;
+    width: 400px;
+    border-color: black;
+    border-style:ridge;
+    border-left: -50px;
+    justify-content: center;
+    display: flex;
+    text-align: center;/*Esto esta alineando el texto*/
+    margin: 0 auto;
+    /*Checar bien lo de centrar el div*/
+}
+
+
+.miBoton:hover
+{
+    transition-duration: 0.5;
+    background-color: gray;
+    color: white;
+    border-radius: 10px;
+    
+}
+
+.miBoton{
+    transition-duration: 0.5ms;
+    color: black;
+    background-color: 	#FDF5E6;
+}
+.BotonesBusqueda
+{
+    color: black;
+    background-color: gray;
+    border-color: black;
+}

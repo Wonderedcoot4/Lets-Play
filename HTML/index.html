@@ -7,26 +7,71 @@
     <title>Document</title>
     <!--Al ser un folder por debajo del html, tengo que hacer referencia al padre de esta manera-->
     <link href="../libs/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../Css y Js propios/Estilos.css" rel="stylesheet">
 </head>
 <body>
-    <body>
-  
-        <div class="container">
-      
-      
-          <h1 class="display-1">Soy bootStrap</h1>
-      
-          <a class="btn btn-primary mb-4" data-bs-toggle="collapse" href="#collapseExample" role="button"
-          aria-expanded="false" aria-controls="collapseExample" >
-      Ver informacion</a>
-      
-          <div class="collapse " id="collapseExample">
-              <div class="card card-body">
-                 Some placeholder content for the collapse component. This panel is hidden by defualt
-              </div>
-          </div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme = "dark" >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">EXPForos</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <!--Msauto es lo que me permitio alinearlo a la derecha-->
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Perfil</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Opciones
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <!--Asi se puede agregar un item al navbar o solo con el a pero de preferencia dejar el li-->
+          <li class="nav-item">
+            <a class="nav-link" href="#" role="button">BORRAR</a> 
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Buscar.." aria-label="Search" style="background-color: 	#B0C4DE   ; color: black ;">
+          <!--Investigar como cambiar el color al hacerle hover-->
+          <button class="miBoton" type="submit">Buscar</button>
+        </form>
       </div>
+    </div>
+  </nav>
+  <div class="contenedor">
+    <form>
+      <h3 class="alineacionIzq">Template post</h3>
+      <p style="text-align: center;">Elige el tema a discutir: </p>
+      <a style="text-align: left;">Prueba auto ccss</a>
+      <!--
+      <ul class="list-group">
+        <li class="list-group-item" >An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+        <li class="list-group-item">A fourth item</li>
+        <li class="list-group-item">And a fifth one</li>
+      </ul>
+    --> 
 
+
+
+    </form>
+  </div>
+  <style class="FondoPagina">
+
+  </style>
     <script src="../libs/js/bootstrap.min.js"></script>
+
 </body>
 </html>
