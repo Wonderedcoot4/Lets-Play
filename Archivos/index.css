@@ -1,8 +1,8 @@
 *{
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
 }
 .wrapper{
-    background: #ececec;
+    background: #1c2022;
     padding: 0 20px 0 20px;
 }
 .main{
@@ -15,23 +15,22 @@
     width: 900px;
     height: 550px;
     border-radius: 10px;
-    background: #fff;
+    background: #2c2f33;
     box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
 }
 .side-image{
-    background-image: url("../Imagenes/temp.jpg");
+    background-image: url("../Imagenes/JustPlay.png");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-    border-radius: 10px 0  0 10px;
+    border-radius: 10px 0 0 10px;
 }
 img{
     width: 35px;
     position: absolute;
     top: 30px;
     left: 30px;
-
 }
 .text{
     position: absolute;
@@ -40,7 +39,7 @@ img{
     transform: translate(-50%, -50%);
 }
 .text p{
-    color: #fff;
+    color: #ececec;
     font-size: 18px;
 }
 i{
@@ -61,12 +60,14 @@ i{
     font-weight: 700;
     text-align: center;
     margin-bottom: 45px;
+    color: #ececec;
 }
 .input-field{
     display: flex;
     flex-direction: column;
     position: relative;
     padding: 0 10px 0 10px;
+    color : #ececec;
 }
 .input{
     height: 45px;
@@ -76,7 +77,7 @@ i{
     border-bottom: 1px solid rgba(0,0,0,0.2);
     outline: none;
     margin-bottom: 20px;
-    color: #40414a;
+    color: #ececec;
 }
 .input-box .input-field label{
     position: absolute;
@@ -95,32 +96,35 @@ i{
     color: #5d5076;
 }
 .input-field .input:focus, .input-field .input:valid{
-    border-bottom: 1px solid #743ae1;
+    border-bottom: 1px solid #682fb3;
 }
 .submit{
     border: none;
     outline: none;
     height: 45px;
-    background: #ececec;
+    background: #682fb3;
     border-radius: 5px;
     transition: .4s;
+    color : #ececec;
+    font-weight: 500;
 }
 .submit:hover{
-    background: rgba(37, 95, 156,0.9);
-    color: #fff;
+    background: #4e2486;
+    color: #ececec;
 }
 .signin{
     text-align: center;
     font-size: small;
     margin-top: 25px;
+    color: #ececec;
 }
 span a{
     text-decoration: none;
     font-weight: 700;
-    color: #000;
+    color: #ececec;
     transition: .5s;
 }
 span a:hover{
     text-decoration: underline;
-    color: #000;
+    color: #7336c4;
 }
