@@ -32,6 +32,11 @@ a:hover {
     background-color: var(--primary);
 }
 
+.mybutton{
+    background: none;
+    border: none;
+}
+
 .alingFlex{
     text-align: right;
     margin-right: 30px;
