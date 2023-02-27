@@ -46,6 +46,74 @@ a:hover {
     margin-left: 40px;
 }
 
+.feed{
+    flex: 0.5;
+    border-right: 1px solid #efefef;
+    min-width: fit-content;
+    overflow-y: scroll;
+    display: flow-root;
+}
+
+.optionDisplay{
+    display: flow-root;
+}
+
+.post_avatar img{
+    border-radius: 50%;
+    height: 40px;
+}
+
+.post {
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 10px;
+}
+
+.post__body img{
+    width: 450px;
+    object-fit: contain;
+    border-radius: 20px;
+}
+
+.post__footer{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.post__badge{
+    font-size: 14px !important;
+    color: #efefef;
+    margin-right: 5px;
+}
+
+.post__headerSpecial{
+    font-weight: 600;
+    font-size: 12px;
+    color: gray;
+}
+
+.post__headerText h3{
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.post__headerDescription{
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.post__body{
+    flex: 1;
+    padding: 10px;
+}
+
+.post__avatar{
+    padding: 20px;
+    
+}
+
 #sidebar-container {
     min-height: 100vh;
 }
