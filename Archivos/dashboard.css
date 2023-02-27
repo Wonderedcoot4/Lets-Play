@@ -28,6 +28,14 @@ a:hover {
     border: 0;
 }
 
+.iconConfig{
+    font-size: 22px;
+}
+
+.allignIcon{
+    text-align: center;
+}
+
 .btn-primary:hover {
     background-color: var(--primary);
 }
@@ -35,6 +43,13 @@ a:hover {
 .mybutton{
     background: none;
     border: none;
+}
+
+.buttonPubli{
+    background: none;
+    border: none;
+    margin-top: 550px;
+    margin-left: 150px;
 }
 
 .alingFlex{
@@ -58,8 +73,8 @@ a:hover {
     display: flow-root;
 }
 
-.post_avatar img{
-    border-radius: 50%;
+.post__avatar img{
+    border-radius: 10%;
     height: 40px;
 }
 
@@ -73,7 +88,8 @@ a:hover {
 .post__body img{
     width: 450px;
     object-fit: contain;
-    border-radius: 20px;
+    border-radius: 10px;
+    text-align: center !important;
 }
 
 .post__footer{
@@ -110,8 +126,12 @@ a:hover {
 }
 
 .post__avatar{
-    padding: 20px;
-    
+    padding: 1px;
+}
+
+.container{
+    margin-right: 10px !important;
+    margin-left: 10px !important;
 }
 
 #sidebar-container {
