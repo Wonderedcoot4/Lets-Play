@@ -1,0 +1,56 @@
+body
+{
+    background-color: red;
+}
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+/*estilos generales*/
+a
+{
+    color: inherit;
+}
+
+.wrapper{
+    background: #1c2022;
+    padding: 0 20px 0 20px;
+}
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.row{
+    width: 900px;
+    height: 550px;
+    border-radius: 10px;
+    background: #2c2f33;
+    box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+}
+.navbar-brand > img{
+    width: 55px;
+}
+
+
+.colorTextoAnclas
+{
+    color: white;
+}
+
+.colorTexto
+{
+    color: white;
+}
+body
+{
+    background-color: #1c2022;
+}
+
+.FormatoDiv
+{
+    border-style: dashed;
+    border: 5px;
+    height: 10px;
+}
