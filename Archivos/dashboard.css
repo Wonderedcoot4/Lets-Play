@@ -14,7 +14,6 @@ a:hover {
     text-decoration: none;
     color:#682fb3;
 }
-
 .colorIcon{
     font-family: 'Poppins', sans-serif;
     color:#ececec !important;
@@ -99,8 +98,8 @@ background-color: #25272b !important;
 }
 
 .colorText{
-    font-family: 'Poppins', sans-serif;
-    color:#ececec ;
+    font-family: 'Poppins', Verdana;
+    color:#ececec !important;
     text-decoration: none;
 }
 
@@ -216,7 +215,27 @@ background-color: #25272b !important;
 }
 
 #modal {
-    max-width: 50ch;
-    background-color: #1c2022;
+    background: #2c2f33;
     border: none;
+    border-radius: 10%;
+    box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+    
+}
+
+.inTitle{
+    size:0px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    outline: none;
+    font-size: 50px;
+}
+
+.inText{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    outline: none;
+    width: 50%;
+    font-size: 20px;
 }
