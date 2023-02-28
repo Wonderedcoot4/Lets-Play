@@ -204,9 +204,52 @@
     </dialog>
 
     <dialog id="modal3">
-        <h2>Hola soy un modal</h2>
-        <p>Hola dios nuevamente por tercera vez</p>
-        <button id="btn-cerrar-modal3">cerrar modal</button>
+        <div class="row">
+            <div class="col-11"></div>
+            <div class="col-1">
+                <button class="btn colorIcon" id="btn-cerrar-modal3"><i class="icon ion-md-close iconConfig"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="colorText allignIcon">Busqueda Avanzada</h2>
+        </div>
+        <div class="row marginSearch">
+            <textarea class="inText colorText" id="exampleFormControlTextarea1" placeholder="Buscar..." rows="3"></textarea>
+        </div>
+        <div class="row">  
+            <button class="btn SelectBox dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Categorías
+            </button>
+                <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item active" href="#">Lucha</a></li>
+                <li><a class="dropdown-item" href="#">Clásicos</a></li>
+                <li><a class="dropdown-item" href="#">Plataformas</a></li>
+                <li><a class="dropdown-item" href="#">Independientes</a></li>
+                <li><a class="dropdown-item" href="#">Familiares</a></li>
+                <li><a class="dropdown-item" href="#">Carreras</a></li>
+                <li><a class="dropdown-item" href="#">Acción y Aventura</a></li>
+                <li><a class="dropdown-item" href="#">Disparos</a></li>
+                </ul>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="text" class="colorText">Fecha Inicial</label>
+                <input type="date" class="input colorText" id="date" required autocomplete="off">
+            </div>
+            <div class="col">
+                <label for="text" class="colorText">Fecha Final</label>
+                <input type="date" class="input colorText" id="date" required autocomplete="off">
+            </div>
+        </div>
+        <div class="row">
+            <div class="post__footer">
+                <div class="col colorIcon">
+                </div>
+                <div class="col-1">
+                    <button class="btn colorIcon" id="btn-cerrar-modal"><i class="icon ion-md-search"></i></button>
+                </div>
+            </div>
+        </div>
     </dialog>
 
 

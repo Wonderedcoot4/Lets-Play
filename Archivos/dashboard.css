@@ -20,6 +20,17 @@ a:hover {
     text-decoration: none;
 }
 
+.input{
+    height: 45px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #682fb3;
+    outline: none;
+    margin-bottom: 20px;
+    color: #ececec;
+}
+
 .color-bar { background-color: #2c2f33 !important; }
 
 .bg-light { background-color: #2c2f33 !important; }
@@ -191,6 +202,19 @@ background-color: #25272b !important;
     width: 40px;
     height: 40px;
 }
+
+.marginSearch{
+    padding-bottom: 20px;
+}
+
+.SelectBox{
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #682fb3;
+    outline: none;
+    color: #ececec !important;
+    margin-bottom: 25px;
+}
   
 @media (max-width: 768px) {
     #sidebar-container {
@@ -219,14 +243,13 @@ background-color: #25272b !important;
     border: none;
     border-radius: 10%;
     box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
-    
 }
 
 .inTitle{
     size:0px;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid #682fb3;
     outline: none;
     font-size: 50px;
 }
@@ -234,8 +257,16 @@ background-color: #25272b !important;
 .inText{
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-bottom: 1px solid #682fb3;
     outline: none;
     width: 50%;
     font-size: 20px;
+}
+
+#modal3{
+    background: #2c2f33;
+    border: none;
+    border-radius: 10%;
+    box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+    width: 600px;
 }
