@@ -37,3 +37,16 @@ btnAbrirModal3.addEventListener("click",()=>{
 btnCerrarModal3.addEventListener("click",()=>{
     modal3.close();
 })
+
+//Modal 4
+const btnAbrirModal4 = document.querySelector("#btn-abrir-modal4");
+const btnCerrarModal4 = document.querySelector("#btn-cerrar-modal4");
+const modal4 = document.querySelector("#modal4");
+
+btnAbrirModal4.addEventListener("click",()=>{
+    modal4.showModal();
+})
+
+btnCerrarModal4.addEventListener("click",()=>{
+    modal4.close();
+})
