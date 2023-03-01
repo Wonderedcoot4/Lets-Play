@@ -1,0 +1,58 @@
+create table Usuario
+(
+	IdUsuario int auto_increment,
+	Nombre Varchar(50),
+	apPaterno Varchar(50),
+	apMaterno Varchar(50),
+	correo Varchar(50),
+	Telefono int(10),
+	nombreUsuario Varchar(50),
+	Contraseña Varchar(50),
+	FechaNacimiento date,
+	Foto image,
+	Edad int(20)
+
+);
+
+create table Estatus
+(
+	IdEstatus int auto_increment,
+	Activo bit,
+	Inactivo bit,
+	Bloqueado bit
+
+
+);
+
+create table Publicacion
+(
+	IdPublicacion int auto_increment,
+	Contenido varchar(555),
+	IdEstatusPublicacion int Foreign key,
+	FechaCreacion date,
+	Titulo varchar(50),
+	IdCategoria int Foreign key
+
+);
+
+create table Categoria
+(
+	IdCategoria int auto_increment,
+	Accion int,
+	Recomendacion int,
+	Discusion int,
+	OffTopic int,
+	RPGs/Rol/MMO int,
+	Guias int,
+	General int
+
+);
+
+create table EstatusPublicaciones
+(
+	IdEstatusPublicacion int auto_increment,
+	Activa bit,
+	Inactivo bit,
+	Eliminada bit
+
+);
