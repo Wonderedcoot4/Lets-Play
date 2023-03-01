@@ -20,6 +20,15 @@ a:hover {
     text-decoration: none;
 }
 
+.slideBarScroll{
+    overflow-y: scroll;
+}
+
+.textUser{
+    color: #ececec;
+    padding-right: 0px;
+}
+
 .input{
     height: 45px;
     width: 100%;
