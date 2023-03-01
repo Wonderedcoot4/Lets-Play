@@ -168,7 +168,6 @@ background-color: #25272b !important;
 }
 
 
-
 #sidebar-container {
     min-height: 100vh;
 }
@@ -289,7 +288,36 @@ background-color: #25272b !important;
     width: 300px;
 }
 
+.marginConfiguration{
+    margin-bottom: 2px;
+}
 
+.marginConfigurationEx{
+    margin-bottom: 162px;
+}
+
+.image-icon{
+    background-position: top ;
+    height: 30px;
+    width: 30px;
+}
+
+.submit{
+    border: none;
+    outline: none;
+    height: 45px;
+    background: #682fb3;
+    border-radius: 5px;
+    transition: .4s;
+    color : #ececec;
+    font-weight: 500;
+    width: 100%;
+}
+
+.submit:hover{
+    background: #4e2486;
+    color: #ececec;
+}
 
 .seccion-perfil-usuario .perfil-usuario-body,
 .seccion-perfil-usuario {
