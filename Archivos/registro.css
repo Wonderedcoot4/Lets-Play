@@ -11,6 +11,9 @@
     align-items: center;
     min-height: 100vh;
 }
+.margBoton{
+    margin-bottom: 35px;
+}
 .headerRegister{
     font-weight: 700;
     text-align: center;
@@ -97,7 +100,7 @@ i{
     pointer-events: none;
     transition: .5s;
 }
-.diosito {
+.helper {
     width: 100%;
 }
 .input-field .input:focus ~ label{
