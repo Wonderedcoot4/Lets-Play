@@ -40,7 +40,18 @@ a:hover {
     color: #ececec;
 }
 
-.color-bar { background-color: #2c2f33 !important; }
+.interno{
+    margin-left: 10px;
+}
+
+.interno2{
+    margin-left: 10px;
+}
+
+.color-bar { 
+    background-color: #2c2f33 !important;
+    position: fixed;
+ }
 
 .bg-light { background-color: #2c2f33 !important; }
 
@@ -75,11 +86,22 @@ background-color: #25272b !important;
     border: none;
 }
 
+.corrector{
+    padding-top: 75px;
+}
+
+.static{
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+}
+
 .buttonPubli{
     background: none;
     border: none;
-    margin-top: 470px;
-    margin-left: 0px;
+    margin-top: 543px;
+    margin-left: 80px;
+    position: fixed;
 }
 
 .alingFlex{
