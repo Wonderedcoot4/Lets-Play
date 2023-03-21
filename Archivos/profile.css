@@ -10,6 +10,12 @@ a:hover {
     color:#682fb3;
 }
 
+.static{
+    width: 100%;
+  position: fixed;
+  z-index: 100;
+}
+
 .slideBarScroll{
     overflow-y: scroll;
 }
@@ -325,6 +331,10 @@ background-color: #25272b !important;
 .submit:hover{
     background: #4e2486;
     color: #ececec;
+}
+
+.corrector{
+    padding-top: 75px;
 }
 
 .seccion-perfil-usuario .perfil-usuario-body,
