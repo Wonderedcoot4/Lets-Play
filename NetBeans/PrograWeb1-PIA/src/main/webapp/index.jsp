@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : 22 mar 2023, 22:48:07
-    Author     : isaac
+    Author     : Isaac Espinoza y Edson Arguello
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

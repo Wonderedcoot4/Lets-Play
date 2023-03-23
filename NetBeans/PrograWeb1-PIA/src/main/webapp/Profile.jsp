@@ -1,7 +1,7 @@
 <%-- 
     Document   : Profile
     Created on : 22 mar 2023, 23:15:55
-    Author     : isaac
+    Author     : Isaac Espinoza y Edson Arguello
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -26,6 +26,7 @@
         <nav class="navbar navbar-expand-lg navColor">
             
                 <div class="col alingImage">
+                    //Luego me dices si este boton tendra otra funcion mas que parecio romperse hace unos mins
                     <a class="navbar-brand" href="#"><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle"></a>
                 </div>
                 <div class="col">
