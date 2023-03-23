@@ -38,6 +38,7 @@
                         </div>
                         <div class="signin">
                             <span>¿No tienes una cuenta? <a href="#">Crea una aquí</a></span>
+                            <a href="Principal.jsp">test</a>
                         </div>
                      </div>
                 </div>
