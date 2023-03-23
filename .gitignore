@@ -396,3 +396,5 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/ProyectoNetBeans/Programacion-Web1/target/
+/NetBeans/PrograWeb1-PIA/target/
