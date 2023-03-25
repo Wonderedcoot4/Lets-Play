@@ -22,14 +22,15 @@
                 <div class="col-md-6 side-image">
                 </div>
                 <div class="col-md-6 right">
-                     <div class="input-box">
+                    <div class="input-box">
+                        <form action="Login.java" method="post">
                         <header>Inicia Sesión</header>
                         <div class="input-field">
-                            <input type="text" class="input" id="email" required autocomplete="off">
+                            <input name="emailUsuario" type="text" class="input" id="email" required autocomplete="off">
                             <label for="email">Email</label>
                         </div>
                         <div class="input-field">
-                            <input type="password" class="input" id="password" required>
+                            <input  name="passUsuario" type="password" class="input" id="password" required>
                             <label for="password">Contraseña</label>
                         </div>
                         <div class="input-field">
@@ -44,6 +45,7 @@
                              <a href="configuration.jsp">test</a>
                         </div>
                      </div>
+                    </form>
                 </div>
             </div>
         </div>
