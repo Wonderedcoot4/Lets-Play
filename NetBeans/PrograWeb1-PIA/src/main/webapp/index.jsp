@@ -40,6 +40,8 @@
                             <span>¿No tienes una cuenta? <a href="#">Crea una aquí</a></span>
                             <a href="Principal.jsp">test</a>
                              <a href="Profile.jsp">test2</a>
+                             <a href="dashboard.jsp">test2</a>
+                             <a href="configuration.jsp">test</a>
                         </div>
                      </div>
                 </div>
