@@ -12,6 +12,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLData;
 
 
@@ -21,9 +23,9 @@ import java.sql.SQLData;
  */
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
-        conexionSQL conexion = new conexionSQL();   
-        conexionSQL con = new conexionSQL();
-        Connection cn;
+    conexionSQL conexion = new conexionSQL();   
+    conexionSQL con = new conexionSQL();
+    Connection cn;
         
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -73,8 +75,12 @@ public class Login extends HttpServlet {
         //Login de usuario y password
         String username = request.getParameter("emailUsuario");
         String password = request.getParameter("passUsuario");
-      
-          cn = conexion.getConnection();
+        String stamentMySql = "INSERT INTO usuario";
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        
+        cn = conexion.getConnection();
         
          
     }
