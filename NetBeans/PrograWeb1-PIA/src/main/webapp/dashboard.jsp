@@ -168,7 +168,7 @@
                         </div>
                         <div class="post">
                             <div class="post__avatar">
-                                <img src="../Imagenes/icon.png">
+                                <img src="./Imagenes/icon.png">
                             </div>
                             <div class="post__body">
                                 <div class="post__header">
@@ -247,7 +247,7 @@
     <dialog id="modal2">
         <div class="row">
             <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
-                <img src="../Imagenes/icon.png" alt="logo" width="80px" class="rounded-circle"></a>
+                <img src="./Imagenes/icon.png" alt="logo" width="80px" class="rounded-circle"></a>
             </button>
         </div>
         <div class="row colorText allignIcon">
