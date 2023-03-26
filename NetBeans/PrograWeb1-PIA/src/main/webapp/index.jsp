@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-6 right">
                     <div class="input-box">
-                        <form action="Login.java" method="post">
+                        <form action="LoginServlet" method="post" name="formLogin" id="LoginForm">
                         <header>Inicia Sesión</header>
                         <div class="input-field">
                             <input name="emailUsuario" type="text" class="input" id="email" required autocomplete="off">
@@ -50,5 +50,6 @@
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </body>
 </html>

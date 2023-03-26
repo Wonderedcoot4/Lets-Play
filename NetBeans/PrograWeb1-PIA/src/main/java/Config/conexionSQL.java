@@ -1,7 +1,7 @@
 package Config;
 
 import com.mycompany.prograweb1.pia.*;
-import Conexion.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,9 +10,9 @@ import java.util.logging.Logger;
 
 public class conexionSQL {
     String url = "jdbc:mysql://localhost:3306/";
-    String db = "test";
+    String db = "Prueba";
     String user = "root";
-    String pass = "soyDiamante";
+    String pass = "123456";
     public String driver = "com.mysql.jdbc.Driver";
     
     Connection con;

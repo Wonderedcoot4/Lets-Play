@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
+package com.mycompany.prograweb1.pia;
 import Config.conexionSQL;
-
+import UsuarioDBA.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -11,11 +12,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLData;
-
 
 /**
  *
@@ -23,10 +19,7 @@ import java.sql.SQLData;
  */
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class Login extends HttpServlet {
-    conexionSQL conexion = new conexionSQL();   
-    conexionSQL con = new conexionSQL();
-    Connection cn;
-        
+    Usuario user = new Usuario();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -70,26 +63,24 @@ public class Login extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/jsp");
+        processRequest(request, response);
+            response.setContentType("text/jsp");
         PrintWriter out = response.getWriter();
         //Login de usuario y password
         String username = request.getParameter("emailUsuario");
         String password = request.getParameter("passUsuario");
-        String stamentMySql = "INSERT INTO usuario";
-        PreparedStatement ps;
-        ResultSet rs;
+        var obj = user;
+        Boolean isSuccess = obj.login(username, password);;
+        if (isSuccess == true) {
+            response.sendRedirect("configuration.html");
+        }
+        else
+        {
+            out.println("Usuario o contraseña incorrecto");
+        }
         
-        
-        cn = conexion.getConnection();
-        
-         
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
