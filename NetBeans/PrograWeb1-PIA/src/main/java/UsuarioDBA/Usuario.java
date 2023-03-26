@@ -37,9 +37,9 @@ public class Usuario {
             try{
            
              con.getConnection();
-             con.conectar();
+             cn = con.conectar();
              Statement stm = cn.createStatement();
-             String stamentMySql = "Select * from usuario where NombreUsuario ='" + User + "' Contraseña'" + pass + "';";
+             String stamentMySql = "Select * from usuario where NombreUsuario ='" + User + "' AND  Contraseña='" + pass + "'";
              /*
              cn = con.getConnection();
              ps = cn.prepareStatement(stamentMySql);*/

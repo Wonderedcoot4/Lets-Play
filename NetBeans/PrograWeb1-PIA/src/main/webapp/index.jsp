@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-6 right">
                     <div class="input-box">
-                        <form action="LoginServlet" method="post" name="formLogin" id="LoginForm">
+                        <form action="LoginServlet" method="POST" name="formLogin" id="LoginForm">
                         <header>Inicia Sesión</header>
                         <div class="input-field">
                             <input name="emailUsuario" type="text" class="input" id="email" required autocomplete="off">
