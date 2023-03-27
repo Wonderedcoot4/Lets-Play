@@ -43,6 +43,7 @@
                              <a href="Profile.jsp">test2</a>
                              <a href="dashboard.jsp">test2</a>
                              <a href="configuration.jsp">test</a>
+                             <a href="Registro.jsp">test</a>
                         </div>
                      </div>
                     </form>
