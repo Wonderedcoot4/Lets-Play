@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
         //Login de usuario y password
         String username = request.getParameter("emailUsuario");
         String password = request.getParameter("passUsuario");
-        String stamentMySql = "Select * from usuario where NombreUsuario ='" + username + "AND ' Contraseña'" + password + "'";
+        String stamentMySql = "Select * from usuario where NombreUsuario ='" + username + "AND ' Contrasena'" + password + "'";
         var obj = user;
         var isSuccess = obj.login(username, password);;
         if (isSuccess == true) {

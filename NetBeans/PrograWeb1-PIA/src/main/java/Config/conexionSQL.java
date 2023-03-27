@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 
 public class conexionSQL {
     String url = "jdbc:mysql://localhost:3306/";
-    String db = "Prueba";
+    String db = "PrograWebDB";
     String user = "root";
     String pass = "123456";
     public String driver = "com.mysql.jdbc.Driver";

@@ -90,7 +90,7 @@ public class Usuario {
              con.getConnection();
              cn = con.conectar();
              Statement stm = cn.createStatement();
-             String stamentMySql = "Select * from usuario where NombreUsuario ='" + User + "' AND  Contraseña='" + pass + "'";
+             String stamentMySql = "Select NombreUsuario, Contrasena from usuario where NombreUsuario ='" + User + "' AND  Contrasena='" + pass + "'";
              /*
              cn = con.getConnection();
              ps = cn.prepareStatement(stamentMySql);*/
