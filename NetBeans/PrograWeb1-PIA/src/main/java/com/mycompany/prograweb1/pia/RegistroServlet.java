@@ -68,17 +68,24 @@ public class RegistroServlet extends HttpServlet {
         String pass = request.getParameter("Passwordtext");
         
         var obj = user;
-        var isSuccess = obj.Registro(Nombre, ApellidoPaterno, ApellidoMaterno, Email, FechaNacimiento, Usuario, pass);
-       // String ContraseñaConfirm = request.getParameter("");
-        if (isSuccess) {
+        //SI NO ESTA REPETIDO DEBE ENTRAR AL DALSE
+         var isRepited = obj.noseRepite(Usuario); //SI ES TRUE ES QUE YA EXISTE, SI ES FALSE NO Y SE REGISTRA
+         
+        if ( isRepited == true) {
+            response.sendRedirect("Registro.jsp");
+            System.out.println("EL USUARIO YA ESTA REPETIDO");
+            return;
+        }
+         var isSuccess = obj.Registro(Nombre, ApellidoPaterno, ApellidoMaterno, Email, FechaNacimiento, Usuario, pass);
+            if (isSuccess) {
             response.sendRedirect("index.jsp");
-        }
-        else
-        {
+         }
+         else
+         {
            response.sendRedirect("Registro.jsp");
-        }
-       }
-
+         }
+             // String ContraseñaConfirm = request.getParameter("");
+    }
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -90,7 +90,7 @@ public class Usuario {
              con.getConnection();
              cn = con.conectar();
              Statement stm = cn.createStatement();
-             String stamentMySql = "Select NombreUsuario, Contrasena from usuario where NombreUsuario ='" + User + "' AND  Contrasena='" + pass + "'";
+             String stamentMySql = "Select NombreUsuario, Contrasena from usuario where BINARY NombreUsuario ='" + User + "' AND  Contrasena='" + pass + "'";
              /*
              cn = con.getConnection();
              ps = cn.prepareStatement(stamentMySql);*/
@@ -112,6 +112,26 @@ public class Usuario {
             }
             con.desconectar();
             System.out.println("Error : " + "User not Found");
+            return false;
+        }
+        
+        public boolean noseRepite(String user)
+        {
+            try{
+                   con.getConnection();
+                   cn = con.conectar();
+                   Statement stm = cn.createStatement();
+                   String elStatement = "Select NombreUsuario from usuario where NombreUsuario ='" + user + "' ";
+                   rs = stm.executeQuery(elStatement);
+                   if (rs.next() == true) {
+                       con.desconectar();
+                    return true;
+                }
+            }catch(Exception e)
+            {
+                con.desconectar();
+                return false;
+            }
             return false;
         }
     

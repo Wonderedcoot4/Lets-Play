@@ -13,4 +13,6 @@ CREATE TABLE `PrograWebDB`.`usuario` (
   `FotoPerfl` BLOB(100) NULL,
   PRIMARY KEY (`idUsuario`));
 
-select NombreUsuario , Contrasena from usuario where NombreUsuario = 'Wonder' and Contrasena = '1105me';
+select NombreUsuario , Contrasena from usuario where BINARY NombreUsuario = 'wonder' and Contrasena = '1105me';
+
+select Nombre, NombreUsuario from usuario where BINARY NombreUsuario = 'Wonder';
