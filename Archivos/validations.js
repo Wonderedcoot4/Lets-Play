@@ -14,6 +14,18 @@
         }
   
         form.classList.add('was-validated')
+        comprobarClave()
       }, false)
     })
   })()
+
+  function comprobarClave() {
+    let pass1 = document.RegForm.Passwordtext.value
+    let pass2 = document.RegForm.Contratext.value
+
+    if (pass1 == pass2) {
+       alert("Las dos claves son iguales...")
+    } else {
+       alert("Las dos claves son distintas...")
+    }
+}
