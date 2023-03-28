@@ -33,7 +33,7 @@
                             </div>                            
                             
                             <div class="signin">
-                                <span>¿Ya tienes una cuenta? <a href="#">Inicia aquí</a></span>
+                                <span>¿Ya tienes una cuenta? <a href="index.jsp">Inicia aquí</a></span>
                             </div>
                         </div>
                     </div>

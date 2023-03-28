@@ -49,12 +49,11 @@
                             <input type="submit" class="submit" value="Iniciar">
                         </div>
                         <div class="signin">
-                            <span>¿No tienes una cuenta? <a href="#">Crea una aquí</a></span>
+                            <span>¿No tienes una cuenta? <a href="Registro.jsp">Crea una aquí</a></span>
                             <a href="Principal.jsp">test</a>
                              <a href="Profile.jsp">test2</a>
                              <a href="dashboard.jsp">test2</a>
                              <a href="configuration.jsp">test</a>
-                             <a href="Registro.jsp">test</a>
                         </div>
                      </div>
                     </form>
