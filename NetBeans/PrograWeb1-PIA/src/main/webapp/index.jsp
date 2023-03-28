@@ -23,15 +23,27 @@
                 </div>
                 <div class="col-md-6 right">
                     <div class="input-box">
-                        <form action="LoginServlet" method="POST" name="formLogin" id="LoginForm">
+                        <form action="LoginServlet" method="POST" name="formLogin" id="LoginForm" class="needs-validation" novalidate>
                         <header>Inicia Sesión</header>
                         <div class="input-field">
                             <input name="emailUsuario" type="text" class="input" id="email" required autocomplete="off">
                             <label for="email">Usuario</label>
+                            <div class="valid-feedback">
+                                Listo.
+                            </div>
+                            <div class="invalid-feedback">
+                                Escriba su usuario.
+                            </div>
                         </div>
                         <div class="input-field">
                             <input  name="passUsuario" type="password" class="input" id="password" required>
                             <label for="password">Contraseña</label>
+                            <div class="valid-feedback">
+                                Listo.
+                            </div>
+                            <div class="invalid-feedback">
+                                Escriba su contraseña.
+                            </div>
                         </div>
                         <div class="input-field">
                             <input type="submit" class="submit" value="Iniciar">
@@ -50,6 +62,7 @@
             </div>
         </div>
     </div>
+    <script src="validations.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </body>
 </html>
