@@ -27,7 +27,7 @@
                         <header>Inicia Sesión</header>
                         <div class="input-field">
                             <input name="emailUsuario" type="text" class="input" id="email" required autocomplete="off">
-                            <label for="email">Email</label>
+                            <label for="email">Usuario</label>
                         </div>
                         <div class="input-field">
                             <input  name="passUsuario" type="password" class="input" id="password" required>
@@ -35,7 +35,6 @@
                         </div>
                         <div class="input-field">
                             <input type="submit" class="submit" value="Iniciar">
-                            
                         </div>
                         <div class="signin">
                             <span>¿No tienes una cuenta? <a href="#">Crea una aquí</a></span>

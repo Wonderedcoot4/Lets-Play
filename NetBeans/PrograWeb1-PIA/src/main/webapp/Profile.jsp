@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
-    
+    <script defer src="profile.js"></script>
     <title>Perfil | Justplay</title>
 </head>
 <body class="colorBody slideBarScroll">
@@ -26,18 +26,17 @@
         <nav class="navbar navbar-expand-lg navColor">
             
                 <div class="col alingImage">
-                    //Luego me dices si este boton tendra otra funcion mas que parecio romperse hace unos mins
-                    <a class="navbar-brand" href="#"><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle"></a>
+                    <a class="navbar-brand" href="dashboard.jsp"><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle"></a>
                 </div>
                 <div class="col">
                     <form class="d-flex position-relative">
-                        <button class="btn colorIcon" type="submit"><i class="icon ion-md-menu" id="btn-abrir-modal3"></i></button>
+                        <button class="btn colorIcon" type="submit"><i class="icon ion-md-menu" id="btn-abrir-modal6"></i></button>
                         <input class="form-control colorSearchBar colorText" type="search" placeholder="Buscar" aria-label="Buscar">
                         <button class="btn position-absolute btn-search colorIcon" type="submit"><i class="icon ion-md-search"></i></button>
                     </form>
                 </div>
                 <div class="col alingFlex">
-                    <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
+                    <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal5">
                         <img src="./Imagenes/icon.png" alt="logo" width="55px" class="rounded-circle"></a>
                     </button>
                 </div>
@@ -125,78 +124,78 @@
 
 
 
-    <dialog id="modal2">
-        <div class="row">
-            <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
-                <img src="./Imagenes/icon.png" alt="logo" width="80px" class="rounded-circle"></a>
-            </button>
-        </div>
-        <div class="row colorText allignIcon">
-            <h3>NachtDenos</h3>
-            <p class="post__headerSpecial">eeatienda2001@hotmail.com</p>
-        </div>
-        <div class="row colorText allignIcon">
-            <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-body iconConfig"></i></i></i>
-                Perfil</a>
+    <dialog id="modal5">
+            <div class="row">
+                <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal5">
+                    <img src="./Imagenes/icon.png" alt="logo" width="80px" class="rounded-circle"></a>
+                </button>
+            </div>
+            <div class="row colorText allignIcon">
+                <h3>NachtDenos</h3>
+                <p class="post__headerSpecial">eeatienda2001@hotmail.com</p>
+            </div>
+            <div class="row colorText allignIcon">
+                <a href="Profile.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-body iconConfig"></i></i></i>
+                    Perfil</a>
 
-            <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
-                Configuración</a>
+                <a href="configuration.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
+                    Configuración</a>
 
-            <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-exit iconConfig"></i></i>
-                Cerrar Sesión</a>
+                <a href="Principal.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-exit iconConfig"></i></i>
+                    Cerrar Sesión</a>
+            </div>
+            <div class="row">
+                <button class="btn colorIcon" id="btn-cerrar-modal5"><i class="icon ion-md-close iconConfig"></i></button>
         </div>
-        <div class="row">
-            <button class="btn colorIcon" id="btn-cerrar-modal2"><i class="icon ion-md-close iconConfig"></i></button>
-    </div>
     </dialog>
 
-    <dialog id="modal3">
-        <div class="row">
-            <div class="col-11"></div>
-            <div class="col-1">
-                <button class="btn colorIcon" id="btn-cerrar-modal3"><i class="icon ion-md-close iconConfig"></i></button>
-            </div>
-        </div>
-        <div class="row">
-            <h2 class="colorText allignIcon">Busqueda Avanzada</h2>
-        </div>
-        <div class="row marginSearch">
-            <textarea class="inText colorText" id="exampleFormControlTextarea1" placeholder="Buscar..." rows="3"></textarea>
-        </div>
-        <div class="row">  
-            <button class="btn SelectBox dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Categorías
-            </button>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                <li><a class="dropdown-item active" href="#">Lucha</a></li>
-                <li><a class="dropdown-item" href="#">Clásicos</a></li>
-                <li><a class="dropdown-item" href="#">Plataformas</a></li>
-                <li><a class="dropdown-item" href="#">Independientes</a></li>
-                <li><a class="dropdown-item" href="#">Familiares</a></li>
-                <li><a class="dropdown-item" href="#">Carreras</a></li>
-                <li><a class="dropdown-item" href="#">Acción y Aventura</a></li>
-                <li><a class="dropdown-item" href="#">Disparos</a></li>
-                </ul>
-        </div>
-        <div class="row">
-            <div class="col">
-                <label for="text" class="colorText">Fecha Inicial</label>
-                <input type="date" class="input colorText" id="date" required autocomplete="off">
-            </div>
-            <div class="col">
-                <label for="text" class="colorText">Fecha Final</label>
-                <input type="date" class="input colorText" id="date" required autocomplete="off">
-            </div>
-        </div>
-        <div class="row">
-            <div class="post__footer">
-                <div class="col colorIcon">
-                </div>
+    <dialog id="modal6">
+            <div class="row">
+                <div class="col-11"></div>
                 <div class="col-1">
-                    <button class="btn colorIcon" id="btn-cerrar-modal"><i class="icon ion-md-search"></i></button>
+                    <button class="btn colorIcon" id="btn-cerrar-modal6"><i class="icon ion-md-close iconConfig"></i></button>
                 </div>
             </div>
-        </div>
+            <div class="row">
+                <h2 class="colorText allignIcon">Busqueda Avanzada</h2>
+            </div>
+            <div class="row marginSearch">
+                <textarea class="inText colorText" id="exampleFormControlTextarea1" placeholder="Buscar..." rows="3"></textarea>
+            </div>
+            <div class="row">  
+                <button class="btn SelectBox dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Categorías
+                </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                    <li><a class="dropdown-item active" href="#">Lucha</a></li>
+                    <li><a class="dropdown-item" href="#">Clásicos</a></li>
+                    <li><a class="dropdown-item" href="#">Plataformas</a></li>
+                    <li><a class="dropdown-item" href="#">Independientes</a></li>
+                    <li><a class="dropdown-item" href="#">Familiares</a></li>
+                    <li><a class="dropdown-item" href="#">Carreras</a></li>
+                    <li><a class="dropdown-item" href="#">Acción y Aventura</a></li>
+                    <li><a class="dropdown-item" href="#">Disparos</a></li>
+                    </ul>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="text" class="colorText">Fecha Inicial</label>
+                    <input type="date" class="input colorText" id="date" required autocomplete="off">
+                </div>
+                <div class="col">
+                    <label for="text" class="colorText">Fecha Final</label>
+                    <input type="date" class="input colorText" id="date" required autocomplete="off">
+                </div>
+            </div>
+            <div class="row">
+                <div class="post__footer">
+                    <div class="col colorIcon">
+                    </div>
+                    <div class="col-1">
+                        <button class="btn colorIcon"><i class="icon ion-md-search"></i></button>
+                    </div>
+                </div>
+            </div>
     </dialog>
 
 

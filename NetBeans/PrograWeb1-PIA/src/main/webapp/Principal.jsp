@@ -27,8 +27,8 @@
             </div>
             
             <div class="col alingFlex">
-              <button class="btn colorIcon">Registrarse</i></button>
-              <button class="btn colorIcon">Iniciar Sesión</i></button>
+              <button class="btn colorIcon"><a class="colorText" href="Registro.jsp">Registrarse</a></i></button>
+              <button class="btn colorIcon" ><a class="colorText" href="index.jsp">Iniciar Sesión</a></i></button>
             </div>
     </nav>
   </div>

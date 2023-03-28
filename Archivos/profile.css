@@ -245,24 +245,63 @@ background-color: #25272b !important;
   }
 
 /* Estilos para las ventanas modales*/
-#modal::backdrop{
+#modal5::backdrop{
     background-color: rgba(0,0,0,.55);
 }
 
-#modal2::backdrop{
+#modal6::backdrop{
     background-color: rgba(0,0,0,.55);
 }
 
-#modal3::backdrop{
-    background-color: rgba(0,0,0,.55);
-}
-
-#modal {
+#modal6{
     background: #2c2f33;
     border: none;
     border-radius: 10%;
     box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+    width: 600px;
 }
+
+#modal5{
+    margin-right: 60px;
+    margin-top: 75px;
+
+    background: #2c2f33;
+    border: none;
+    border-radius: 10%;
+    box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+    height: 450px;
+    width: 300px;
+}
+
+#modal7::backdrop{
+    background-color: rgba(0,0,0,.55);
+}
+
+#modal8::backdrop{
+    background-color: rgba(0,0,0,.55);
+}
+
+#modal8{
+    background: #2c2f33;
+    border: none;
+    border-radius: 10%;
+    box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+    width: 600px;
+}
+
+#modal7{
+    margin-right: 60px;
+    margin-top: 75px;
+
+    background: #2c2f33;
+    border: none;
+    border-radius: 10%;
+    box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
+    height: 450px;
+    width: 300px;
+}
+
+
 
 .inTitle{
     size:0px;
@@ -280,26 +319,6 @@ background-color: #25272b !important;
     outline: none;
     width: 50%;
     font-size: 20px;
-}
-
-#modal3{
-    background: #2c2f33;
-    border: none;
-    border-radius: 10%;
-    box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
-    width: 600px;
-}
-
-#modal2{
-    margin-right: 60px;
-    margin-top: 75px;
-
-    background: #2c2f33;
-    border: none;
-    border-radius: 10%;
-    box-shadow: 5px 5px 10px 1px rgba(0,0,0,0.2);
-    height: 450px;
-    width: 300px;
 }
 
 .marginConfiguration{

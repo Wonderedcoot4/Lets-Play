@@ -255,13 +255,13 @@
             <p class="post__headerSpecial">eeatienda2001@hotmail.com</p>
         </div>
         <div class="row colorText allignIcon">
-            <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-body iconConfig"></i></i></i>
+            <a href="Profile.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-body iconConfig"></i></i></i>
                 Perfil</a>
 
-            <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
+            <a href="configuration.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
                 Configuración</a>
 
-            <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-exit iconConfig"></i></i>
+            <a href="Principal.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-exit iconConfig"></i></i>
                 Cerrar Sesión</a>
         </div>
         <div class="row">
