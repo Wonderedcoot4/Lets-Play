@@ -29,7 +29,8 @@
                             </div>
                         </div>
                         <div class="input-field">
-                            <input  name="passUsuario" type="password" class="input" id="password" required>
+                            <input  name="passUsuario" type="password" class="input" id="password" required 
+                            pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             <label for="password">Contraseña</label>
                             <div class="valid-feedback">
                                 Listo.

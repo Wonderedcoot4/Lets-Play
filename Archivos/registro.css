@@ -95,7 +95,7 @@ i{
 }
 .input-box .input-field label{
     position: absolute;
-    top: 10px;
+    top: 15px;
     left: 10px;
     pointer-events: none;
     transition: .5s;

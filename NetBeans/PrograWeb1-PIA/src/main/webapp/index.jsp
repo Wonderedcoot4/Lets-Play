@@ -25,24 +25,18 @@
                     <div class="input-box">
                         <form action="LoginServlet" method="POST" name="formLogin" id="LoginForm" class="needs-validation" novalidate>
                         <header>Inicia Sesión</header>
-                        <div class="input-field">
+                        <div class="input-field position-relative">
                             <input name="emailUsuario" type="text" class="input" id="email" required autocomplete="off">
                             <label for="email">Usuario</label>
-                            <div class="valid-feedback">
-                                Listo.
-                            </div>
-                            <div class="invalid-feedback">
-                                Escriba su usuario.
+                            <div class="invalid-tooltip">
+                                Ingrese un usuario valido.
                             </div>
                         </div>
-                        <div class="input-field">
+                        <div class="input-field position-relative">
                             <input  name="passUsuario" type="password" class="input" id="password" required>
                             <label for="password">Contraseña</label>
-                            <div class="valid-feedback">
-                                Listo.
-                            </div>
-                            <div class="invalid-feedback">
-                                Escriba su contraseña.
+                            <div class="invalid-tooltip" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+                                Ingrese una contraseña valida.
                             </div>
                         </div>
                         <div class="input-field">
