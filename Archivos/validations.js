@@ -15,17 +15,44 @@
   
         form.classList.add('was-validated')
         comprobarClave()
+        comprobarFecha()
       }, false)
     })
-  })()
 
-  function comprobarClave() {
-    let pass1 = document.RegForm.Passwordtext.value
-    let pass2 = document.RegForm.Contratext.value
+    function comprobarClave() {
+      var pass1 = document.getElementById("password")
+      var pass2 = document.getElementById("password2")
+  
+      if (pass1.value == pass2.value) {
+        pass2.setCustomValidity("")
+      } else {
+         pass2.setCustomValidity("Invalid field")
+      }
+  }
 
-    if (pass1 == pass2) {
-       alert("Las dos claves son iguales...")
-    } else {
-       alert("Las dos claves son distintas...")
+  function comprobarFecha(){
+    var fecha = document.getElementById("date")
+    
+    var hoy = new Date()
+    var cumpleanos = new Date(fecha.value)
+    var edad = hoy.getFullYear() - cumpleanos.getFullYear()
+    var m = hoy.getMonth() - cumpleanos.getMonth()
+    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+        edad--
     }
-}
+    if(edad >= 6){
+      fecha.setCustomValidity("")
+    }
+    else if(edad <= 0){
+      fecha.setCustomValidity("Invalid field")
+    }
+    else{
+      fecha.setCustomValidity("Invalid field")
+    }
+  }
+            
+
+        
+          
+
+  })()

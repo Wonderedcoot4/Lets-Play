@@ -100,11 +100,11 @@
                             </div>
                         </div>
                         <div class="input-field position-relative">
-                            <input type="password" class="input" id="password" name="Contratext" required>
-                            <label for="password">Confirmar contraseña</label>
-                            
+                            <input type="password" class="input" id="password2" name="Contratext" required>
+                            <label for="password2">Confirmar contraseña</label>
                             <div class="invalid-tooltip">
-                                Ingrese la contraseña anterior.
+                                Ingrese una contraseña valida.
+
                             </div>
                         </div>
                          <div class="input">
