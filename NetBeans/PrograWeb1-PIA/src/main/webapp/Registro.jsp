@@ -108,12 +108,13 @@
                             </div>
                         </div>
                          <div class="input">
-                             <input type="file" class="input" name="archivito" value="Agregar Imagen"> 
-                 
+                             <input type="file" class="input" name="archivito" value="Agregar Imagen" accept=".jpg, .jpeg, .png" required> 
+                             <div class="invalid-tooltip">
+                                Selccione una imagen.
+                            </div>
                          </div>
                          <div class="input-field">
                                 <input type="submit" class="submit" value="Registrarse">
-                                
                             </div>
                      </div>
                 </div></form>
