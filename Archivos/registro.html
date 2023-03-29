@@ -22,7 +22,7 @@
                         </div>
                         <div class="input-field helper">
                             <div class="input-field margBoton"> 
-                                <input type="submit" class="submit" value="Agregar Imagen">        
+                                       
                             </div>                            
                             
                             <div class="signin">
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 right"><form name="RegForm" action="RegistroServlet" method="post" class="needs-validation" novalidate>
+                <div class="col-md-6 right"><form name="RegForm" action="RegistroServlet" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
                      <div class="input-box">
                         <div class="input-field position-relative">
                             <input type="text" class="input" id="text" name="Nombretext" required autocomplete="off" 
@@ -86,22 +86,28 @@
                         <div class="input-field position-relative">
                             <input type="password" class="input" id="password" name="Passwordtext" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                             <label for="password">Contraseña</label>
+                            
                             <div class="invalid-tooltip">
                                 Ingrese una contraseña valida.
 
                             </div>
                         </div>
                         <div class="input-field position-relative">
-                            <input type="password" class="input" id="password2" name="Contratext" required>
-                            <label for="password2">Confirmar contraseña</label>
+                            <input type="password" class="input" id="password" name="Contratext" required>
+                            <label for="password">Confirmar contraseña</label>
                             
                             <div class="invalid-tooltip">
                                 Ingrese la contraseña anterior.
                             </div>
                         </div>
+                         <div class="input">
+                             <input type="file" class="input" name="archivito" value="Agregar Imagen" accept=".jpg, .jpeg, .png" required> 
+                             <div class="invalid-tooltip">
+                                Selccione una imagen.
+                            </div>
+                         </div>
                          <div class="input-field">
                                 <input type="submit" class="submit" value="Registrarse">
-                                
                             </div>
                      </div>
                 </div></form>
@@ -110,4 +116,5 @@
     </div>
     <script src="validations.js"></script>
 </body>
+
 </html>

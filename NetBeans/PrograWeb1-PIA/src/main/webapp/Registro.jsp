@@ -106,9 +106,11 @@
                             <div class="invalid-tooltip">
                                 Ingrese la contraseña anterior.
                             </div>
-                            <input type="file" class="submit" name="archivito" value="Agregar Imagen"> 
-                            <br>
                         </div>
+                         <div class="input">
+                             <input type="file" class="input" name="archivito" value="Agregar Imagen"> 
+                 
+                         </div>
                          <div class="input-field">
                                 <input type="submit" class="submit" value="Registrarse">
                                 
