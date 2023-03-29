@@ -10,9 +10,30 @@ CREATE TABLE `PrograWebDB`.`usuario` (
   `NombreUsuario` VARCHAR(45) NULL,
   `Contrasena` VARCHAR(45) NULL,
   `FechaNacimiento` DATE NULL,
-  `FotoPerfl` BLOB(100) NULL,
+  `FotoPerfl` varchar(500) NULL,
   PRIMARY KEY (`idUsuario`));
 
-select NombreUsuario , Contrasena from usuario where BINARY NombreUsuario = 'wonder' and Contrasena = '1105me';
+alter table imagenes2
+modify column Dir mediumblob;
 
-select Nombre, NombreUsuario from usuario where BINARY NombreUsuario = 'Wonder';
+CREATE TABLE `prograwebdb`.`imagenes2` (
+  `idimagenes2` INT NOT NULL,
+  `Dir` longblob NULL,
+  `imagenes2col` VARCHAR(45) NULL,
+  PRIMARY KEY (`idimagenes2`));
+
+
+select NombreUsuario , Contrasena from usuario where BINARY NombreUsuario = 'wonder' and Contrasena = '1105me';
+select * from usuario;
+select Nombre, NombreUsuario from usuario where  NombreUsuario = 'Wonder';
+
+insert into usuario(FotoPerfl) values (load_file("C:\Users\isaac\Downloads\DSC_0264.JPG")) where NombreUsuario = 'Wonder';
+select * from imagenes2;
+insert into ya (img) values( LOAD_FILE('C:\\Programacion-Web\Imagenes\reach.jpg'));
+
+INSERT INTO xx_BLOB(imagenesdemierda) VALUES(1,LOAD_FILE('C:\\Users\isaac\Downloads\DSC_0264.JPG'));
+
+CREATE TABLE `prograwebdb`.`ya` (
+  `idya` INT NOT NULL AUTO_INCREMENT,
+  `img` MEDIUMBLOB NULL,
+  PRIMARY KEY (`idya`));

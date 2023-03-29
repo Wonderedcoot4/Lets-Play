@@ -29,7 +29,7 @@
                         </div>
                         <div class="input-field helper">
                             <div class="input-field margBoton"> 
-                                <input type="submit" class="submit" value="Agregar Imagen">        
+                                       
                             </div>                            
                             
                             <div class="signin">
@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 right"><form name="RegForm" action="RegistroServlet" method="post" class="needs-validation" novalidate>
+                <div class="col-md-6 right"><form name="RegForm" action="RegistroServlet" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
                      <div class="input-box">
                         <div class="input-field position-relative">
                             <input type="text" class="input" id="text" name="Nombretext" required autocomplete="off" 
@@ -106,6 +106,8 @@
                             <div class="invalid-tooltip">
                                 Ingrese la contraseña anterior.
                             </div>
+                            <input type="file" class="submit" name="archivito" value="Agregar Imagen"> 
+                            <br>
                         </div>
                          <div class="input-field">
                                 <input type="submit" class="submit" value="Registrarse">
@@ -118,4 +120,5 @@
     </div>
     <script src="validations.js"></script>
 </body>
+
 </html>

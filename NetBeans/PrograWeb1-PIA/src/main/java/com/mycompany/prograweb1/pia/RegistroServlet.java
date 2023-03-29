@@ -9,16 +9,22 @@ import UsuarioDBA.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
+import java.io.File;
 
 /**
  *
  * @author isaac
  */
 @WebServlet(name = "RegistroServlet", urlPatterns = {"/RegistroServlet"})
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
+        maxFileSize = 1024 * 1024 + 10,
+        maxRequestSize = 1024 * 1024 * 50)
 public class RegistroServlet extends HttpServlet {
     conexionSQL conexion = new conexionSQL();
     Usuario user = new Usuario();
@@ -67,6 +73,14 @@ public class RegistroServlet extends HttpServlet {
         String Usuario = request.getParameter("UsuarioText");
         String pass = request.getParameter("Passwordtext");
         
+        Part part = request.getPart("archivito");
+        
+        String NombreArchivo;
+        NombreArchivo = extractFileName(part);
+        String dirSave = "C:\\Users\\isaac\\Desktop\\Programacion Web 1\\Programacion-Web\\NetBeans\\PrograWeb1-PIA\\src\\main\\webapp\\Imagenes\\" + File.separator + NombreArchivo;
+        File fileSaveDir = new File(dirSave);
+        
+        part.write(fileSaveDir + File.separator);
         var obj = user;
         //SI NO ESTA REPETIDO DEBE ENTRAR AL DALSE
          var isRepited = obj.noseRepite(Usuario); //SI ES TRUE ES QUE YA EXISTE, SI ES FALSE NO Y SE REGISTRA
@@ -76,7 +90,7 @@ public class RegistroServlet extends HttpServlet {
             System.out.println("EL USUARIO YA ESTA REPETIDO");
             return;
         }
-         var isSuccess = obj.Registro(Nombre, ApellidoPaterno, ApellidoMaterno, Email, FechaNacimiento, Usuario, pass);
+         var isSuccess = obj.InsertarImagen(Nombre, ApellidoPaterno, ApellidoMaterno, Email, FechaNacimiento, Usuario, pass, fileSaveDir);
             if (isSuccess) {
             response.sendRedirect("index.jsp");
          }
@@ -90,5 +104,16 @@ public class RegistroServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
+    private String extractFileName(Part part)
+    {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
 }
