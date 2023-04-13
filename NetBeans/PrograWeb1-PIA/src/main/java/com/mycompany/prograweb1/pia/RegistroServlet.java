@@ -90,6 +90,12 @@ public class RegistroServlet extends HttpServlet {
             System.out.println("EL USUARIO YA ESTA REPETIDO");
             return;
         }
+        var isMailRepited = user.CorreoNoRepeat(Email);
+        if ( isMailRepited == true) {
+            response.sendRedirect("Registro.jsp");
+            System.out.println("EL CORREO YA ESTA REPETIDO");
+            return;
+        }
          var isSuccess = obj.InsertarImagen(Nombre, ApellidoPaterno, ApellidoMaterno, Email, FechaNacimiento, Usuario, pass, fileSaveDir);
             if (isSuccess) {
             response.sendRedirect("index.jsp");

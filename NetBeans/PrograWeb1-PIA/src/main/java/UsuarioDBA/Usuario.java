@@ -169,6 +169,29 @@ public class Usuario {
                 return false;
             }
             return false;
+            
+            
+        }
+        
+        
+         public boolean CorreoNoRepeat(String user)
+        {
+            try{
+                   con.getConnection();
+                   cn = con.conectar();
+                   Statement stm = cn.createStatement();
+                   String elStatement = "Select Correo from usuario where Correo ='" + user + "' ";
+                   rs = stm.executeQuery(elStatement);
+                   if (rs.next() == true) {
+                       con.desconectar();
+                    return true;
+                }
+            }catch(Exception e)
+            {
+                con.desconectar();
+                return false;
+            }
+            return false;
         }
     
 }
