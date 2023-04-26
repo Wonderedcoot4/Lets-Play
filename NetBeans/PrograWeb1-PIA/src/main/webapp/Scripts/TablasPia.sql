@@ -1,5 +1,6 @@
 create database PrograWebDB;
 use PrograWebDB;
+
 CREATE TABLE `PrograWebDB`.`usuario` (
   `idUsuario` INT NOT NULL AUTO_INCREMENT,
   `Nombre` VARCHAR(50) NULL,
@@ -13,27 +14,65 @@ CREATE TABLE `PrograWebDB`.`usuario` (
   `FotoPerfl` varchar(500) NULL,
   PRIMARY KEY (`idUsuario`));
 
-alter table imagenes2
-modify column Dir mediumblob;
+SHOW TABLES; -- esto de aqui nos muestra las tablas en la db actualmente en uso --
+-- a
 
-CREATE TABLE `prograwebdb`.`imagenes2` (
-  `idimagenes2` INT NOT NULL,
-  `Dir` longblob NULL,
-  `imagenes2col` VARCHAR(45) NULL,
-  PRIMARY KEY (`idimagenes2`));
+CREATE TABLE `prograwebdb`.`estatuspublicacion` (
+  `idEstatusPublicacion` INT NOT NULL AUTO_INCREMENT,
+  `EstatusPublicacion` VARCHAR(45) NOT NULL DEFAULT 'Activo' COMMENT 'Activo, inactivo, desactivada, revision\n',
+  PRIMARY KEY (`idEstatusPublicacion`))
+COMMENT = 'Es tabla que se encargara de los estatus de las publicaciones';
 
 
+CREATE TABLE `prograwebdb`.`categoria` (
+  `idCategoria` INT NOT NULL AUTO_INCREMENT,
+  `Categoria` varchar(50) not null,
+  PRIMARY KEY (`idCategoria`))
+COMMENT = 'Categorias de las publicaciones\n';
+
+CREATE TABLE `prograwebdb`.`publicacion` (
+  `idPublicacion` INT NOT NULL AUTO_INCREMENT,
+  `Contenido` VARCHAR(500) NOT NULL,
+  `IdEstatusPost` INT NOT NULL,
+  `FechaCreacion` DATE NOT NULL,
+  `Titulo` VARCHAR(55) NULL,
+  `IdCategoria` INT NULL,
+  PRIMARY KEY (`idPublicacion`),
+  INDEX `IdEstatusPublicacion_idx` (`IdEstatusPost` ASC) VISIBLE,
+  INDEX `IdCategoria_idx` (`IdCategoria` ASC) VISIBLE,
+  CONSTRAINT `IdEstatusPublicacion`
+    FOREIGN KEY (`IdEstatusPost`)
+    REFERENCES `prograwebdb`.`estatuspublicacion` (`idEstatusPublicacion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `IdCategoria`
+    FOREIGN KEY (`IdCategoria`)
+    REFERENCES `prograwebdb`.`categoria` (`idCategoria`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+    
+drop table categoria; 
 select NombreUsuario , Contrasena from usuario where BINARY NombreUsuario = 'wonder' and Contrasena = '1105me';
 select * from usuario;
 select Nombre, NombreUsuario from usuario where  NombreUsuario = 'Wonder';
 
-insert into usuario(FotoPerfl) values (load_file("C:\Users\isaac\Downloads\DSC_0264.JPG")) where NombreUsuario = 'Wonder';
-select * from imagenes2;
-insert into ya (img) values( LOAD_FILE('C:\\Programacion-Web\Imagenes\reach.jpg'));
+select Correo from usuario where Correo = 'Isaacpro553@gmail.com';
+DELIMITER //
+CREATE PROCEDURE `crearPost` (in Titulo varchar(50), in Contenido varchar(500), in EstatusPost varchar(50), in FechaCreacion date, in Categoria varchar(50))
+BEGIN
+  --  Declare IdCategoriaCreada int;
+   Insert into categoria(Categoria) values (Categoria);
+   set @IdCategoriaCreada = LAST_INSERT_ID();
+   INSERT INTO estatuspublicacion(EstatusPublicacion) values (EstatusPost);
+    set @IdEstatus = LAST_INSERT_ID();
+   INSERT INTO publicacion(Titulo, Contenido, FechaCreacion,IdCategoria, IdEstatusPost) values (Titulo, Contenido, FechaCreacion, @IdCategoriaCreada, @IdEstatus);
+END //
 
-INSERT INTO xx_BLOB(imagenesdemierda) VALUES(1,LOAD_FILE('C:\\Users\isaac\Downloads\DSC_0264.JPG'));
+CALL crearPost('Prueba','Texto','Activo','10/12/23','Accion');
+DELIMITER ;
 
-CREATE TABLE `prograwebdb`.`ya` (
-  `idya` INT NOT NULL AUTO_INCREMENT,
-  `img` MEDIUMBLOB NULL,
-  PRIMARY KEY (`idya`));
+select C.Categoria, p.Contenido, p.FechaCreacion, p.Titulo from publicacion p join Categoria C
+on C.idCategoria = p.IdCategoria 
+
+
+

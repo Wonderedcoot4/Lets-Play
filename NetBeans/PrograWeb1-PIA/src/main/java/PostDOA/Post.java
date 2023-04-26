@@ -20,7 +20,16 @@ public class Post {
         this.Titulo = titulo;
         this.contenido = Contenido;
         this.Fecha = fechaCreacion;
+        this.userID = idUsuario;
         
+    }
+    
+    public boolean agregarPost(Post post)
+    {
+        try {
+            String statement = "";
+        } catch (Exception e) {
+        }
     }
     public int getId()
     {
@@ -39,4 +48,11 @@ public class Post {
     {
         return Fecha;
     }
+    
+    public int getUserId()
+    {
+        return userID;
+    }
+    
+    
 }
