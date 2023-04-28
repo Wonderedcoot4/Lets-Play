@@ -41,7 +41,7 @@
         </nav>
     </div>
     <div class="d-flex corrector" id="content-wrapper">
-        <div id="sidebar-container" class="color-bar ">
+        <div id="sidebar-container" class="">
             <div class="logo">
                 <h4 class="text-light font-weight-bold mb-0">Categorías</h4>
             </div>
@@ -70,7 +70,7 @@
         
         <div class="container mr-1">
             <div class="row">
-                <div class="col-11">
+                <div class="col-10">
                     <div class="feed">
                         <div class="post">
                             <div class="post__avatar">
@@ -217,18 +217,22 @@
 
         </div>
       </footer>
+    
+    
+    
     <dialog id="modal" class="dialog1">
+        <form action="CreatePost" method="post" name="postForm">
         <div class="row">
             <div class="col-11"></div>
             <div class="col-1">
-                <button class="btn colorIcon" id="btn-cerrar-modal"><i class="icon ion-md-close iconConfig"></i></button>
+                <button class="btn colorIcon" id="btn-cerrar-modal" ><i class="icon ion-md-close iconConfig"></i></button>
             </div>
         </div>
         <div class="row">
-            <input class="inTitle colorText" type="text" name="title" placeholder="Titulo...">
+            <input class="inTitle colorText" type="text" name="TituloText" placeholder="Titulo...">
         </div>
         <div class="row">
-            <textarea class="inText colorText" id="exampleFormControlTextarea1" placeholder="¿Que estas pensando?" rows="10"></textarea>
+            <textarea name="Contenido"class="inText colorText" id="exampleFormControlTextarea1" placeholder="¿Que estas pensando?" rows="10"></textarea>
         </div>
         <div class="row">
             <div class="post__footer">
@@ -242,9 +246,13 @@
                 </div>
             </div>
         </div>
+        </form>
     </dialog>
 
+    
+    
     <dialog id="modal2">
+        
         <div class="row">
             <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
                 <img src="./Imagenes/icon.png" alt="logo" width="80px" class="rounded-circle"></a>
@@ -267,6 +275,7 @@
         <div class="row">
             <button class="btn colorIcon" id="btn-cerrar-modal2"><i class="icon ion-md-close iconConfig"></i></button>
     </div>
+        
     </dialog>
 
     <dialog id="modal3">

@@ -50,7 +50,7 @@ a:hover {
 
 .color-bar { 
     background-color: #2c2f33 !important;
-    position: fixed;
+    position: none;
  }
 
 .bg-light { background-color: #2c2f33 !important; }
@@ -99,9 +99,9 @@ background-color: #25272b !important;
 .buttonPubli{
     background: none;
     border: none;
-    margin-top: 543px;
-    margin-left: 80px;
-    position: fixed;
+    margin-top: 0;
+    margin-left: 0;
+    position: none  ;
 }
 
 .alingFlex{

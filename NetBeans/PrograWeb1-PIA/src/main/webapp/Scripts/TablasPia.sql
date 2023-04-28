@@ -34,7 +34,7 @@ CREATE TABLE `prograwebdb`.`publicacion` (
   `idPublicacion` INT NOT NULL AUTO_INCREMENT,
   `Contenido` VARCHAR(500) NOT NULL,
   `IdEstatusPost` INT NOT NULL,
-  `FechaCreacion` DATE NOT NULL,
+  `FechaCreacion` DATE NOT NULL, -- CAMBIARLO A NULL DE MOMENTO PQ AUN NOTENEMOS DE DONDE AGARRAR LA FECHA MAS QUE POR DENTRO DE LA DB
   `Titulo` VARCHAR(55) NULL,
   `IdCategoria` INT NULL,
   PRIMARY KEY (`idPublicacion`),
@@ -57,6 +57,7 @@ select * from usuario;
 select Nombre, NombreUsuario from usuario where  NombreUsuario = 'Wonder';
 
 select Correo from usuario where Correo = 'Isaacpro553@gmail.com';
+
 DELIMITER //
 CREATE PROCEDURE `crearPost` (in Titulo varchar(50), in Contenido varchar(500), in EstatusPost varchar(50), in FechaCreacion date, in Categoria varchar(50))
 BEGIN
@@ -72,7 +73,20 @@ CALL crearPost('Prueba','Texto','Activo','10/12/23','Accion');
 DELIMITER ;
 
 select C.Categoria, p.Contenido, p.FechaCreacion, p.Titulo from publicacion p join Categoria C
-on C.idCategoria = p.IdCategoria 
+on C.idCategoria = p.IdCategoria ;
 
+DELIMITER //
+CREATE PROCEDURE `crearPostSencillo` (in Titulo varchar(50), in Contenido varchar(500), in EstatusPost varchar(50), in Categoria varchar(50))
+BEGIN 
+  --  Declare IdCategoriaCreada int;
+   Insert into categoria(Categoria) values (Categoria);
+   set @IdCategoriaCreada = LAST_INSERT_ID();
+   INSERT INTO estatuspublicacion(EstatusPublicacion) values (EstatusPost);
+    set @IdEstatus = LAST_INSERT_ID();
+   INSERT INTO publicacion(Titulo, Contenido,IdCategoria, IdEstatusPost) values (Titulo, Contenido, @IdCategoriaCreada, @IdEstatus);
+END //
+select * from publicacioncrearPostSencillocrearPostSencillo
+CALL crearPost('Prueba','Texto','Activo','10/12/23','Accion');
+DELIMITER ;
 
 
