@@ -5,7 +5,8 @@ import Config.conexionSQL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
- 
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 public class Post {
     
     private int id;
@@ -70,6 +71,8 @@ public class Post {
             int res = 0;
               con.getConnection();
               cn = con.conectar();
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
             String statement = "{CALL crearPostSencillo(?,?,?,?)}";
             PreparedStatement stm = cn.prepareCall(statement);
             stm.setString(1, Titulo);

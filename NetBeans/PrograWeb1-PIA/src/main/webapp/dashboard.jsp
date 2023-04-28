@@ -201,7 +201,7 @@
                 </div>
                 <div class="col-1">
                     <button type="button" class="buttonPubli" data-bs-container="body" id="btn-abrir-modal">
-                        <img src="./Imagenes/boton.png" width="200px"></a>
+                        <img src="./Imagenes/boton.png" width="80px" ></a>
                     </button>
                     <div>
                     </div>

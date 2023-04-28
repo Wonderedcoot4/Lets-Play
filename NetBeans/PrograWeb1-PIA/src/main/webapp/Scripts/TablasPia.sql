@@ -31,10 +31,10 @@ CREATE TABLE `prograwebdb`.`categoria` (
 COMMENT = 'Categorias de las publicaciones\n';
 
 CREATE TABLE `prograwebdb`.`publicacion` (
-  `idPublicacion` INT NOT NULL AUTO_INCREMENT,
+  `idPublicacion` INT NOT NULL AUTO_INCREMENT, 
   `Contenido` VARCHAR(500) NOT NULL,
   `IdEstatusPost` INT NOT NULL,
-  `FechaCreacion` DATE NOT NULL, -- CAMBIARLO A NULL DE MOMENTO PQ AUN NOTENEMOS DE DONDE AGARRAR LA FECHA MAS QUE POR DENTRO DE LA DB
+  `FechaCreacion` DATE NULL, -- CAMBIARLO A NULL DE MOMENTO PQ AUN NOTENEMOS DE DONDE AGARRAR LA FECHA MAS QUE POR DENTRO DE LA DB
   `Titulo` VARCHAR(55) NULL,
   `IdCategoria` INT NULL,
   PRIMARY KEY (`idPublicacion`),
@@ -50,6 +50,9 @@ CREATE TABLE `prograwebdb`.`publicacion` (
     REFERENCES `prograwebdb`.`categoria` (`idCategoria`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+    
+ALTER TABLE publicacion
+modify column FechaCreacion date null;    
     
 drop table categoria; 
 select NombreUsuario , Contrasena from usuario where BINARY NombreUsuario = 'wonder' and Contrasena = '1105me';
@@ -85,7 +88,7 @@ BEGIN
     set @IdEstatus = LAST_INSERT_ID();
    INSERT INTO publicacion(Titulo, Contenido,IdCategoria, IdEstatusPost) values (Titulo, Contenido, @IdCategoriaCreada, @IdEstatus);
 END //
-select * from publicacioncrearPostSencillocrearPostSencillo
+select * from publicacion
 CALL crearPost('Prueba','Texto','Activo','10/12/23','Accion');
 DELIMITER ;
 
