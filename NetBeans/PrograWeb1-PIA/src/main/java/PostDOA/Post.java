@@ -46,23 +46,33 @@ public class Post {
     conexionSQL con = new conexionSQL();
     Connection cn;
         
-    public boolean agregarPost(String Titulo, String Contenido, String Estatus, String Fecha, String Categoria)
+    public boolean agregarPost(String Titulo, String Contenido, String Estatus, String Categoria)
     {
         try {
               con.getConnection();
               cn = con.conectar();
-            String statement = "CALL crearPost(?,?,?,?,?)";
-            PreparedStatement stm = cn.prepareStatement(statement);
-            stm.setString(1, Fecha);
-            stm.setString(2, Fecha);
-            stm.setString(3, Fecha);
-            stm.setString(4, Fecha);
-            stm.setString(5, Fecha);
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            String fecha = java.time.LocalDate.now().toString();
+            String statement = "{CALL crearPost(?,?,?,?,?)}";
+            PreparedStatement stm = cn.prepareCall(statement);
+            stm.setString(1, Titulo);
+            stm.setString(2, Contenido);
+            stm.setString(3, Estatus);
+            stm.setString(4, fecha);
+            stm.setString(5, Categoria);
+            
+            stm.execute();
+            con.desconectar();
+            return true;
             
         } catch (Exception e) {
+            System.out.println("Error no se inserto en la DB");
+            System.out.println(e.toString());
+            con.desconectar();
             return false;
         }
-        return false;
+  
     }
     
       public boolean agregarPostTest(String Titulo, String Contenido, String Estatus, String Categoria)
@@ -71,8 +81,7 @@ public class Post {
             int res = 0;
               con.getConnection();
               cn = con.conectar();
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
+            
             String statement = "{CALL crearPostSencillo(?,?,?,?)}";
             PreparedStatement stm = cn.prepareCall(statement);
             stm.setString(1, Titulo);

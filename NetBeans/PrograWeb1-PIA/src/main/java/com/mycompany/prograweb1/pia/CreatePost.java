@@ -56,7 +56,7 @@ public class CreatePost extends HttpServlet {
         String Categoria = "Accion";
         String Estatus = "Activo";
         int i = -1;
-        var obj = instancia.agregarPostTest(Titulo, Contenido, Estatus, Categoria);
+        var obj = instancia.agregarPost(Titulo, Contenido, Estatus, Categoria);
         if (obj) {
             response.sendRedirect("dashboard.jsp");
             System.out.println("Realizado");
