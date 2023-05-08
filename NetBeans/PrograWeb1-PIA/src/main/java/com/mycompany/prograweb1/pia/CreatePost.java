@@ -18,6 +18,9 @@ import java.io.File;
 import PostDOA.Post;
 
 @WebServlet(name = "CreatePost", urlPatterns = {"/CreatePost"})
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
+        maxFileSize = 1024 * 1024 + 10,
+        maxRequestSize = 1024 * 1024 * 50)
 public class CreatePost extends HttpServlet {
     conexionSQL conexion = new conexionSQL();
     Post instancia = new Post();
@@ -53,14 +56,23 @@ public class CreatePost extends HttpServlet {
         String Title;
         String Titulo = request.getParameter("TituloText");
         String Contenido = request.getParameter("Contenido");
-        String Categoria = "Accion";
+        String Categoria = request.getParameter("categoria"); 
         String Estatus = "Activo";
+        
+        Part part = request.getPart("Fotografia");
+        
+        String NombreArchivo;
+        NombreArchivo = extractFileName(part);
+        String dirSave = "C:\\Users\\isaac\\Desktop\\Programacion Web 1\\Programacion-Web\\NetBeans\\PrograWeb1-PIA\\src\\main\\webapp\\Imagenes\\" + File.separator + NombreArchivo;
+        File fileSaveDir = new File(dirSave);
+        part.write(fileSaveDir + File.separator);
         int i = -1;
-        var obj = instancia.agregarPost(Titulo, Contenido, Estatus, Categoria);
+        var obj = instancia.crearPost(Titulo, Contenido, Estatus, Categoria, fileSaveDir);
         if (obj) {
             response.sendRedirect("dashboard.jsp");
             System.out.println("Realizado");
         }
+        response.sendRedirect("dashboard.jsp");
         System.out.println("No se publico");
     }
 
@@ -69,4 +81,15 @@ public class CreatePost extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private String extractFileName(Part part)
+    {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
 }

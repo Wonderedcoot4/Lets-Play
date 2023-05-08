@@ -37,6 +37,8 @@ CREATE TABLE `prograwebdb`.`publicacion` (
   `FechaCreacion` DATE NULL, -- CAMBIARLO A NULL DE MOMENTO PQ AUN NOTENEMOS DE DONDE AGARRAR LA FECHA MAS QUE POR DENTRO DE LA DB
   `Titulo` VARCHAR(55) NULL,
   `IdCategoria` INT NULL,
+  `FotoPublicacion` varchar(500) null,
+  `IdPublicador` varchar(500) null, 
   PRIMARY KEY (`idPublicacion`),
   INDEX `IdEstatusPublicacion_idx` (`IdEstatusPost` ASC) VISIBLE,
   INDEX `IdCategoria_idx` (`IdCategoria` ASC) VISIBLE,
@@ -88,8 +90,45 @@ BEGIN
     set @IdEstatus = LAST_INSERT_ID();
    INSERT INTO publicacion(Titulo, Contenido,IdCategoria, IdEstatusPost) values (Titulo, Contenido, @IdCategoriaCreada, @IdEstatus);
 END //
-select * from publicacion
+select NombreUsuario, Contenido, idUsuario, IdPublicador, Nombre from publicacion
+join usuario
+on idPublicador = usuario.idUsuario
+select * from EstatusPublicacion -- Ver si cambio esto para que sea solo 3 estados y no 300000 activos mismo caso para categoria
+select * from usuario
+select idUsuario from usuario where NombreUsuario = 'Wonder'
 CALL crearPost('Prueba','Texto','Activo','10/12/23','Accion');
 DELIMITER ;
 
 
+select * from publicacion
+DELIMITER //
+CREATE PROCEDURE `creacionPostSinUsuario` (in Titulo varchar(50), in Contenido varchar(500), in EstatusPost varchar(50), in Categoria varchar(50), in Foto varchar(500))
+BEGIN 
+  --  Declare IdCategoriaCreada int;
+   -- Declare @idUsuarioPosteador int;
+ 
+   Insert into categoria(Categoria) values (Categoria);
+   set @IdCategoriaCreada = LAST_INSERT_ID();
+   INSERT INTO estatuspublicacion(EstatusPublicacion) values (EstatusPost);
+    set @IdEstatus = LAST_INSERT_ID();
+   INSERT INTO publicacion(Titulo, Contenido,IdCategoria, IdEstatusPost,FotoPublicacion) values (Titulo, Contenido, @IdCategoriaCreada, @IdEstatus, Foto);
+END //
+DELIMITER ;
+
+
+
+DELIMITER //
+CREATE PROCEDURE `creacionPost` (in Titulo varchar(50), in Contenido varchar(500), in EstatusPost varchar(50), in Categoria varchar(50), in Foto varchar(500), in UserName varchar(100))
+BEGIN 
+  --  Declare IdCategoriaCreada int;
+   -- Declare @idUsuarioPosteador int;
+   set @idUsuarioPosteador = (select idUsuario from usuario where NombreUsuario = UserName);
+   Insert into categoria(Categoria) values (Categoria);
+   set @IdCategoriaCreada = LAST_INSERT_ID();
+   INSERT INTO estatuspublicacion(EstatusPublicacion) values (EstatusPost);
+    set @IdEstatus = LAST_INSERT_ID();
+   INSERT INTO publicacion(Titulo, Contenido,IdCategoria, IdEstatusPost,FotoPublicacion,IdPublicador) values (Titulo, Contenido, @IdCategoriaCreada, @IdEstatus, Foto, @idUsuarioPosteador);
+END //
+DELIMITER ;
+drop procedure creacionPostSinUsuario;
+CALL creacionPost('Aja','Pipipi','Activo','Accion', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder');

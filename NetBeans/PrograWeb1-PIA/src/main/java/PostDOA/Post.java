@@ -2,6 +2,7 @@
 
 package PostDOA;
 import Config.conexionSQL;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -45,7 +46,7 @@ public class Post {
     */
     conexionSQL con = new conexionSQL();
     Connection cn;
-        
+        //No jalara ahoria con los cambios que hice al nuevo crear post, 
     public boolean agregarPost(String Titulo, String Contenido, String Estatus, String Categoria)
     {
         try {
@@ -61,7 +62,7 @@ public class Post {
             stm.setString(3, Estatus);
             stm.setString(4, fecha);
             stm.setString(5, Categoria);
-            
+            //Por si no aparezco toy en el bañño 
             stm.execute();
             con.desconectar();
             return true;
@@ -73,6 +74,39 @@ public class Post {
             return false;
         }
   
+    }
+    
+    public boolean crearPost(String Titulo, String Contenido, String Estatus, String Categoria, File Fotografia)
+    {
+        try
+        {
+              con.getConnection();
+              cn = con.conectar();
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd:mm:ss");
+            String Fotito = Fotografia.toString();
+            LocalDateTime now = LocalDateTime.now();
+            String fecha = java.time.LocalDate.now().toString();
+            String statement = "{CALL creacionPostSinUsuario(?,?,?,?,?)}";
+            PreparedStatement stm = cn.prepareCall(statement);
+            stm.setString(1, Titulo);
+            stm.setString(2, Contenido);
+            stm.setString(3, Estatus);
+            stm.setString(4, Categoria);
+            stm.setString(5, Fotito);
+            stm.execute();
+            con.desconectar();
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error no se inserto en la DB");
+            System.out.println(e.toString());
+            return false;
+        }
+        finally
+        {
+            con.desconectar();
+        }
     }
     
       public boolean agregarPostTest(String Titulo, String Contenido, String Estatus, String Categoria)

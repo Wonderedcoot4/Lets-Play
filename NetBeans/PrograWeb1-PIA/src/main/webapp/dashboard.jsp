@@ -70,7 +70,7 @@
         
         <div class="container mr-1">
             <div class="row">
-                <div class="col-10">
+                <div class="col-3">
                     <div class="feed">
                         <div class="post">
                             <div class="post__avatar">
@@ -219,13 +219,14 @@
       </footer>
     
     
-    
+    <!--Aquie se crea el post
+    Titulo, Contenido y Foto-->
     <dialog id="modal" class="dialog1">
-        <form action="CreatePost" method="post" name="postForm">
+        <form action="CreatePost" method="post" name="postForm" enctype="multipart/form-data">
         <div class="row">
             <div class="col-11"></div>
             <div class="col-1">
-                <button class="btn colorIcon" id="btn-cerrar-modal" ><i class="icon ion-md-close iconConfig"></i></button>
+                <button class="btn colorIcon" id="id-no-cerrar" ><i class="icon ion-md-close iconConfig"></i></button>
             </div>
         </div>
         <div class="row">
@@ -237,19 +238,31 @@
         <div class="row">
             <div class="post__footer">
                 <div class="col colorIcon">
-                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-image iconConfig"></i></button>
-                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-compass iconConfig"></i></button>
-                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-happy iconConfig"></i></button>
+                    <div class="checkbox-inline">
+                    <p><input class="form-check-input" type="checkbox" name="categoria" value="AccionyAventura">Accion y Aventura</p>
+                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Lucha">Lucha</p>
+                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Carreras">Carreras</p>
+                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Clasicos">Clasicos</p>
+                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Plataformas">Plataformas</p>
+                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Independientes">Independientes</p>
+                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Familiares">Familiares</p>
+                </div>
+                    <!--<button class="btn colorIcon" type="submit"><i class="icon ion-md-image iconConfig"></i></button> Boton Original como estaba antes de cambiarse, en caso de querer agregarlo-->
+                    <input class="input" type="file" accept=".jpg, .jpeg, .png" name="Fotografia">
+                    <!--<button class="btn colorIcon" type="submit"><i class="icon ion-md-compass iconConfig"></i></button>
+                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-happy iconConfig"></i></button>-->
                 </div>
                 <div class="col-1">
+                    <!--EL BOTON ESTA LLAMADO AL SERVLET CUIDADO-->
                     <button class="btn colorIcon" id="btn-cerrar-modal"><i class="icon ion-md-send iconConfig"></i></button>
                 </div>
+                
             </div>
         </div>
         </form>
     </dialog>
 
-    
+    <!--End post-->
     
     <dialog id="modal2">
         
