@@ -3,6 +3,7 @@
     Created on : 24 mar 2023, 22:34:00
     Author     : isaac
 --%>
+
 <%@page import="UsuarioDBA.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -238,16 +239,21 @@
     
     <!--Informacion Usuario Modal-->
     
-<%
-      usuario usuario = new Usuario();
-
-%>
 
     
     <!--Obtencion de info usuario -->
-    
-    
-    
+    <%
+      
+      Usuario usuario = new Usuario();
+      
+      usuario = (Usuario) request.getSession().getAttribute("UsuarioLog");
+      
+      System.out.println("Usuario dashboard " + usuario);
+      
+      int i;
+      i = -1;
+    %>
+
     <dialog id="modal2">
         
         <div class="row">
@@ -256,7 +262,7 @@
             </button>
         </div>
         <div class="row colorText allignIcon">
-            <h3>NachtDenos</h3>
+            <h3><% out.print(usuario.getUsuario()); %></h3>
             <p class="post__headerSpecial">eeatienda2001@hotmail.com</p>
         </div>
         <div class="row colorText allignIcon">
