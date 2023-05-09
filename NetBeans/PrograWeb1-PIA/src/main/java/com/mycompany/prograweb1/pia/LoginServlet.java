@@ -44,15 +44,19 @@ public class LoginServlet extends HttpServlet {
     
          response.setContentType("text/jsp");
         PrintWriter out = response.getWriter();
+        HttpSession session;
         //Login de usuario y password
         String username = request.getParameter("emailUsuario");
         String password = request.getParameter("passUsuario");
+        session = request.getSession();
         String stamentMySql = "Select * from usuario where NombreUsuario ='" + username + "AND ' Contrasena'" + password + "'";
         
         var obj = user;
-        var isSuccess = obj.login(username, password);;
-        if (isSuccess == true) {
-            response.sendRedirect("Profile.jsp");
+        Usuario log = (Usuario) obj.LoginUsuario(username, password);;
+        if (log.getIdUsuario()!= 0) {
+           
+            response.sendRedirect("dashboard.jsp");
+            request.setAttribute("usuario", log);
         }
         else
         {

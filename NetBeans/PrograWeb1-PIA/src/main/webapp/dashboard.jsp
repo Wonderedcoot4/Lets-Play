@@ -3,7 +3,7 @@
     Created on : 24 mar 2023, 22:34:00
     Author     : isaac
 --%>
-
+<%@page import="UsuarioDBA.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +21,7 @@
     <script defer src="dashboard.js"></script>
     <title>Principal | Justplay</title>
 </head>
+
 <body class="colorBody slideBarScroll">
     <div class="static">
         <nav class="navbar navbar-expand-lg navColor">
@@ -166,40 +167,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="post">
-                            <div class="post__avatar">
-                                <img src="./Imagenes/icon.png">
-                            </div>
-                            <div class="post__body">
-                                <div class="post__header">
-                                    <div class="post__headerText colorText">
-                                        <h3>
-                                            NachtDenos
-                                            <span class="post__headerSpecial">#Disparos</span>
-                                        </h3>
-                                    </div>
-                                    <div class="post__headerDescription colorText">
-                                        <h4>Hola soy nuevo</h2>
-                                        <p>Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</p>
-                                    </div>
-                                </div>
-                                <div class="post__footer">
-                                    <div class="col allignIcon colorIcon">
-                                        <button class="btn colorIcon" type="submit"><i class="icon ion-ios-heart iconConfig"></i></button>
-                                    </div>
-                                    <div class="col allignIcon colorIcon">
-                                        <button class="btn colorIcon" type="submit"><i class="icon ion-md-share iconConfig"></i></button>
-                                    </div>
-                                    <div class="col allignIcon colorIcon">
-                                        <button class="btn colorIcon" type="submit" id="btn-abrir-modal4"><i class="icon ion-md-flower iconConfig"></i></button>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
-                <div class="col-1">
+                <div class="col-3">
                     <button type="button" class="buttonPubli" data-bs-container="body" id="btn-abrir-modal">
                         <img src="./Imagenes/boton.png" width="80px" ></a>
                     </button>
@@ -239,13 +210,13 @@
             <div class="post__footer">
                 <div class="col colorIcon">
                     <div class="checkbox-inline">
-                    <p><input class="form-check-input" type="checkbox" name="categoria" value="AccionyAventura">Accion y Aventura</p>
-                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Lucha">Lucha</p>
-                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Carreras">Carreras</p>
-                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Clasicos">Clasicos</p>
-                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Plataformas">Plataformas</p>
-                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Independientes">Independientes</p>
-                    <p><input class="form-check-input" type="checkbox" name="categoria" value="Familiares">Familiares</p>
+                    <p><input class="form-check-input" type="checkbox" id="c01" name="categoria" value="AccionyAventura" >Accion y Aventura</p>
+                    <p><input class="form-check-input" type="checkbox" id="c02" name="categoria" value="Lucha" >Lucha</p>
+                    <p><input class="form-check-input" type="checkbox" id="c03" name="categoria" value="Carreras" >Carreras</p>
+                    <p><input class="form-check-input" type="checkbox" id="c04" name="categoria" value="Clasicos" >Clasicos</p>
+                    <p><input class="form-check-input" type="checkbox" id="c05" name="categoria" value="Plataformas" >Plataformas</p>
+                    <p><input class="form-check-input" type="checkbox" id="c06" name="categoria" value="Independientes" >Independientes</p>
+                    <p><input class="form-check-input" type="checkbox" id="c07" name="categoria" value="Familiares">Familiares</p>
                 </div>
                     <!--<button class="btn colorIcon" type="submit"><i class="icon ion-md-image iconConfig"></i></button> Boton Original como estaba antes de cambiarse, en caso de querer agregarlo-->
                     <input class="input" type="file" accept=".jpg, .jpeg, .png" name="Fotografia">
@@ -263,6 +234,23 @@
     </dialog>
 
     <!--End post-->
+    
+    
+    <!--Informacion Usuario Modal-->
+    
+<%
+      Usuario usuario = new Usuario();
+      
+      usuario = (Usuario) request.getAttribute("usuario");
+      
+      System.out.println("Usuario dashboard" + usuario.getUsuario());
+
+%>
+
+    
+    <!--Obtencion de info usuario -->
+    
+    
     
     <dialog id="modal2">
         
@@ -368,7 +356,7 @@
         </div>
     </dialog>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

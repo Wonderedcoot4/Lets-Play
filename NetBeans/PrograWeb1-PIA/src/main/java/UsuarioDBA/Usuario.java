@@ -28,6 +28,7 @@ import java.sql.Statement;
  */
 public class Usuario {
         
+        public int IdUsuario;
         public String Nombre;
         public String ApellidoP;
         public String ApellidoM;
@@ -36,7 +37,81 @@ public class Usuario {
         public String Usuario;
         public String Password;
         public String ConfirmarContraseña;
-        
+        public String Fotografia;
+
+    public void setFotografia(String Fotografia) {
+        this.Fotografia = Fotografia;
+    }
+
+    public String getFotografia() {
+        return Fotografia;
+    }
+
+    public int getIdUsuario() {
+        return IdUsuario;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public String getApellidoP() {
+        return ApellidoP;
+    }
+
+    public String getApellidoM() {
+        return ApellidoM;
+    }
+
+    public String getCorreo() {
+        return Correo;
+    }
+
+    public String getFechaNacimiento() {
+        return FechaNacimiento;
+    }
+
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    public String getPassword() {
+        return Password;
+    }
+
+    public void setIdUsuario(int IdUsuario) {
+        this.IdUsuario = IdUsuario;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public void setApellidoP(String ApellidoP) {
+        this.ApellidoP = ApellidoP;
+    }
+
+    public void setApellidoM(String ApellidoM) {
+        this.ApellidoM = ApellidoM;
+    }
+
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
+    }
+
+    public void setFechaNacimiento(String FechaNacimiento) {
+        this.FechaNacimiento = FechaNacimiento;
+    }
+
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+
+  
         conexionSQL con = new conexionSQL();
         Connection cn;
         
@@ -87,12 +162,13 @@ public class Usuario {
         
         public boolean login(String User, String pass)
         {
+            Usuario logged = new Usuario();
             try{
            
              con.getConnection();
              cn = con.conectar();
              Statement stm = cn.createStatement();
-             String stamentMySql = "Select NombreUsuario, Contrasena from usuario where BINARY NombreUsuario ='" + User + "' AND  Contrasena='" + pass + "'";
+             String stamentMySql = "Select NombreUsuario, Contrasena, idUsuario, FotoPerfl from usuario where BINARY NombreUsuario ='" + User + "' AND  Contrasena='" + pass + "'";
              /*
              cn = con.getConnection();
              ps = cn.prepareStatement(stamentMySql);*/
@@ -101,7 +177,11 @@ public class Usuario {
             
              if (rs.next()) 
                 {
-                     
+                     logged.setIdUsuario(rs.getInt("idUsuario"));
+                     logged.setUsuario(rs.getString("NombreUsuario"));
+                     logged.setCorreo(rs.getString("Correo"));
+                     logged.setFotografia(rs.getString("FotoPerfl"));
+                    
                      con.desconectar();
                      return true;
                      
@@ -112,10 +192,55 @@ public class Usuario {
            
             return false;
             }
+           
             con.desconectar();
             System.out.println("Error : " + "User not Found");
             return false;
         }
+        
+        public Object LoginUsuario(String User, String pass)
+        {
+            Usuario logged = new Usuario();
+            logged.setIdUsuario(0);
+            try{
+           
+             con.getConnection();
+             cn = con.conectar();
+             Statement stm = cn.createStatement();
+             String stamentMySql = "Select NombreUsuario, Contrasena, idUsuario, FotoPerfl, Correo from usuario where BINARY NombreUsuario ='" + User + "' AND  Contrasena='" + pass + "'";
+             /*
+             cn = con.getConnection();
+             ps = cn.prepareStatement(stamentMySql);*/
+             
+             rs = stm.executeQuery(stamentMySql);
+            
+             if (rs.next()) 
+                {
+                     logged.setIdUsuario(rs.getInt("idUsuario"));
+                     logged.setUsuario(rs.getString("NombreUsuario"));
+                     logged.setCorreo(rs.getString("Correo"));
+                     logged.setFotografia(rs.getString("FotoPerfl"));
+                     System.out.println("Login CORRECTO, DATOS GUARDADOS DE MANERA EXITOSA");
+                     con.desconectar();
+                    
+                     
+                }
+            }catch(Exception e)
+            {
+            System.out.println("Error : " + e);
+            System.out.println("Error : " + "User not Found");
+             System.out.println("Login INCORRECTO, NO SE GUARDARON DATOS Y NO PROCEDARA LA PAGINA");
+            
+            }
+            finally
+            {
+                 con.desconectar();
+                return logged;
+            }
+           
+           
+        }
+        
         
         public boolean noseRepite(String user)
         {

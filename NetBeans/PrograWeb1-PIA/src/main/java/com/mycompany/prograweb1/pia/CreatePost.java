@@ -71,9 +71,13 @@ public class CreatePost extends HttpServlet {
         if (obj) {
             response.sendRedirect("dashboard.jsp");
             System.out.println("Realizado");
+            return;
         }
-        response.sendRedirect("dashboard.jsp");
-        System.out.println("No se publico");
+        else{
+             response.sendRedirect("dashboard.jsp");
+             System.out.println("No se publico");
+        }
+       
     }
 
     @Override
