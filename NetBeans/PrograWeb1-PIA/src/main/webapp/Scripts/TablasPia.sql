@@ -131,4 +131,6 @@ BEGIN
 END //
 DELIMITER ;
 drop procedure creacionPostSinUsuario;
+select * from usuario;
+delete from usuario where idUsuario = 5;
 CALL creacionPost('Aja','Pipipi','Activo','Accion', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder');

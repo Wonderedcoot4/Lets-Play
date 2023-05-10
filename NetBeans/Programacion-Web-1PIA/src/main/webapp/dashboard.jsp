@@ -246,24 +246,27 @@
       
       Usuario usuario = new Usuario();
       
-      usuario = (Usuario) request.getSession().getAttribute("UsuarioLog");
+      // usuario = (Usuario) request.getSession().getAttribute("UsuarioLog");
       
-      System.out.println("Usuario dashboard " + usuario);
-      
-      int i;
-      i = -1;
+      //System.out.println("Usuario dashboard " + usuario);
+      String text;
+      usuario = (Usuario) session.getAttribute("UsuarioLog");
+      System.out.println("Usuario dashboard : " + usuario.getUsuario());
+      System.out.println("Correo dashboard : " + usuario.getCorreo());
+      System.out.println("Foto dashboard : " + usuario.getFotografia());
+     
     %>
 
     <dialog id="modal2">
         
         <div class="row">
             <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
-                <img src="./Imagenes/icon.png" alt="logo" width="80px" class="rounded-circle"></a>
+                <img src="Imagenes/<% out.print(usuario.getFotografia()); %>" alt="logo" width="80px" class="rounded-circle"></a>
             </button>
         </div>
         <div class="row colorText allignIcon">
-            <h3><% out.print(usuario.getUsuario()); %></h3>
-            <p class="post__headerSpecial">eeatienda2001@hotmail.com</p>
+            <h3 name="UsuarioDash"> <% out.print(usuario.getUsuario()); %> </h3>
+            <p  name="CorreoDash"class="post__headerSpecial"> <% out.print(usuario.getCorreo()); %></p>
         </div>
         <div class="row colorText allignIcon">
             <a href="Profile.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-body iconConfig"></i></i></i>

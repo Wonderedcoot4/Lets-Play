@@ -40,7 +40,7 @@ public class LoginServlet extends HttpServlet {
        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     
-         response.setContentType("text/jsp");
+         
         PrintWriter out = response.getWriter();
         HttpSession session;
         //Login de usuario y password
@@ -52,7 +52,8 @@ public class LoginServlet extends HttpServlet {
         String pantalla;
         Usuario log = (Usuario) instancia.LoginUsuario(username, password);;
         if (log.getIdUsuario()!= 0) {
-            session.setAttribute("UsuarioLog", log.getUsuario());
+            session.setAttribute("UsuarioLog", log);
+            session.setAttribute("prueba", "pepeeltoro");
             //response.sendRedirect("dashboard.jsp");
             pantalla = "dashboard.jsp";
           
@@ -65,7 +66,7 @@ public class LoginServlet extends HttpServlet {
         }
        
        RequestDispatcher rd = request.getRequestDispatcher(pantalla);
-        getServletContext().getRequestDispatcher("/dashboard.jsp").forward(request, response);
+      
        rd.forward(request, response);
        }
 }

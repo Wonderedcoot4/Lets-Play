@@ -60,7 +60,7 @@ public class CreatePost extends HttpServlet {
         
         String NombreArchivo;
         NombreArchivo = extractFileName(part);
-        String dirSave = "C:\\Users\\isaac\\Desktop\\Programacion Web 1\\Programacion-Web\\NetBeans\\PrograWeb1-PIA\\src\\main\\webapp\\Imagenes\\" + File.separator + NombreArchivo;
+        String dirSave = "C:\\Users\\isaac\\Desktop\\Programacion Web 1\\Programacion-Web\\NetBeans\\Programacion-Web-1PIA\\src\\main\\webapp\\Imagenes" + File.separator + NombreArchivo;
         File fileSaveDir = new File(dirSave);
         part.write(fileSaveDir + File.separator);
         int i = -1;
