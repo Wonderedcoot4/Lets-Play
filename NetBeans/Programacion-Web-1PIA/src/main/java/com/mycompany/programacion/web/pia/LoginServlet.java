@@ -46,14 +46,14 @@ public class LoginServlet extends HttpServlet {
         //Login de usuario y password
         String username = request.getParameter("emailUsuario");
         String password = request.getParameter("passUsuario");
-        session = request.getSession();
+        //session = request.getSession();
         
         Usuario instancia = new Usuario();
         String pantalla;
         Usuario log = (Usuario) instancia.LoginUsuario(username, password);;
         if (log.getIdUsuario()!= 0) {
-            session.setAttribute("UsuarioLog", log);
-            session.setAttribute("prueba", "pepeeltoro");
+            //session.setAttribute("UsuarioLog", log);
+            request.setAttribute("UsuarioLog", log);
             //response.sendRedirect("dashboard.jsp");
             pantalla = "dashboard.jsp";
           
@@ -65,8 +65,7 @@ public class LoginServlet extends HttpServlet {
             out.println("Usuario o contraseña incorrecto");
         }
        
-       RequestDispatcher rd = request.getRequestDispatcher(pantalla);
-      
+       RequestDispatcher rd = request.getRequestDispatcher(pantalla);      
        rd.forward(request, response);
        }
 }

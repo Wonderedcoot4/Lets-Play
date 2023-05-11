@@ -134,10 +134,23 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE `LoginUsuario` (in Usuario varchar(50), in Contraseña varchar(50))
 BEGIN 
+	Select NombreUsuario, Contrasena, idUsuario, FotoPerfl, Correo, Nombre, Telefono, FechaNacimiento, ApellidoPaterno, ApellidoMaterno, Contrasena from usuario
+    where binary NombreUsuario = usuario and binary Contrasena = Contraseña;
 	
 END //
 DELIMITER ;
 
+Select * from publicacion 
+-- join pertinentes para los estatus y asi
+limit 0, 5;
 
-drop procedure creacionPostSinUsuario;
+-- si son 2 parametros, con el primero le digo a partir de que registro busque y que a partir de ahi cuantos busque
+
+Select * from publicacion 
+limit 0, 5;
+
+select count(*) as Total from publicacion
+
+drop procedure LoginUsuario;
 CALL creacionPost('Aja','Pipipi','Activo','Accion', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder');
+CALL LoginUsuario('Arlender21', 'Wondered9');

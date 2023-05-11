@@ -72,7 +72,7 @@
         
         <div class="container mr-1">
             <div class="row">
-                <div class="col-3">
+                <div class="col">
                     <div class="feed">
                         <div class="post">
                             <div class="post__avatar">
@@ -170,14 +170,16 @@
                         </div>
                         
                     </div>
-                </div>
-                <div class="col-3">
-                    <button type="button" class="buttonPubli" data-bs-container="body" id="btn-abrir-modal">
-                        <img src="./Imagenes/boton.png" width="80px" ></a>
-                    </button>
-                    <div>
+                
+                    
+                    <div class="sticky-bottom" style="text-align: right;">
+                        <button type="button" class="buttonPubli" data-bs-container="body" id="btn-abrir-modal">
+                            <img src="./Imagenes/boton.png" width="80px" ></a>
+                        </button>
                     </div>
                 </div>
+                
+            
             </div>
         </div>
     </div>
@@ -245,15 +247,17 @@
     <%
       
       Usuario usuario = new Usuario();
+      Usuario usuario2 = new Usuario();
       
       // usuario = (Usuario) request.getSession().getAttribute("UsuarioLog");
       
       //System.out.println("Usuario dashboard " + usuario);
       String text;
       usuario = (Usuario) session.getAttribute("UsuarioLog");
-      System.out.println("Usuario dashboard : " + usuario.getUsuario());
-      System.out.println("Correo dashboard : " + usuario.getCorreo());
-      System.out.println("Foto dashboard : " + usuario.getFotografia());
+      usuario2 = (Usuario) request.getAttribute("UsuarioLog");
+      System.out.println("Usuario dashboard : " + usuario2.getUsuario());
+      System.out.println("Correo dashboard : " + usuario2.getCorreo());
+      System.out.println("Foto dashboard : " + usuario2.getFotografia());
      
     %>
 
@@ -261,12 +265,12 @@
         
         <div class="row">
             <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
-                <img src="Imagenes/<% out.print(usuario.getFotografia()); %>" alt="logo" width="80px" class="rounded-circle"></a>
+                <img src="<% out.print(usuario2.getFotografia()); %>" alt="logo" width="80px" class="rounded-circle"></a>
             </button>
         </div>
         <div class="row colorText allignIcon">
-            <h3 name="UsuarioDash"> <% out.print(usuario.getUsuario()); %> </h3>
-            <p  name="CorreoDash"class="post__headerSpecial"> <% out.print(usuario.getCorreo()); %></p>
+            <h3 name="UsuarioDash"> <% out.print(usuario2.getUsuario()); %> </h3>
+            <p  name="CorreoDash"class="post__headerSpecial"> <% out.print(usuario2.getCorreo()); %></p>
         </div>
         <div class="row colorText allignIcon">
             <a href="Profile.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-body iconConfig"></i></i></i>
