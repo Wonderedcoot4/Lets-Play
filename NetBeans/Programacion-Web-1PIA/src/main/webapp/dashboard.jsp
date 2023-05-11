@@ -67,6 +67,7 @@
                     Acción y Aventura</a>
                 <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
                     Disparos</a>
+                
             </div>
         </div>
         
@@ -191,6 +192,25 @@
 
         </div>
       </footer>
+      <!--Obtencion de info usuario -->
+    <%
+      
+      Usuario usuario = new Usuario();
+      Usuario usuario2 = new Usuario();
+      
+      // usuario = (Usuario) request.getSession().getAttribute("UsuarioLog");
+      
+      //System.out.println("Usuario dashboard " + usuario);
+     // String text;
+      //usuario = (Usuario) session.getAttribute("UsuarioLog");
+      usuario2 = (Usuario) request.getAttribute("UsuarioLog");
+      System.out.println("Usuario dashboard : " + usuario2.getUsuario());
+      System.out.println("Correo dashboard : " + usuario2.getCorreo());
+      System.out.println("Foto dashboard : " + usuario2.getFotografia());
+     
+    %>
+    
+    
     
     
     <!--Aquie se crea el post
@@ -220,6 +240,7 @@
                     <p><input class="form-check-input" type="checkbox" id="c05" name="categoria" value="Plataformas" >Plataformas</p>
                     <p><input class="form-check-input" type="checkbox" id="c06" name="categoria" value="Independientes" >Independientes</p>
                     <p><input class="form-check-input" type="checkbox" id="c07" name="categoria" value="Familiares">Familiares</p>
+                    <input class="form-check-input" type="hidden" id="c07" name="UsuarioActual" value="<% out.print(usuario2.getUsuario());  %>">
                 </div>
                     <!--<button class="btn colorIcon" type="submit"><i class="icon ion-md-image iconConfig"></i></button> Boton Original como estaba antes de cambiarse, en caso de querer agregarlo-->
                     <input class="input" type="file" accept=".jpg, .jpeg, .png" name="Fotografia">
@@ -243,24 +264,9 @@
     
 
     
-    <!--Obtencion de info usuario -->
-    <%
-      
-      Usuario usuario = new Usuario();
-      Usuario usuario2 = new Usuario();
-      
-      // usuario = (Usuario) request.getSession().getAttribute("UsuarioLog");
-      
-      //System.out.println("Usuario dashboard " + usuario);
-      String text;
-      usuario = (Usuario) session.getAttribute("UsuarioLog");
-      usuario2 = (Usuario) request.getAttribute("UsuarioLog");
-      System.out.println("Usuario dashboard : " + usuario2.getUsuario());
-      System.out.println("Correo dashboard : " + usuario2.getCorreo());
-      System.out.println("Foto dashboard : " + usuario2.getFotografia());
-     
-    %>
-
+  
+   <!-- <a href="#" class="UsuarioTag" style="display: none" name="UsuarioStore">
+                    <% out.print(usuario2.getUsuario()); %></a>     -->
     <dialog id="modal2">
         
         <div class="row">

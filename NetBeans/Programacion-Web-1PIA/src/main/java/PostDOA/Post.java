@@ -76,6 +76,43 @@ public class Post {
   
     }
     
+    public boolean agregarPost(String Titulo, String Contenido, String Estatus, String Categoria, File Fotografia, String Usuario)
+    {
+        try
+        {
+              con.getConnection();
+              cn = con.conectar();
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd:mm:ss");
+            String Fotito = Fotografia.toString();
+            LocalDateTime now = LocalDateTime.now();
+            String fecha = java.time.LocalDate.now().toString();
+            String statement = "{CALL creacionPost(?,?,?,?,?,?,?)}";
+            PreparedStatement stm = cn.prepareCall(statement);
+            stm.setString(1, Titulo);
+            stm.setString(2, Contenido);
+            stm.setString(3, Estatus);
+            stm.setString(4, Categoria);
+            stm.setString(5, Fotito);
+            stm.setString(6, Usuario);
+            stm.setString(7, fecha);
+            stm.execute();
+            con.desconectar();
+            return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error no se inserto en la DB");
+            System.out.println(e.toString());
+            return false;
+        }
+        finally
+        {
+            con.desconectar();
+        }
+    }
+    
+    
+    
     public boolean crearPost(String Titulo, String Contenido, String Estatus, String Categoria, File Fotografia)
     {
         try

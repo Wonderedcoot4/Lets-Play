@@ -20,6 +20,11 @@ a:hover {
     text-decoration: none;
 }
 
+.UsuarioTag{
+    display: none;
+}
+
+
 .slideBarScroll{
     overflow-y: scroll;
 }

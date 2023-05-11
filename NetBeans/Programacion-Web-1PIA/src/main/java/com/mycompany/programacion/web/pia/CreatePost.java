@@ -48,12 +48,13 @@ public class CreatePost extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+       //Verificar como mandar el request de login otra vez que es lo que marca error
         response.setContentType("text/jsp");
         String Title;
         String Titulo = request.getParameter("TituloText");
         String Contenido = request.getParameter("Contenido");
         String Categoria = request.getParameter("categoria"); 
+        String UsuarioDash = request.getParameter("UsuarioDash"); 
         String Estatus = "Activo";
         
         Part part = request.getPart("Fotografia");
@@ -64,7 +65,8 @@ public class CreatePost extends HttpServlet {
         File fileSaveDir = new File(dirSave);
         part.write(fileSaveDir + File.separator);
         int i = -1;
-        boolean obj = instancia.crearPost(Titulo, Contenido, Estatus, Categoria, fileSaveDir);
+        String pantalla;
+        boolean obj = instancia.agregarPost(Titulo, Contenido, Estatus, Categoria, fileSaveDir, UsuarioDash);
         if (obj) {
             response.sendRedirect("dashboard.jsp");
             System.out.println("Realizado");

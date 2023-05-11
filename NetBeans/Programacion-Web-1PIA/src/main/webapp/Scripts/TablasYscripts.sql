@@ -118,7 +118,7 @@ DELIMITER ;
 
 
 DELIMITER //
-CREATE PROCEDURE `creacionPost` (in Titulo varchar(50), in Contenido varchar(500), in EstatusPost varchar(50), in Categoria varchar(50), in Foto varchar(500), in UserName varchar(100))
+CREATE PROCEDURE `creacionPost` (in Titulo varchar(50), in Contenido varchar(500), in EstatusPost varchar(50), in Categoria varchar(50), in Foto varchar(500), in UserName varchar(100), in Fecha varchar(100))
 BEGIN 
   --  Declare IdCategoriaCreada int;
    -- Declare @idUsuarioPosteador int;
@@ -127,7 +127,7 @@ BEGIN
    set @IdCategoriaCreada = LAST_INSERT_ID();
    INSERT INTO estatuspublicacion(EstatusPublicacion) values (EstatusPost);
     set @IdEstatus = LAST_INSERT_ID();
-   INSERT INTO publicacion(Titulo, Contenido,IdCategoria, IdEstatusPost,FotoPublicacion,IdPublicador) values (Titulo, Contenido, @IdCategoriaCreada, @IdEstatus, Foto, @idUsuarioPosteador);
+   INSERT INTO publicacion(Titulo, Contenido,IdCategoria, IdEstatusPost,FotoPublicacion,IdPublicador, FechaCreacion) values (Titulo, Contenido, @IdCategoriaCreada, @IdEstatus, Foto, @idUsuarioPosteador, Fecha);
 END //
 DELIMITER ;
 
@@ -149,7 +149,7 @@ limit 0, 5;
 Select * from publicacion 
 limit 0, 5;
 
-select count(*) as Total from publicacion
+select count(*) as Total from publicacion;
 
 drop procedure LoginUsuario;
 CALL creacionPost('Aja','Pipipi','Activo','Accion', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder');
