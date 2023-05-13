@@ -47,36 +47,36 @@ public class Post {
     conexionSQL con = new conexionSQL();
     Connection cn;
         //No jalara ahoria con los cambios que hice al nuevo crear post, 
-    public boolean agregarPost(String Titulo, String Contenido, String Estatus, String Categoria)
-    {
-        try {
-              con.getConnection();
-              cn = con.conectar();
-            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd:mm:ss");
-            LocalDateTime now = LocalDateTime.now();
-            String fecha = java.time.LocalDate.now().toString();
-            String statement = "{CALL crearPost(?,?,?,?,?)}";
-            PreparedStatement stm = cn.prepareCall(statement);
-            stm.setString(1, Titulo);
-            stm.setString(2, Contenido);
-            stm.setString(3, Estatus);
-            stm.setString(4, fecha);
-            stm.setString(5, Categoria);
-            //Por si no aparezco toy en el bañño 
-            stm.execute();
-            con.desconectar();
-            return true;
-            
-        } catch (Exception e) {
-            System.out.println("Error no se inserto en la DB");
-            System.out.println(e.toString());
-            con.desconectar();
-            return false;
-        }
-  
-    }
-    
-    public boolean agregarPost(String Titulo, String Contenido, String Estatus, String Categoria, File Fotografia, String Usuario)
+//    public int agregarPost(String Titulo, String Contenido, String Estatus, String Categoria)
+//    {
+//        try {
+//              con.getConnection();
+//              cn = con.conectar();
+//            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd:mm:ss");
+//            LocalDateTime now = LocalDateTime.now();
+//            String fecha = java.time.LocalDate.now().toString();
+//            String statement = "{CALL crearPost(?,?,?,?,?)}";
+//            PreparedStatement stm = cn.prepareCall(statement);
+//            stm.setString(1, Titulo);
+//            stm.setString(2, Contenido);
+//            stm.setString(3, Estatus);
+//            stm.setString(4, fecha);
+//            stm.setString(5, Categoria);
+//            //Por si no aparezco toy en el bañño 
+//            stm.execute();
+//            con.desconectar();
+//            return 0;
+//            
+//        } catch (Exception e) {
+//            System.out.println("Error no se inserto en la DB");
+//            System.out.println(e.toString());
+//            con.desconectar();
+//            return 1;
+//        }
+//  
+//    }
+//    
+    public int agregarPost(String Titulo, String Contenido, String Estatus, String Categoria, File Fotografia, String Usuario)
     {
         try
         {
@@ -97,13 +97,13 @@ public class Post {
             stm.setString(7, fecha);
             stm.execute();
             con.desconectar();
-            return true;
+            return 0;
         }
         catch(Exception e)
         {
             System.out.println("Error no se inserto en la DB");
             System.out.println(e.toString());
-            return false;
+            return 1;
         }
         finally
         {

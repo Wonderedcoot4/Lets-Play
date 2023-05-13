@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.Part;
 import java.io.File;
 import PostDOA.Post;
+import UsuarioDBA.Usuario;
+import jakarta.servlet.RequestDispatcher;
 
 @WebServlet(name = "CreatePost", urlPatterns = {"/CreatePost"})
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
@@ -21,7 +23,9 @@ import PostDOA.Post;
 public class CreatePost extends HttpServlet {
     conexionSQL conexion = new conexionSQL();
     Post instancia = new Post();
-
+    Usuario us = new Usuario();
+    Usuario usuario = (Usuario)us.UsuarioLog();
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/jsp;charset=UTF-8");
@@ -42,40 +46,50 @@ public class CreatePost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/jsp");
+        System.out.println("Kevin se la come por que entramos al get");
+        request.setAttribute("UsuarioLoggeado", usuario);
+        response.sendRedirect("dashboard.jsp");
+        System.out.println("Saliendo del get");
     }
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        //Verificar como mandar el request de login otra vez que es lo que marca error
-        response.setContentType("text/jsp");
+        //response.setContentType("text/jsp");
         String Title;
         String Titulo = request.getParameter("TituloText");
         String Contenido = request.getParameter("Contenido");
         String Categoria = request.getParameter("categoria"); 
-        String UsuarioDash = request.getParameter("UsuarioDash"); 
+        String UsuarioDash = request.getParameter("UsuarioActual"); 
         String Estatus = "Activo";
         
         Part part = request.getPart("Fotografia");
-        
+        String pantalla;
         String NombreArchivo;
         NombreArchivo = extractFileName(part);
         String dirSave = "C:\\Users\\isaac\\Desktop\\Programacion Web 1\\Programacion-Web\\NetBeans\\Programacion-Web-1PIA\\src\\main\\webapp\\Imagenes" + File.separator + NombreArchivo;
         File fileSaveDir = new File(dirSave);
         part.write(fileSaveDir + File.separator);
         int i = -1;
-        String pantalla;
-        boolean obj = instancia.agregarPost(Titulo, Contenido, Estatus, Categoria, fileSaveDir, UsuarioDash);
-        if (obj) {
-            response.sendRedirect("dashboard.jsp");
+        
+        int obj = instancia.agregarPost(Titulo, Contenido, Estatus, Categoria, fileSaveDir, UsuarioDash);
+        if (obj == 0) {
+             System.out.println("Kevin se la come por que entramos al get");
+             request.setAttribute("UsuarioLog", usuario);
+             pantalla = "dashboard.jsp";
+             System.out.println("Saliendo del get");
+            //response.sendRedirect("dashboard.jsp");
             System.out.println("Realizado");
-            return;
         }
         else{
-             response.sendRedirect("dashboard.jsp");
+             pantalla = "dashboard.jsp";
              System.out.println("No se publico");
         }
+        
+        RequestDispatcher rd = request.getRequestDispatcher(pantalla);      
+        rd.forward(request, response);
        
     }
 

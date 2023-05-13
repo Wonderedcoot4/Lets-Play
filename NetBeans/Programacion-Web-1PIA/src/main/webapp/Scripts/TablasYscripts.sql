@@ -53,9 +53,20 @@ CREATE TABLE `prograwebdb`.`publicacion` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
     
-ALTER TABLE publicacion
-modify column FechaCreacion date null;    
-    
+insert into categoria(Categoria) values ('Plataformas');
+insert into categoria(Categoria) values ('Lucha');
+insert into categoria(Categoria) values ('AccionyAventura');
+insert into categoria(Categoria) values ('Clasicos');
+insert into categoria(Categoria) values ('Carreras');
+insert into categoria(Categoria) values ('Disparos');
+insert into categoria(Categoria) values ('Independientes');
+insert into categoria(Categoria) values ('Familiares');
+insert into estatuspublicacion(EstatusPublicacion) values ('Activo');
+insert into estatuspublicacion(EstatusPublicacion) values ('Inactivo');
+insert into categoria(Categoria) values ('Clasicos');
+select * from categoria   ;
+select * from estatuspublicacion   ;
+
 drop table categoria; 
 select NombreUsuario , Contrasena from usuario where BINARY NombreUsuario = 'wonder' and Contrasena = '1105me';
 select * from usuario;
@@ -74,7 +85,7 @@ BEGIN
    INSERT INTO publicacion(Titulo, Contenido, FechaCreacion,IdCategoria, IdEstatusPost) values (Titulo, Contenido, FechaCreacion, @IdCategoriaCreada, @IdEstatus);
 END //
 
-CALL crearPost('Prueba','Texto','Activo','10/12/23','Accion');
+
 DELIMITER ;
 
 select C.Categoria, p.Contenido, p.FechaCreacion, p.Titulo from publicacion p join Categoria C
@@ -93,10 +104,7 @@ END //
 select NombreUsuario, Contenido, idUsuario, IdPublicador, Nombre from publicacion
 join usuario
 on idPublicador = usuario.idUsuario
-select * from EstatusPublicacion -- Ver si cambio esto para que sea solo 3 estados y no 300000 activos mismo caso para categoria
-select * from usuario
-select idUsuario from usuario where NombreUsuario = 'Wonder'
-CALL crearPost('Prueba','Texto','Activo','10/12/23','Accion');
+
 DELIMITER ;
 
 
@@ -115,21 +123,25 @@ BEGIN
 END //
 DELIMITER ;
 
-
-
 DELIMITER //
-CREATE PROCEDURE `creacionPost` (in Titulo varchar(50), in Contenido varchar(500), in EstatusPost varchar(50), in Categoria varchar(50), in Foto varchar(500), in UserName varchar(100), in Fecha varchar(100))
+CREATE PROCEDURE `creacionPost`(in Titulo varchar(50), in Contenido varchar(500), in EstatusPost varchar(50), in cat varchar(50), in Foto varchar(500), in UserName varchar(100), in Fecha varchar(100))
 BEGIN 
   --  Declare IdCategoriaCreada int;
    -- Declare @idUsuarioPosteador int;
    set @idUsuarioPosteador = (select idUsuario from usuario where NombreUsuario = UserName);
-   Insert into categoria(Categoria) values (Categoria);
-   set @IdCategoriaCreada = LAST_INSERT_ID();
-   INSERT INTO estatuspublicacion(EstatusPublicacion) values (EstatusPost);
-    set @IdEstatus = LAST_INSERT_ID();
-   INSERT INTO publicacion(Titulo, Contenido,IdCategoria, IdEstatusPost,FotoPublicacion,IdPublicador, FechaCreacion) values (Titulo, Contenido, @IdCategoriaCreada, @IdEstatus, Foto, @idUsuarioPosteador, Fecha);
+   set @idCategoria = (select idCategoria FROM categoria where Categoria = Categoria);
+   set @idEstatus = (select idEstatusPublicacion FROM estatuspublicacion where EstatusPublicacion = EstatusPost);
+   
+   
+   
+   INSERT INTO publicacion(Titulo, Contenido,IdCategoria, IdEstatusPost,FotoPublicacion,IdPublicador, FechaCreacion) values (Titulo, Contenido, @idCategoria, @idEstatus, Foto, @idUsuarioPosteador, Fecha);
 END //
 DELIMITER ;
+
+drop procedure creacionPost
+
+ select idEstatusPublicacion FROM estatuspublicacion where EstatusPublicacion = 'Activo'
+ select idCategoria FROM categoria where Categoria = 'Lucha'
 
 DELIMITER //
 CREATE PROCEDURE `LoginUsuario` (in Usuario varchar(50), in Contraseña varchar(50))
@@ -146,11 +158,11 @@ limit 0, 5;
 
 -- si son 2 parametros, con el primero le digo a partir de que registro busque y que a partir de ahi cuantos busque
 
-Select * from publicacion 
+Select * from estatuspublicacion 
 limit 0, 5;
 
 select count(*) as Total from publicacion;
 
-drop procedure LoginUsuario;
-CALL creacionPost('Aja','Pipipi','Activo','Accion', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder');
+drop procedure creacionPost;
+CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder', '2023-05-12');
 CALL LoginUsuario('Arlender21', 'Wondered9');

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package UsuarioDBA;
 
 import java.sql.PreparedStatement;
@@ -34,11 +31,11 @@ public class Usuario {
         public String ApellidoM;
         public String Correo;
         public String FechaNacimiento;
-        public String Usuario;
+        public String UsuarioNombre;
         public String Password;
         public String ConfirmarContraseña;
         public String Fotografia;
-
+        public static Usuario log;
     public void setFotografia(String Fotografia) {
         this.Fotografia = Fotografia;
     }
@@ -72,7 +69,7 @@ public class Usuario {
     }
 
     public String getUsuario() {
-        return Usuario;
+        return UsuarioNombre;
     }
 
     public String getPassword() {
@@ -104,14 +101,18 @@ public class Usuario {
     }
 
     public void setUsuario(String Usuario) {
-        this.Usuario = Usuario;
+        this.UsuarioNombre = Usuario;
     }
-
+    
+    public Object UsuarioLog()   //Por si falla ponerle override
+    {
+      return log;
+    }
     public void setPassword(String Password) {
         this.Password = Password;
     }
 
-  
+   
         conexionSQL con = new conexionSQL();
         Connection cn;
         
@@ -198,10 +199,13 @@ public class Usuario {
             return false;
         }
         
+     
+        
         public Object LoginUsuario(String User, String pass)
         {
             Usuario logged = new Usuario();
             logged.setIdUsuario(0);
+            
             try{
            
              con.getConnection();
@@ -221,6 +225,7 @@ public class Usuario {
                      logged.setCorreo(rs.getString("Correo"));
                      logged.setFotografia(rs.getString("FotoPerfl"));
                      System.out.println("Login CORRECTO, DATOS GUARDADOS DE MANERA EXITOSA");
+                     log = logged;
                      con.desconectar();
                     
                      

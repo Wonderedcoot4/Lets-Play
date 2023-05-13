@@ -241,6 +241,7 @@
                     <p><input class="form-check-input" type="checkbox" id="c06" name="categoria" value="Independientes" >Independientes</p>
                     <p><input class="form-check-input" type="checkbox" id="c07" name="categoria" value="Familiares">Familiares</p>
                     <input class="form-check-input" type="hidden" id="c07" name="UsuarioActual" value="<% out.print(usuario2.getUsuario());  %>">
+                 
                 </div>
                     <!--<button class="btn colorIcon" type="submit"><i class="icon ion-md-image iconConfig"></i></button> Boton Original como estaba antes de cambiarse, en caso de querer agregarlo-->
                     <input class="input" type="file" accept=".jpg, .jpeg, .png" name="Fotografia">
@@ -271,7 +272,7 @@
         
         <div class="row">
             <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
-                <img src="<% out.print(usuario2.getFotografia()); %>" alt="logo" width="80px" class="rounded-circle"></a>
+                <img src=" Imagenes/<%out.print(usuario2.getFotografia()); %>" alt="logo" width="80px" class="rounded-circle"></a>
             </button>
         </div>
         <div class="row colorText allignIcon">
