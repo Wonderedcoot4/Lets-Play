@@ -5,9 +5,12 @@ import Config.conexionSQL;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 public class Post {
     
     private int id;
@@ -15,10 +18,62 @@ public class Post {
     private String contenido;
     private int userID;
     private String Fecha;
+    private String Usuario;
+    private int IdCat;
+    private int IdEstatus;
+
+    public void setIdCat(int IdCat) {
+        this.IdCat = IdCat;
+    }
+
+    public void setIdEstatus(int IdEstatus) {
+        this.IdEstatus = IdEstatus;
+    }
+
+    public int getIdCat() {
+        return IdCat;
+    }
+
+    public int getIdEstatus() {
+        return IdEstatus;
+    }
+    
+    
+    
+    public String getTitulo() {
+        return Titulo;
+    }
+
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    public String getFoto() {
+        return Foto;
+    }
+
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
+    }
+    
+    public void setFoto(String Foto) {
+        this.Foto = Foto;
+    }
+    private String Foto;
+    
+    private Post post = new Post();
     public Post()
     {
       
         
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public void setTitulo(String Titulo) {
@@ -199,5 +254,40 @@ public class Post {
         return userID;
     }
     
-    
+    public List<Post> consultarRecientes()
+    {
+        List<Post> datos = new ArrayList();
+        Connection conn;
+        PreparedStatement stm;
+        ResultSet rs;
+        
+        try{
+            con.getConnection();
+            conn = con.conectar();
+            
+            String statement = "{CALL consultaPostRecientes}";
+            
+            stm = conn.prepareCall(statement);
+            rs = stm.executeQuery(statement);
+            while(rs.next())
+            {
+               post.setId(rs.getInt("idPublicacion"));
+               post.setContenido(rs.getString("Contenido"));
+               post.setFecha(rs.getString("FechaCreacion"));
+               post.setTitulo(rs.getString("Titulo"));
+               post.setFoto(rs.getString("FotoPublicacion"));
+               post.setUsuario(rs.getString("NombreUsuario"));
+               post.setIdCat(rs.getInt("idCategoria"));
+               post.setIdEstatus(rs.getInt("idEstatusPost"));
+               
+               datos.add(post);
+            }
+            conn.close();
+            
+        }catch(Exception e)
+        {
+            System.out.println("Error en la consulta de post");
+        }
+        return datos;
+    }
 }

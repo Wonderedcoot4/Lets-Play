@@ -15,6 +15,8 @@ import java.io.File;
 import PostDOA.Post;
 import UsuarioDBA.Usuario;
 import jakarta.servlet.RequestDispatcher;
+import java.util.List;
+import org.json.simple.JSONObject;
 
 @WebServlet(name = "CreatePost", urlPatterns = {"/CreatePost"})
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
@@ -23,6 +25,7 @@ import jakarta.servlet.RequestDispatcher;
 public class CreatePost extends HttpServlet {
     conexionSQL conexion = new conexionSQL();
     Post instancia = new Post();
+    Post post = new Post();
     Usuario us = new Usuario();
     Usuario usuario = (Usuario)us.UsuarioLog();
     
@@ -46,12 +49,38 @@ public class CreatePost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/jsp");
-        System.out.println("Kevin se la come por que entramos al get");
-        request.setAttribute("UsuarioLoggeado", usuario);
-        response.sendRedirect("dashboard.jsp");
-        System.out.println("Saliendo del get");
+        String Accion = request.getParameter("accion");
+        
+        switch(Accion)
+        {
+            case "Recientes":{
+            List<Post> pubs = instancia.consultarRecientes();
+            System.out.println("Pubs: " + pubs.get(0).getTitulo());
+            
+            JSONObject json = new JSONObject();
+            
+                for (int i = 0; i < pubs.size(); i++) {
+                    JSONObject jsoncito = new JSONObject();
+                    jsoncito.put("idPublicacion", pubs.get(i).getId());
+                    jsoncito.put("idEstatusPost", pubs.get(i).getId());
+                    jsoncito.put("idPublicacion", pubs.get(i).getId());
+                    jsoncito.put("idPublicacion", pubs.get(i).getId());
+                    jsoncito.put("idPublicacion", pubs.get(i).getId());
+                    
+                }
+                break;
+            }
+        
+        default:
+        {
+        break;
+        }
+        }
     }
+        
+        
+       
+    
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -109,4 +138,11 @@ public class CreatePost extends HttpServlet {
         }
         return "";
     }
+    
+    private void getPublicacionRecientes(HttpServletRequest request)
+    {
+         
+    }
+    
+    
 }

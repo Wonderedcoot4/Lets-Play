@@ -64,6 +64,7 @@ insert into categoria(Categoria) values ('Familiares');
 insert into estatuspublicacion(EstatusPublicacion) values ('Activo');
 insert into estatuspublicacion(EstatusPublicacion) values ('Inactivo');
 insert into categoria(Categoria) values ('Clasicos');
+
 select * from categoria   ;
 select * from estatuspublicacion   ;
 
@@ -129,7 +130,7 @@ BEGIN
   --  Declare IdCategoriaCreada int;
    -- Declare @idUsuarioPosteador int;
    set @idUsuarioPosteador = (select idUsuario from usuario where NombreUsuario = UserName);
-   set @idCategoria = (select idCategoria FROM categoria where Categoria = Categoria);
+   set @idCategoria = (select idCategoria FROM categoria where cat = Categoria);
    set @idEstatus = (select idEstatusPublicacion FROM estatuspublicacion where EstatusPublicacion = EstatusPost);
    
    
@@ -138,7 +139,27 @@ BEGIN
 END //
 DELIMITER ;
 
-drop procedure creacionPost
+DELIMITER //
+CREATE PROCEDURE `consultaPostRecientes`()
+BEGIN 
+	Select pub.idPublicacion, pub.Contenido, pub.FechaCreacion, pub.Titulo, pub.FotoPublicacion, pub.IdPublicador, pub.idEstatusPost, us.NombreUsuario, cat.idCategoria from publicacion pub
+    join estatuspublicacion est
+    on est.idEstatusPublicacion = pub.idEstatusPost
+    join categoria cat
+    on cat.idCategoria = pub.idCategoria
+    join usuario us
+    on us.idUsuario = pub.IdPublicador
+    where est.EstatusPublicacion = 'Activo'
+    order by pub.idPublicacion DESC LIMIT 10;
+    limit 0,10;
+END //
+DELIMITER ;
+
+
+
+
+
+drop procedure consultaPostRecientes
 
  select idEstatusPublicacion FROM estatuspublicacion where EstatusPublicacion = 'Activo'
  select idCategoria FROM categoria where Categoria = 'Lucha'
