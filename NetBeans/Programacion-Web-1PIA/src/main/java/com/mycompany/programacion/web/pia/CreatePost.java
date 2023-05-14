@@ -51,32 +51,39 @@ public class CreatePost extends HttpServlet {
             throws ServletException, IOException {
         String Accion = request.getParameter("accion");
         
-        switch(Accion)
-        {
-            case "Recientes":{
+        
+            
+            if ("Recientes".equals(Accion)) {
+            
+        
+                System.out.println("Recientes, entrando en el get" + Accion);
             List<Post> pubs = instancia.consultarRecientes();
             System.out.println("Pubs: " + pubs.get(0).getTitulo());
-            
+            PrintWriter out = response.getWriter();
             JSONObject json = new JSONObject();
             
                 for (int i = 0; i < pubs.size(); i++) {
                     JSONObject jsoncito = new JSONObject();
                     jsoncito.put("idPublicacion", pubs.get(i).getId());
-                    jsoncito.put("idEstatusPost", pubs.get(i).getId());
-                    jsoncito.put("idPublicacion", pubs.get(i).getId());
-                    jsoncito.put("idPublicacion", pubs.get(i).getId());
-                    jsoncito.put("idPublicacion", pubs.get(i).getId());
+                    jsoncito.put("Contenido ", pubs.get(i).getContenido());
+                    jsoncito.put("Titulo", pubs.get(i).getTitulo());
+                    jsoncito.put("FotoPublicacion", pubs.get(i).getFoto());
+                    jsoncito.put("NombreUsuario", pubs.get(i).getUsuario());
+                    jsoncito.put("idCategoria", pubs.get(i).getIdCat());
+                    jsoncito.put("idEstatusPost", pubs.get(i).getIdEstatus());
+                    jsoncito.put("EstatusPublicacion", pubs.get(i).getEstatus());
+                    jsoncito.put("Categoria", pubs.get(i).getCategoria());
+                    jsoncito.put("FechaCreacion", pubs.get(i).getFecha());
+                    
+                    json.put(i, jsoncito);
                     
                 }
-                break;
+                System.out.println("Json : " +  json);
+                out.print(json);
             }
         
-        default:
-        {
-        break;
-        }
-        }
     }
+    
         
         
        

@@ -2,6 +2,13 @@
 const btnAbrirModal = document.querySelector("#btn-abrir-modal");
 const btnCerrarModal = document.querySelector("#btn-cerrar-modal");
 const modal = document.querySelector("#modal");
+var publicaciones;
+
+$(document).ready(function(){
+  // var publicaciones; 
+    getPublicacionesRecientes();
+});
+
 
 btnAbrirModal.addEventListener("click",()=>{
     modal.showModal();
@@ -50,6 +57,56 @@ btnAbrirModal4.addEventListener("click",()=>{
 btnCerrarModal4.addEventListener("click",()=>{
     modal4.close();
 })
+
+
+function getPublicacionesRecientes()
+{
+    console.log("GET PUBLICACIONES RECIENTES")
+    
+                $.ajax({
+                    url:"CreatePost?accion=Recientes"
+                    ,type: "GET"
+                    ,dataType: "JSON"
+                    , success: function (data) {
+                        console.log("data", data);
+                        publicaciones = data;
+                        
+                        for (var i = 0; i < object.keys(data).length; i++)
+                        {
+                            console.log("Data 1", data[i]);
+                            
+                            $("#Post").append(
+                                    $("<div>").addClass("post__avatar").attr("Foto", "FotoPublicacion"+ data[i].FotoPublicacion)
+                                    .append(
+                                            $("<div>").addClass("post__body").attr("id", "idPublicacion-")+data[i].idPublicacion)
+                                            .append(        
+                                                            $("<div>").addClass("post__headerText colorText").attr("TituloPost", "Titulo" + data[i].Titulo)
+                                                            .append(
+                                                            $("<h3>").text(data[i].Titulo)
+                                                            ).append(
+                                                            $("<span>").addClass("post__headerSpecial").text(data[i].Categoria))
+                                                    ).append(
+                                                            
+                                                    ).append($("<div>").addClass("post__headerDescription colorText").append(
+                                                             $("<p>").text(data[i].Contenido).append(
+                                                             $("<p>").text(data[i].FechaCreacion)))
+                                                    )
+                                    //Toy pensando no sigo aqui mandas mensaje si no se meuve nada
+                                   
+                                    
+                                    
+                                );
+                            
+                            
+                        }
+        }
+                    
+                })
+           
+}
+
+
+
 
  function check(input)
  {

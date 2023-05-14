@@ -138,11 +138,11 @@ BEGIN
    INSERT INTO publicacion(Titulo, Contenido,IdCategoria, IdEstatusPost,FotoPublicacion,IdPublicador, FechaCreacion) values (Titulo, Contenido, @idCategoria, @idEstatus, Foto, @idUsuarioPosteador, Fecha);
 END //
 DELIMITER ;
-
+-- as es para cambiarle el nombre a las columnas en consultas
 DELIMITER //
 CREATE PROCEDURE `consultaPostRecientes`()
 BEGIN 
-	Select pub.idPublicacion, pub.Contenido, pub.FechaCreacion, pub.Titulo, pub.FotoPublicacion, pub.IdPublicador, pub.idEstatusPost, us.NombreUsuario, cat.idCategoria from publicacion pub
+	Select pub.idPublicacion, pub.Contenido, pub.FechaCreacion, pub.Titulo, pub.FotoPublicacion, pub.IdPublicador, pub.idEstatusPost, us.NombreUsuario, cat.idCategoria, cat.Categoria, est.EstatusPublicacion, pub.FechaCreacion as FechaPublicacion from publicacion pub
     join estatuspublicacion est
     on est.idEstatusPublicacion = pub.idEstatusPost
     join categoria cat
@@ -150,8 +150,8 @@ BEGIN
     join usuario us
     on us.idUsuario = pub.IdPublicador
     where est.EstatusPublicacion = 'Activo'
-    order by pub.idPublicacion DESC LIMIT 10;
-    limit 0,10;
+    order by pub.idPublicacion DESC LIMIT 0,10;
+    
 END //
 DELIMITER ;
 

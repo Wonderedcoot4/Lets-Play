@@ -75,69 +75,12 @@
             <div class="row">
                 <div class="col">
                     <div class="feed">
-                        <div class="post">
-                            <div class="post__avatar">
-                                <img src="./Imagenes/icon.png">
-                            </div>
-                            <div class="post__body">
-                                <div class="post__header">
-                                    <div class="post__headerText colorText">
-                                        <h3>
-                                            Arlender21
-                                            <span class="post__headerSpecial">#Disparos</span>
-                                        </h3>
-                                    </div>
-                                    <div class="post__headerDescription colorText">
-                                        <h4>Halo Murio en reach</h2>
-                                        <p>Despues de tantos halos que han salido, reach sigue siendo el mejor. 343 Industries no ha sabido igualar la grandesa de Bungie al momento de desarrollar.</p>
-                                    </div>
-                                </div>
-                                <img src="./Imagenes/reach.jpg">
-                                <div class="post__footer">
-                                    <div class="col allignIcon colorIcon">
-                                        <button class="btn colorIcon" type="submit"><i class="icon ion-ios-heart iconConfig"></i></button>
-                                    </div>
-                                    <div class="col allignIcon colorIcon">
-                                        <button class="btn colorIcon" type="submit"><i class="icon ion-md-share iconConfig"></i></button>
-                                    </div>
-                                    <div class="col allignIcon colorIcon">
-                                        
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="post">
-                            <div class="post__avatar">
-                                <img src="./Imagenes/icon.png">
-                            </div>
-                            <div class="post__body">
-                                <div class="post__header">
-                                    <div class="post__headerText colorText">
-                                        <h3>
-                                            Wonderedcoot4
-                                            <span class="post__headerSpecial">#Disparos</span>
-                                        </h3>
-                                    </div>
-                                    <div class="post__headerDescription colorText">
-                                        <h4>No es cierto</h2>
-                                        <p>El de arriba miente</p>
-                                    </div>
-                                </div>
-                                <div class="post__footer">
-                                    <div class="col allignIcon colorIcon">
-                                        <button class="btn colorIcon" type="submit"><i class="icon ion-ios-heart iconConfig"></i></button>
-                                    </div>
-                                    <div class="col allignIcon colorIcon">
-                                        <button class="btn colorIcon" type="submit"><i class="icon ion-md-share iconConfig"></i></button>
-                                    </div>
-                                    <div class="col allignIcon colorIcon">
-                                        
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                        <!--Post-->
+                      
+                        <!--Termina Post-->
+                        
+                        
+                        
                         <div class="post">
                             <div class="post__avatar">
                                 <img src="./Imagenes/icon.png">
@@ -374,6 +317,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script src="dashboard.js"></script>
 </body>
 </html>
 

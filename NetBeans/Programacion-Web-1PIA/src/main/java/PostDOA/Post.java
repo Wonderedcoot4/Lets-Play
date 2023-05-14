@@ -21,6 +21,24 @@ public class Post {
     private String Usuario;
     private int IdCat;
     private int IdEstatus;
+    private String Categoria;
+    private String Estatus;
+
+    public void setCategoria(String Categoria) {
+        this.Categoria = Categoria;
+    }
+
+    public void setEstatus(String Estatus) {
+        this.Estatus = Estatus;
+    }
+
+    public String getCategoria() {
+        return Categoria;
+    }
+
+    public String getEstatus() {
+        return Estatus;
+    }
 
     public void setIdCat(int IdCat) {
         this.IdCat = IdCat;
@@ -61,7 +79,7 @@ public class Post {
     }
     private String Foto;
     
-    private Post post = new Post();
+   
     public Post()
     {
       
@@ -271,19 +289,23 @@ public class Post {
             rs = stm.executeQuery(statement);
             while(rs.next())
             {
-               post.setId(rs.getInt("idPublicacion"));
-               post.setContenido(rs.getString("Contenido"));
-               post.setFecha(rs.getString("FechaCreacion"));
-               post.setTitulo(rs.getString("Titulo"));
-               post.setFoto(rs.getString("FotoPublicacion"));
-               post.setUsuario(rs.getString("NombreUsuario"));
-               post.setIdCat(rs.getInt("idCategoria"));
-               post.setIdEstatus(rs.getInt("idEstatusPost"));
+               Post poste = new Post();
+               poste.setId(rs.getInt("idPublicacion"));
+               poste.setContenido(rs.getString("Contenido"));
+               poste.setFecha(rs.getString("FechaCreacion"));
+               poste.setTitulo(rs.getString("Titulo"));
+               poste.setFoto(rs.getString("FotoPublicacion"));
+               poste.setUsuario(rs.getString("NombreUsuario"));
+               poste.setIdCat(rs.getInt("idCategoria"));
+               poste.setIdEstatus(rs.getInt("idEstatusPost"));
+               poste.setCategoria(rs.getString("Categoria"));
+               poste.setEstatus(rs.getString("EstatusPublicacion"));
                
-               datos.add(post);
+               datos.add(poste);
+               
             }
             conn.close();
-            
+            System.out.println("Consulta exitosa");
         }catch(Exception e)
         {
             System.out.println("Error en la consulta de post");
