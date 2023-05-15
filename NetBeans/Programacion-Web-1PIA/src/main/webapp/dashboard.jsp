@@ -72,8 +72,8 @@
         </div>
         
         <div class="container mr-1">
-            <div class="row">
-                <div class="col">
+            <div class="row" id="ColumnaPost">
+                <div class="col" id="DivRowPost">
                     <div class="feed">
                         <!--Post-->
                       
@@ -81,7 +81,7 @@
                         
                         
                         
-                        <div class="post">
+                        <div class="post" id="PostCentro">
                             <div class="post__avatar">
                                 <img src="./Imagenes/icon.png">
                             </div>
@@ -94,7 +94,7 @@
                                         </h3>
                                     </div>
                                     <div class="post__headerDescription colorText">
-                                        <h4>Hola soy nuevo</h2>
+                                        <h4>Hola soy nuevo</h4>
                                         <p>Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</p>
                                     </div>
                                 </div>
@@ -116,13 +116,13 @@
                     </div>
                 
                     
-                    <div class="sticky-bottom" style="text-align: right;">
+
+                </div>
+                      <div class="sticky-bottom" style="text-align: right;">
                         <button type="button" class="buttonPubli" data-bs-container="body" id="btn-abrir-modal">
                             <img src="./Imagenes/boton.png" width="80px" ></a>
                         </button>
                     </div>
-                </div>
-                
             
             </div>
         </div>

@@ -302,7 +302,11 @@ public class Post {
                poste.setEstatus(rs.getString("EstatusPublicacion"));
                
                datos.add(poste);
-               
+               //Notas de isaac
+               /*
+               Ya entro en el get y guarda la consulta, verificar que marca en consola
+               Isaac 4:46pm 
+                */
             }
             conn.close();
             System.out.println("Consulta exitosa");

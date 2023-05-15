@@ -2,10 +2,10 @@
 const btnAbrirModal = document.querySelector("#btn-abrir-modal");
 const btnCerrarModal = document.querySelector("#btn-cerrar-modal");
 const modal = document.querySelector("#modal");
-var publicaciones;
+//var publicaciones;
 
 $(document).ready(function(){
-  // var publicaciones; 
+   var publicaciones; 
     getPublicacionesRecientes();
 });
 
@@ -71,27 +71,44 @@ function getPublicacionesRecientes()
                         console.log("data", data);
                         publicaciones = data;
                         
-                        for (var i = 0; i < object.keys(data).length; i++)
+                        for (var i = 0; i < Object.keys(data).length; i++)
                         {
                             console.log("Data 1", data[i]);
                             
-                            $("#Post").append(
-                                    $("<div>").addClass("post__avatar").attr("Foto", "FotoPublicacion"+ data[i].FotoPublicacion)
-                                    .append(
-                                            $("<div>").addClass("post__body").attr("id", "idPublicacion-")+data[i].idPublicacion)
-                                            .append(        
-                                                            $("<div>").addClass("post__headerText colorText").attr("TituloPost", "Titulo" + data[i].Titulo)
-                                                            .append(
-                                                            $("<h3>").text(data[i].Titulo)
-                                                            ).append(
-                                                            $("<span>").addClass("post__headerSpecial").text(data[i].Categoria))
-                                                    ).append(
-                                                            
-                                                    ).append($("<div>").addClass("post__headerDescription colorText").append(
-                                                             $("<p>").text(data[i].Contenido).append(
-                                                             $("<p>").text(data[i].FechaCreacion)))
-                                                    )
-                                    //Toy pensando no sigo aqui mandas mensaje si no se meuve nada
+                            $("#DivRowPost").append(
+                                    $("<div>").addClass("feed").append
+                            (
+                                    $("<div>").addClass("post").attr("id", "idPublicacion" + data[i].idPublicacion).append
+                                        (
+                                        $("<div>").addClass("post_avatar").append(
+                                           $("<img>").attr("background-image : url=Imagenes/JustPlay.png") 
+                                           ).append
+                                          (
+                                            $("<div>").addClass("post_body").append
+                                            (
+                                            $("<div>").addClass("post_header colorText").append( 
+                                                $("<h5>").text(data[i].NombreUsuario).append(
+                                                $("<span>").addClass("post__headerSpecial").text(data[i].Categoria))).append(
+                                            $("<div>").addClass("post__headerDescription colorText").append(
+                                                $("<h4>").text(data[i].Titulo).append(
+                                                $("<p>").text(data[i].Contenido)/*Aqui ira el footer de post*/)))
+                                            )
+                                           )
+                                            
+                                        )
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                             )
+                                
+                                    
+                                    
+                                   
                                    
                                     
                                     
@@ -104,8 +121,35 @@ function getPublicacionesRecientes()
                 })
            
 }
+/*
+    $("<img>").attr("background-image : url=Imagenes/JustPlay.png")).append(
+                                    $("<div>").addClass("post_body").append(
+                                    $("<div>").addClass("post_header colorText").append(
+                                    $("<h5>").text(data[i].NombreUsuario).append(
+                                    $("<span>").addClass("post__headerSpecial").text(data[i].Categoria))).append(
+                                        $("<div>").addClass("post__headerDescription colorText").append(
+                                        $("<h4>").text(data[i].Titulo).append(
+                                        $("<p>").text(data[i].Contenido)))
+                                            )
+                                       )
+                                        
+                                    )
+                                  )
 
-
+*/
+/* asi se escribe o algo asi
+ * 
+ *  $("#PostCentro").append(
+                                    $("<div>").addClass("post").append(
+                                    $("<h1>").text(data[i].Contenido))
+                                   
+                                   
+                                    
+                                    
+                                );
+                            
+ * 
+ */
 
 
  function check(input)

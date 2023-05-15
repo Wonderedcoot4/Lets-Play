@@ -65,7 +65,7 @@ public class CreatePost extends HttpServlet {
                 for (int i = 0; i < pubs.size(); i++) {
                     JSONObject jsoncito = new JSONObject();
                     jsoncito.put("idPublicacion", pubs.get(i).getId());
-                    jsoncito.put("Contenido ", pubs.get(i).getContenido());
+                    jsoncito.put("Contenido", pubs.get(i).getContenido());
                     jsoncito.put("Titulo", pubs.get(i).getTitulo());
                     jsoncito.put("FotoPublicacion", pubs.get(i).getFoto());
                     jsoncito.put("NombreUsuario", pubs.get(i).getUsuario());
