@@ -91,7 +91,12 @@ function getPublicacionesRecientes()
                                                 $("<span>").addClass("post__headerSpecial").text(data[i].Categoria))).append(
                                             $("<div>").addClass("post__headerDescription colorText").append(
                                                 $("<h4>").text(data[i].Titulo).append(
-                                                $("<p>").text(data[i].Contenido)/*Aqui ira el footer de post*/)))
+                                                $("<p>").text(data[i].Contenido)/*Aqui ira el footer de post*/).append(
+                                                $("<div>").addClass("post__footer").append(
+                                                  $("<div>").addClass("col allignIcon colorIcon").append(
+                                                        $("<button>").addClass("btn colorIcon").append(
+                                                            $("<i>").addClass("icon ion-ios-heart iconConfig")))
+                                                            ))))
                                             )
                                            )
                                             
