@@ -58,6 +58,11 @@ btnCerrarModal4.addEventListener("click",()=>{
     modal4.close();
 })
 
+function getDatosUsuario()
+{
+    console.log("Entrando al get de configuracion perfil")
+}
+
 
 function getPublicacionesRecientes()
 {
@@ -82,6 +87,52 @@ function getPublicacionesRecientes()
                                         (
                                         $("<div>").addClass("post_avatar").append(
                                            $("<img>").attr("background-image : url=Imagenes/JustPlay.png") 
+                                           )
+                                        ).append(
+                                        $("<div>").addClass("post_body").append(
+                                         $("<div>").addClass("post__header").append(
+                                            $("<div>").addClass("post__headerText colorText").append(
+                                                $("<h5>").text(data[i].NombreUsuario).append(
+                                                $("<span>").addClass("post__headerSpecial").text(data[i].Categoria)))).append(
+                                            $("<div>").addClass("post__headerDescription colorText").append(
+                                                $("<h4>").text(data[i].Titulo).append(
+                                                $("<p>").text(data[i].Contenido))))).append(
+                                            $("<div>").addClass("post__footer").append(
+                                                $("<div>").addClass("col allignIcon colorIcon").append(
+                                                    $("<button>").addClass("btn colorIcon").append(
+                                                        $("<i>").addClass("icon ion-ios-heart iconConfig")))).append(
+                                                $("<div>").addClass("col allignIcon colorIcon").append(
+                                                    $("<button>").addClass("btn colorIcon").append(
+                                                        $("<i>").addClass("icon ion-md-share iconConfig"))))))
+                                    
+                             )
+                             
+                                    
+                                );
+                            
+                        }
+        }
+                    
+                })
+           
+}
+/*
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * {
+                            console.log("Data 1", data[i]);
+                            
+                            $("#DivRowPost").append(
+                                    $("<div>").addClass("feed").append
+                            (
+                                    $("<div>").addClass("post").attr("id", "idPublicacion" + data[i].idPublicacion).append
+                                        (
+                                        $("<div>").addClass("post_avatar").append(
+                                           $("<img>").attr("background-image : url=Imagenes/JustPlay.png") 
                                            ).append
                                           (
                                             $("<div>").addClass("post_body").append
@@ -91,12 +142,11 @@ function getPublicacionesRecientes()
                                                 $("<span>").addClass("post__headerSpecial").text(data[i].Categoria))).append(
                                             $("<div>").addClass("post__headerDescription colorText").append(
                                                 $("<h4>").text(data[i].Titulo).append(
-                                                $("<p>").text(data[i].Contenido)/*Aqui ira el footer de post*/).append(
-                                                $("<div>").addClass("post__footer").append(
-                                                  $("<div>").addClass("col allignIcon colorIcon").append(
-                                                        $("<button>").addClass("btn colorIcon").append(
-                                                            $("<i>").addClass("icon ion-ios-heart iconConfig")))
-                                                            ))))
+                                                $("<p>").text(data[i].Contenido)/*Aqui ira el footer de post*///).append(
+                                      /*          $("<div>").addClass("post__footer").append(
+                                                    $("<div>").addClass("col allignIcon colorIcon").append(
+                                                                $("<button>").addClass("btn colorIcon").append(
+                                                                    $("<i>").addClass("icon ion-ios-heart iconConfig")))))))
                                             )
                                            )
                                             
@@ -120,13 +170,25 @@ function getPublicacionesRecientes()
                                 );
                             
                             
-                        }
-        }
-                    
-                })
-           
-}
-/*
+                        }*/
+ /* 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
     $("<img>").attr("background-image : url=Imagenes/JustPlay.png")).append(
                                     $("<div>").addClass("post_body").append(
                                     $("<div>").addClass("post_header colorText").append(

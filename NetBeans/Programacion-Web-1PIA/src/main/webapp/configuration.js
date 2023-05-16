@@ -24,3 +24,55 @@ btnAbrirModal8.addEventListener("click",()=>{
 btnCerrarModal8.addEventListener("click",()=>{
     modal8.close();
 })
+
+function ReturnDashboard()
+{
+    console.log("GET USUARIO DASH")
+    
+   $.ajax({
+       url:"ProfileConfigServlet?accion=Return"
+       ,type:"GET"
+       , success: function (data) {
+            console.log("OK", data);
+        }
+   })
+}
+
+function ReturnDashboard2()
+{
+    console.log("GET USUARIO DASH")
+    
+    fetch("ProfileConfigServlet?accion=Return",
+    {
+        method:"GET"
+    })
+            .then(data =>{
+                console.log(data);
+    })
+
+}
+
+function ReturnDashboard3()
+{
+    console.log("GET USUARIO DASH")
+    
+    fetch("ProfileConfigServlet?accion=Return",
+    {
+        method:"GET"
+    })
+            .then(data =>{
+                console.log(data);
+    })
+
+}
+
+function UpdateUsuario()
+{
+    console.log("POST Update Usuario Config")
+    
+   $.ajax({
+       url:"ProfileConfigServlet?=UpdateUser"
+       ,type:"POST"
+       ,dataType: "JSON"
+   })
+}

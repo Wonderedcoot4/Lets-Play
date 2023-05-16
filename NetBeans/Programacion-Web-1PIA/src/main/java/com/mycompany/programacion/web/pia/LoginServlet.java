@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
         
         Usuario instancia = new Usuario();
         String pantalla;
-        Usuario log = (Usuario) instancia.LoginUsuario(username, password);;
+        Usuario log = (Usuario) instancia.LoginUsuario_sp(username, password);;
         if (log.getIdUsuario()!= 0) {
             //session.setAttribute("UsuarioLog", log);
             request.setAttribute("UsuarioLog", log);

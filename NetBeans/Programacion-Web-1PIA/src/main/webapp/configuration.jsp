@@ -4,6 +4,7 @@
     Author     : isaac
 --%>
 
+<%@page import="UsuarioDBA.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,9 @@
     <div>
         <nav class="navbar navbar-expand-lg navColor">
             <div class="col alingImage">
-                <a class="navbar-brand" href="dashboard.jsp"><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle"></a>
+                <form method="get" action="ProfileConfigServlet">
+                    <button style="background: none" onclick="ReturnDashboard2()"><a class="navbar-brand"><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle" ></a></button>
+                </form>
             </div>
             <div class="col">
                 <form class="d-flex position-relative">
@@ -40,6 +43,23 @@
             </div>
         </nav>
     </div>
+    <% 
+    Usuario usuario = new Usuario();
+    
+    usuario = (Usuario) request.getAttribute("UsuarioLog");
+    
+    System.out.print("Usuario pelon peloneta: " + usuario.getUsuario());
+    System.out.print("Nombre Real del Usuario " + usuario.getNombre());
+    //System.out.print("Apellido Real del Usuario " + usuario.getApellidoP());
+    System.out.print("Apellido Paterno Real del Usuario " + usuario.getApellidoP());
+    System.out.print("Apellido Materno Real del Usuario " + usuario.getApellidoM());
+    System.out.print("Correo del Usuario " + usuario.getCorreo());
+    System.out.print("Fotografia del Usuario " + usuario.getFotografia());
+    System.out.print("Contraseña del Usuario " + usuario.getPassword());
+    
+    
+    %>
+    
     <div class="container">
         <div class="row colorText allignIcon">
             <h1>Configuración</h1>
@@ -47,49 +67,51 @@
         <div class="row">
             <div class="col">
                 <div class="publicacion-body">
+                    <form action="ProfileConfigServlet" method="post">
                     <div class="row">
                         <p class="text-publi">Configuración del perfil</p>
                     </div>
                     <div class="row">
                       
                         <label for="text" class="colorText">Nombre(s)</label> <br>
-                        <input class="inText colorText" type="text" name="title" value="Edson Eduardo">
+                        <input class="inText colorText" type="text" name="title" value=" <% out.print(usuario.getNombre()); %>">
                       
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Apellido Paterno</label> <br>
-                        <input class="inText colorText" type="text" name="title" value="Arguello">
+                        <input class="inText colorText" type="text" name="title" value=" <%out.print(usuario.getApellidoP()); %> ">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Apellido Materno</label> <br>
-                        <input class="inText colorText" type="text" name="title" value="Tienda">
+                        <input class="inText colorText" type="text" name="title" value="<%out.print(usuario.getApellidoM()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Email</label> <br>
-                        <input class="inText colorText" type="text" name="title" value="eeatienda2001@hotmail.com">
+                        <input class="inText colorText" type="text" name="title" value="<%out.print(usuario.getCorreo()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Usuario</label> <br>
-                        <input class="inText colorText" type="text" name="title" value="NachtDenos">
+                        <input class="inText colorText" type="text" name="title" value="<%out.print(usuario.getUsuario()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Contraseña</label> <br>
-                        <input class="inText colorText" type="password" name="title" value="123456">
+                        <input class="inText colorText" type="password" name="title" value="<%out.print(usuario.getPassword()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Confirmar contraseña</label> <br>
-                        <input class="inText colorText" type="password" name="title" value="123456">
+                        <input class="inText colorText" type="password" name="title" value="<%out.print(usuario.getPassword()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Fecha de Nacimiento</label>
-                        <input type="date" class="input colorText" value="2002-03-02">
+                        <input type="date" class="input colorText" value="<%out.print(usuario.getFechaNacimiento()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <div class="col"></div>
                         <div class="col-1">
-                            <button class="btn colorIcon"><i class="icon ion-md-send iconConfig"></i></button>
+                            <button type="submit" class="btn colorIcon"><i class="icon ion-md-send iconConfig"></i></button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
             <div class="col">
@@ -102,7 +124,7 @@
                      </div>
                     <div class="row marginConfiguration">
                         <button type="button" class="mybutton" data-bs-container="body">
-                            <img src="./Imagenes/icon.png" alt="logo" width="250px" class="rounded-circle"></a>
+                            <img src="<% out.print(usuario.getFotografia());%>" alt="logo" width="250px" class="rounded-circle"></a>
                     </div>
                     <div class="row marginConfigurationEx">
                         <div class="col"></div>
@@ -140,8 +162,8 @@
             </button>
         </div>
         <div class="row colorText allignIcon">
-            <h3>NachtDenos</h3>
-            <p class="post__headerSpecial">eeatienda2001@hotmail.com</p>
+            <h3><% out.print(usuario.getUsuario()); %></h3>
+            <p class="post__headerSpecial"> <% out.print(usuario.getCorreo()); %></p>
         </div>
         <div class="row colorText allignIcon">
             <a href="Profile.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-body iconConfig"></i></i></i>
@@ -201,13 +223,13 @@
                 <div class="col colorIcon">
                 </div>
                 <div class="col-1">
-                    <button class="btn colorIcon"><i class="icon ion-md-search"></i></button>
+                    <button class="btn colorIcon"><i class="icon ion-md-search" onclick="UpdateUsuario()"></i></button>
                 </div>
             </div>
         </div>
     </dialog>
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

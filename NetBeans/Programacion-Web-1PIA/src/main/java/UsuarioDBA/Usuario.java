@@ -108,6 +108,11 @@ public class Usuario {
     {
       return log;
     }
+    
+    public void SetUsuarioLog(Usuario log)
+    {
+        this.log = log;
+    }
     public void setPassword(String Password) {
         this.Password = Password;
     }
@@ -199,7 +204,48 @@ public class Usuario {
             return false;
         }
         
-     
+        public Object LoginUsuario_sp(String User, String pass)
+        {
+            Usuario logged = new Usuario();
+            logged.setIdUsuario(0);
+            
+            try{
+                con.getConnection();
+                cn = con.conectar();
+                String statement = "{CALL LoginUsuario(?,?)}";
+                PreparedStatement stm = cn.prepareCall(statement);
+                stm.setString(1, User);
+                stm.setString(2, pass);
+                rs = stm.executeQuery();
+                
+                if (rs.next()) {
+                     logged.setIdUsuario(rs.getInt("idUsuario"));
+                     logged.setUsuario(rs.getString("NombreUsuario"));
+                     logged.setCorreo(rs.getString("Correo"));
+                     logged.setFotografia(rs.getString("FotoPerfl"));
+                     logged.setNombre(rs.getString("Nombre"));
+                     logged.setApellidoP(rs.getString("ApellidoPaterno"));
+                     logged.setApellidoM(rs.getString("ApellidoMaterno"));
+                     logged.setPassword(rs.getString("Contrasena"));
+                     logged.setFechaNacimiento(rs.getString("FechaNacimiento"));
+                     System.out.println("Login CORRECTO, DATOS GUARDADOS DE MANERA EXITOSA");
+                     log = logged;
+                     con.desconectar();
+                }
+              
+                
+               
+            }catch(Exception e)
+            {
+                System.out.println("Error : " + e);
+                System.out.println("Error : " + "User not Found");
+                System.out.println("Login INCORRECTO, NO SE GUARDARON DATOS Y NO PROCEDARA LA PAGINA");
+                con.desconectar();
+                return logged;       
+            }
+            con.desconectar();
+                return logged;   
+        }
         
         public Object LoginUsuario(String User, String pass)
         {

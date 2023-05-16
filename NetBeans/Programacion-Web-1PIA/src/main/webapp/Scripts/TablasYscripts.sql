@@ -173,6 +173,16 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE `UpdateUsuario` (in Usuario varchar(50), in Contraseña varchar(50), in Email varchar(50), in FechaNaci date, in NombreP varchar(100), in apP varchar(100), in apM varchar(100))
+BEGIN 
+	Update usuario set Nombre = NombreP, ApellidoPaterno = apP, ApellidoMaterno = apM, Correo = Email, NombreUsuario = Usuario, Contrasena = Contraseña, FechaNacimiento = FechaNaci
+    where binary NombreUsuario = usuario and binary Contrasena = Contraseña and binary Correo = Email;
+	
+END //
+DELIMITER ;
+
+
 Select * from publicacion 
 -- join pertinentes para los estatus y asi
 limit 0, 5;
@@ -184,6 +194,6 @@ limit 0, 5;
 
 select count(*) as Total from publicacion;
 
-drop procedure creacionPost;
+drop procedure UpdateUsuario;
 CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder', '2023-05-12');
 CALL LoginUsuario('Arlender21', 'Wondered9');

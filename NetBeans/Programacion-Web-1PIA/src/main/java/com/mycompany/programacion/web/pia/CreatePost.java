@@ -100,10 +100,18 @@ public class CreatePost extends HttpServlet {
         String Categoria = request.getParameter("categoria"); 
         String UsuarioDash = request.getParameter("UsuarioActual"); 
         String Estatus = "Activo";
-        
+        String filename = null;
         Part part = request.getPart("Fotografia");
+        filename = extractFileName(part);
+        
+        System.out.println("Filename " + filename);
+        if (filename != "") {
+            System.out.println("WRITE " + filename);
+        }//40:30 O POR AHI
+        
         String pantalla;
         String NombreArchivo;
+       
         NombreArchivo = extractFileName(part);
         String dirSave = "C:\\Users\\isaac\\Desktop\\Programacion Web 1\\Programacion-Web\\NetBeans\\Programacion-Web-1PIA\\src\\main\\webapp\\Imagenes" + File.separator + NombreArchivo;
         File fileSaveDir = new File(dirSave);

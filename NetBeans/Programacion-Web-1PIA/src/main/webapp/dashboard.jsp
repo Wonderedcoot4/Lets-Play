@@ -225,10 +225,13 @@
         <div class="row colorText allignIcon">
             <a href="Profile.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-body iconConfig"></i></i></i>
                 Perfil</a>
-
-            <a href="configuration.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
-                Configuración</a>
-
+            
+            <form action="ProfileConfigServlet" method="get" >
+                <button type="submit" class="btn colorIcon" ><i class="icon ion-md-construct iconConfig"><p>Configuracion</p></i></button>
+          <!--  <a type="submit" href="configuration.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
+                Configuración</a>  -->
+            </form>    
+            
             <a href="Principal.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-exit iconConfig"></i></i>
                 Cerrar Sesión</a>
         </div>
