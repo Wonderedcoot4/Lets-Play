@@ -179,10 +179,22 @@ BEGIN
 	-- pasale el puto pero id --kevin
 	-- le paso el correo aqui, luego con eso hago un select y busco el id de donde este guardado ese correo y con ese di hago todo el update
 	Update usuario set Nombre = NombreP, ApellidoPaterno = apP, ApellidoMaterno = apM, Correo = Email, NombreUsuario = Usuario, Contrasena = Contraseña, FechaNacimiento = FechaNaci
-    where idUsuario = idUsuario;
+    where idUsuario = idUser;
 	
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE `UpdateUsuarioFoto` (in Foto varchar(500), in idUser int)
+BEGIN 
+	-- pasale el puto pero id --kevin
+	-- le paso el correo aqui, luego con eso hago un select y busco el id de donde este guardado ese correo y con ese di hago todo el update
+	Update usuario set FotoPerfl = Foto
+    where idUsuario = idUser;
+	
+END //
+DELIMITER ;
+
 
 
 Select * from publicacion;

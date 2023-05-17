@@ -104,10 +104,10 @@ public class CreatePost extends HttpServlet {
         Part part = request.getPart("Fotografia");
         filename = extractFileName(part);
         
-        System.out.println("Filename " + filename);
-        if (filename != "") {
-            System.out.println("WRITE " + filename);
-        }//40:30 O POR AHI
+//        System.out.println("Filename " + filename);
+//        if (filename != "") {
+//            System.out.println("WRITE " + filename);
+//        }//40:30 O POR AHI
         
         String pantalla;
         String NombreArchivo;

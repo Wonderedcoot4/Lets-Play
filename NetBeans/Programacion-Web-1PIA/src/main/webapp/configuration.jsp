@@ -67,7 +67,7 @@
         <div class="row">
             <div class="col">
                 <div class="publicacion-body">
-                    <form action="ProfileConfigServlet" method="post">
+                    <form action="ProfileConfigServlet" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <p class="text-publi">Configuración del perfil</p>
                     </div>
@@ -117,6 +117,7 @@
             </div>
             <div class="col">
                 <div class="publicacion-body">
+                    <form action="ProfileConfigServlet" method="post" enctype="multipart/form-data">
                     <div class="row">
                         <p class="text-publi">Configuración de Imagen</p>
                     </div>
@@ -139,16 +140,18 @@
                     <div class="row marginConfigurationEx">
                         <div class="col"></div>
                         <div class="col">
-                            <input type="button" class="submit" value="Imagen">
+                            <input type="file" class="submit" name="archivo" accept=".jpg, .jpeg, .png" required>
                         </div>
                         <div class="col"></div>
                     </div>
                     <div class="row marginConfiguration">
                         <div class="col"></div>
                         <div class="col-1">
-                            <button class="btn colorIcon"><i class="icon ion-md-send iconConfig"></i></button>
+                            <input type="hidden" name="AccionServlet" value="<%out.print("UpdateFoto"); %>">
+                            <button class="btn colorIcon" type="submit"><i class="icon ion-md-send iconConfig"></i></button>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -233,7 +236,7 @@
                 <div class="col colorIcon">
                 </div>
                 <div class="col-1">
-                    <button class="btn colorIcon"><i class="icon ion-md-search" onclick="UpdateUsuario()"></i></button>
+                    <button class="btn colorIcon"><i class="icon ion-md-search""></i></button>
                 </div>
             </div>
         </div>

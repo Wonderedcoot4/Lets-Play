@@ -27,6 +27,9 @@ import org.json.simple.JSONObject;
  * @author isaac
  */
 @WebServlet(name = "ProfileConfigServlet", urlPatterns = {"/ProfileConfigServlet"})
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2,
+        maxFileSize = 1024 * 1024 + 10,
+        maxRequestSize = 1024 * 1024 * 50)
 public class ProfileConfigServlet extends HttpServlet {
     private Usuario us = new Usuario();
     Usuario instancia = new Usuario();
@@ -96,6 +99,12 @@ public class ProfileConfigServlet extends HttpServlet {
         //processRequest(request, response);
       //  String Accion = request.getParameter("AccionServlet");
         String pantalla = "";
+        String NombreArchivo;
+        
+       
+        
+        
+        
         String Accion = request.getParameter("AccionServlet");
         if ("UpdatePerfil".equals(Accion)) {
             
@@ -122,6 +131,34 @@ public class ProfileConfigServlet extends HttpServlet {
                 out.println("Listo update, intentando regresar y refresacar");
             }
         }
+        
+        if ("UpdateFoto".equals(Accion)) {
+             Part part = request.getPart("archivo");
+               NombreArchivo = extractFileName(part);
+        
+              String dirSave = "C:\\Users\\isaac\\Desktop\\Programacion Web 1\\Programacion-Web\\NetBeans\\Programacion-Web-1PIA\\src\\main\\webapp\\Imagenes" + File.separator + NombreArchivo;
+             File fileSaveDir = new File(dirSave);
+             part.write(fileSaveDir + File.separator);
+            Usuario us = new Usuario();
+            Usuario usua = new Usuario();
+            
+            
+            us = (Usuario) instancia.UsuarioLog();
+            
+            usua = (Usuario) instancia.UpdateUsuarioFoto_sp(fileSaveDir);
+            if (usua.getIdUsuario() != 0) {
+       
+                 System.out.println("Actualizar foto");
+                 request.setAttribute("UsuarioLog", us);
+                 pantalla = "configuration.jsp";
+                out.println("Listo update, intentando regresar y refresacar");
+                        
+            }
+            
+            
+            
+            
+        }
         RequestDispatcher rd = request.getRequestDispatcher(pantalla);      
         rd.forward(request, response);
     }
@@ -131,5 +168,19 @@ public class ProfileConfigServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
+    
+      private String extractFileName(Part part)
+    {
+        String contentDisp = part.getHeader("content-disposition");
+        String[] items = contentDisp.split(";");
+        for (String s : items) {
+            if (s.trim().startsWith("filename")) {
+                return s.substring(s.indexOf("=") + 2, s.length() - 1);
+            }
+        }
+        return "";
+    }
+    
+    
 
 }
