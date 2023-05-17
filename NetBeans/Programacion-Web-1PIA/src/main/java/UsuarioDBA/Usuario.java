@@ -311,6 +311,74 @@ public class Usuario {
             return false;
         }
         
+        public Object UpdateUsuario_sp(String Nombre, String ApellidoP, String ApellidoM,
+                String Correo, String Fecha, String Usuario, String Contraseña)
+        {
+            Usuario us = new Usuario();
+            
+            try{
+                con.getConnection();
+                cn = con.conectar();
+                ResultSet rs;
+                int res;
+               
+               String statement = "{CALL UpdateUsuario(?,?,?,?,?,?,?,?)}";
+                //String state = "INSERT INTO usuario(Nombre, ApellidoPaterno, ApellidoMaterno, Correo, NombreUsuario,Contrasena,FechaNacimiento) values ('" + Nombre + "','" + ApellidoP + "','" + ApellidoM + "','" + Correo + "','" + Usuario + "','" + Contraseña + "','" + Fecha + "');";
+                PreparedStatement stm = cn.prepareStatement(statement);
+                String newUser = Usuario;
+                String newPassword = Contraseña;
+                String fotografia = log.getFotografia();
+                int userId = log.getIdUsuario();
+                stm.setString(1, Usuario);
+                stm.setString(2, Contraseña);
+                stm.setString(3, Correo);
+                stm.setString(4, Fecha);
+                stm.setString(5, Nombre);
+                stm.setString(6, ApellidoP);
+                stm.setString(7, ApellidoM);
+                stm.setInt(8, log.getIdUsuario());
+                us.SetNombre(Nombre);
+                us.setApellidoP(ApellidoP);
+                us.setApellidoM(ApellidoM);
+                us.setCorreo(Correo);
+                us.setPassword(Contraseña);
+                us.setUsuario(Usuario);
+                us.setFechaNacimiento(Fecha);
+                us.setIdUsuario(userId);
+                us.setFotografia(fotografia);
+                //Agregar los nuevo parametros para la nueva consulta
+                res = stm.executeUpdate();
+                log.SetUsuarioLog(us);
+//                String statement2 = "{CALL LoginUsuario(?,?)}";
+//                stm = cn.prepareCall(statement2);
+//                stm.setString(1, newUser);
+//                stm.setString(2, newPassword);
+//                rs = stm.executeQuery(statement2);
+//                if (rs.next()) {
+//                     log.setIdUsuario(rs.getInt("idUsuario"));
+//                     log.setUsuario(rs.getString("NombreUsuario"));
+//                     log.setCorreo(rs.getString("Correo"));
+//                     log.setFotografia(rs.getString("FotoPerfl"));
+//                     log.setNombre(rs.getString("Nombre"));
+//                     log.setApellidoP(rs.getString("ApellidoPaterno"));
+//                     log.setApellidoM(rs.getString("ApellidoMaterno"));
+//                     log.setPassword(rs.getString("Contrasena"));
+//                     log.setFechaNacimiento(rs.getString("FechaNacimiento"));
+//                     System.out.println("UPDATE CORRECTO, DATOS ACTUALIZADOS DE MANERA EXITOSA");
+//                     
+//                     con.desconectar();
+//                }
+//               
+                
+            }catch(Exception e)
+            {
+                System.out.println("No se actulizo el usuario");
+                con.desconectar();
+                return log;
+            }
+            return log;
+        }
+        
         public boolean InsertarImagen(String Nombre, String ApellidoP, String ApellidoM,
                 String Correo, String Fecha, String Usuario, String Contraseña, File Foto)
         {

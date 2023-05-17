@@ -174,16 +174,19 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE `UpdateUsuario` (in Usuario varchar(50), in Contraseña varchar(50), in Email varchar(50), in FechaNaci date, in NombreP varchar(100), in apP varchar(100), in apM varchar(100))
+CREATE PROCEDURE `UpdateUsuario` (in Usuario varchar(50), in Contraseña varchar(50), in Email varchar(50), in FechaNaci date, in NombreP varchar(100), in apP varchar(100), in apM varchar(100), in idUser int)
 BEGIN 
+	-- pasale el puto pero id --kevin
+	-- le paso el correo aqui, luego con eso hago un select y busco el id de donde este guardado ese correo y con ese di hago todo el update
 	Update usuario set Nombre = NombreP, ApellidoPaterno = apP, ApellidoMaterno = apM, Correo = Email, NombreUsuario = Usuario, Contrasena = Contraseña, FechaNacimiento = FechaNaci
-    where binary NombreUsuario = usuario and binary Contrasena = Contraseña and binary Correo = Email;
+    where idUsuario = idUsuario;
 	
 END //
 DELIMITER ;
 
 
-Select * from publicacion 
+Select * from publicacion;
+Select * from usuario 
 -- join pertinentes para los estatus y asi
 limit 0, 5;
 

@@ -18,6 +18,7 @@ import java.io.File;
 import PostDOA.Post;
 import UsuarioDBA.Usuario;
 import jakarta.servlet.RequestDispatcher;
+import static java.lang.System.out;
 import java.util.List;
 import org.json.simple.JSONObject;
 
@@ -93,19 +94,36 @@ public class ProfileConfigServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        String accion = request.getParameter("accion");
+      //  String Accion = request.getParameter("AccionServlet");
+        String pantalla = "";
+        String Accion = request.getParameter("AccionServlet");
+        if ("UpdatePerfil".equals(Accion)) {
+            
         
-        if ("UpdateUser".equals(accion)) {
-            System.out.print("Actualizar usuario sin foto, entrando en el post " + accion);
-            String Nombre = request.getParameter("");
-            String ApellidoP = request.getParameter("");
-            String ApellidoM = request.getParameter("");
-            String Correo = request.getParameter("");
-            String Usuario = request.getParameter("");
-            String Pass = request.getParameter("");
-            String FechaNacimiento = request.getParameter("");
+            System.out.print("Actualizar usuario sin foto, entrando en el post " + Accion);
+            String Nombre = request.getParameter("Nombre");
+            String ApellidoP = request.getParameter("ApellidoP");
+            String ApellidoM = request.getParameter("ApellidoM");
+            String Correo = request.getParameter("Correo");
+            String Usuario = request.getParameter("Usuario");
+            String Pass = request.getParameter("password");
+            String FechaNacimiento = request.getParameter("FechaNacimiento");
+            
+            
+            
+            Usuario success = new Usuario();
+            success = (Usuario) instancia.UpdateUsuario_sp(Nombre, ApellidoP, ApellidoM, Correo, FechaNacimiento, Usuario, Pass);
+            
+            if (success.getIdUsuario() != 0) {
+                Usuario us = new Usuario();
+                us = (Usuario) instancia.UsuarioLog();
+                request.setAttribute("UsuarioLog", us);
+                pantalla = "configuration.jsp";
+                out.println("Listo update, intentando regresar y refresacar");
+            }
         }
-        
+        RequestDispatcher rd = request.getRequestDispatcher(pantalla);      
+        rd.forward(request, response);
     }
 
     

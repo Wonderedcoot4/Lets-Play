@@ -24,6 +24,22 @@
 </head>
 
 <body class="colorBody slideBarScroll">
+     <%
+      
+      Usuario usuario = new Usuario();
+      Usuario usuario2 = new Usuario();
+      
+      // usuario = (Usuario) request.getSession().getAttribute("UsuarioLog");
+      
+      //System.out.println("Usuario dashboard " + usuario);
+     // String text;
+      //usuario = (Usuario) session.getAttribute("UsuarioLog");
+      usuario2 = (Usuario) request.getAttribute("UsuarioLog");
+      System.out.println("Usuario dashboard : " + usuario2.getUsuario());
+      System.out.println("Correo dashboard : " + usuario2.getCorreo());
+      System.out.println("Foto dashboard : " + usuario2.getFotografia());
+     
+    %>
     <div class="static">
         <nav class="navbar navbar-expand-lg navColor">
             <div class="col alingImage">
@@ -38,7 +54,16 @@
             </div>
             <div class="col alingFlex">
                 <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
-                    <img src="./Imagenes/icon.png" alt="logo" width="55px" class="rounded-circle"></a>
+                    <img src="<%
+                    String imagen2 = usuario2.getFotografia();
+                    int index2 = imagen2.indexOf("Imagenes");
+                    
+                    if (index2 != -1) {
+                            String result = imagen2.substring(index2);
+                            out.print(result);
+                        }
+                    
+                    %>" alt="logo" width="55px" class="rounded-circle"></a>
             </div>
         </nav>
     </div>
@@ -136,22 +161,7 @@
         </div>
       </footer>
       <!--Obtencion de info usuario -->
-    <%
-      
-      Usuario usuario = new Usuario();
-      Usuario usuario2 = new Usuario();
-      
-      // usuario = (Usuario) request.getSession().getAttribute("UsuarioLog");
-      
-      //System.out.println("Usuario dashboard " + usuario);
-     // String text;
-      //usuario = (Usuario) session.getAttribute("UsuarioLog");
-      usuario2 = (Usuario) request.getAttribute("UsuarioLog");
-      System.out.println("Usuario dashboard : " + usuario2.getUsuario());
-      System.out.println("Correo dashboard : " + usuario2.getCorreo());
-      System.out.println("Foto dashboard : " + usuario2.getFotografia());
-     
-    %>
+   
     
     
     
@@ -215,7 +225,16 @@
         
         <div class="row">
             <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
-                <img src=" Imagenes/<%out.print(usuario2.getFotografia()); %>" alt="logo" width="80px" class="rounded-circle"></a>
+                <img src="<%
+                    String imagen = usuario2.getFotografia();
+                    int index = imagen.indexOf("Imagenes");
+                    
+                    if (index != -1) {
+                            String result = imagen.substring(index);
+                            out.print(result);
+                        }
+                    
+                    %>" alt="logo" width="80px" class="rounded-circle"></a>
             </button>
         </div>
         <div class="row colorText allignIcon">

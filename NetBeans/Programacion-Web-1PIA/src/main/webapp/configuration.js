@@ -70,9 +70,11 @@ function UpdateUsuario()
 {
     console.log("POST Update Usuario Config")
     
-   $.ajax({
-       url:"ProfileConfigServlet?=UpdateUser"
-       ,type:"POST"
-       ,dataType: "JSON"
-   })
+   fetch("ProfileConfigServlet",
+    {
+        method:"POST"
+    })
+            .then(data =>{
+                console.log(data);
+    })
 }

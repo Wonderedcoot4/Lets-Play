@@ -74,41 +74,42 @@
                     <div class="row">
                       
                         <label for="text" class="colorText">Nombre(s)</label> <br>
-                        <input class="inText colorText" type="text" name="title" value=" <% out.print(usuario.getNombre()); %>">
+                        <input class="inText colorText" type="text" name="Nombre" value=" <% out.print(usuario.getNombre()); %>">
                       
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Apellido Paterno</label> <br>
-                        <input class="inText colorText" type="text" name="title" value=" <%out.print(usuario.getApellidoP()); %> ">
+                        <input class="inText colorText" type="text" name="ApellidoP" value=" <%out.print(usuario.getApellidoP()); %> ">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Apellido Materno</label> <br>
-                        <input class="inText colorText" type="text" name="title" value="<%out.print(usuario.getApellidoM()); %>">
+                        <input class="inText colorText" type="text" name="ApellidoM" value="<%out.print(usuario.getApellidoM()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Email</label> <br>
-                        <input class="inText colorText" type="text" name="title" value="<%out.print(usuario.getCorreo()); %>">
+                        <input class="inText colorText" type="text" name="Correo" value="<%out.print(usuario.getCorreo()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Usuario</label> <br>
-                        <input class="inText colorText" type="text" name="title" value="<%out.print(usuario.getUsuario()); %>">
+                        <input class="inText colorText" type="text" name="Usuario" value="<%out.print(usuario.getUsuario()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Contraseña</label> <br>
-                        <input class="inText colorText" type="password" name="title" value="<%out.print(usuario.getPassword()); %>">
+                        <input class="inText colorText" type="password" name="password" value="<%out.print(usuario.getPassword()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Confirmar contraseña</label> <br>
-                        <input class="inText colorText" type="password" name="title" value="<%out.print(usuario.getPassword()); %>">
+                        <input class="inText colorText" type="password" name="passConfirm" value="<%out.print(usuario.getPassword()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <label for="text" class="colorText">Fecha de Nacimiento</label>
-                        <input type="date" class="input colorText" value="<%out.print(usuario.getFechaNacimiento()); %>">
+                        <input type="date" class="input colorText" name="FechaNacimiento" value="<%out.print(usuario.getFechaNacimiento()); %>">
                     </div>
                     <div class="row marginConfiguration">
                         <div class="col"></div>
                         <div class="col-1">
-                            <button type="submit" class="btn colorIcon"><i class="icon ion-md-send iconConfig"></i></button>
+                            <input type="hidden" name="AccionServlet" value="<%out.print("UpdatePerfil"); %>">
+                            <button type="submit" class="btn colorIcon" ><i class="icon ion-md-send iconConfig"></i></button>
                         </div>
                     </div>
                     </form>
@@ -124,7 +125,16 @@
                      </div>
                     <div class="row marginConfiguration">
                         <button type="button" class="mybutton" data-bs-container="body">
-                            <img src="<% out.print(usuario.getFotografia());%>" alt="logo" width="250px" class="rounded-circle"></a>
+                            <img src="<%
+                    String imagen = usuario.getFotografia();
+                    int index = imagen.indexOf("Imagenes");
+                    
+                    if (index != -1) {
+                            String result = imagen.substring(index);
+                            out.print(result);
+                        }
+                    
+                    %>" alt="logo" width="250px" class="rounded-circle"></a>
                     </div>
                     <div class="row marginConfigurationEx">
                         <div class="col"></div>
