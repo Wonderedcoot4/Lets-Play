@@ -4,6 +4,7 @@
     Author     : Isaac Espinoza y Edson Arguello
 --%>
 
+<%@page import="UsuarioDBA.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +22,26 @@
     <script defer src="profile.js"></script>
     <title>Perfil | Justplay</title>
 </head>
+
+
+<%
+    Usuario usuario = new Usuario();
+    usuario = (Usuario) request.getAttribute("UsuarioLog");
+    String user = usuario.getUsuario();
+    String nombre = usuario.getNombre();
+    String ApellidoP = usuario.getApellidoP();
+    String ApelidoM = usuario.getApellidoM();
+    String correo = usuario.getCorreo();
+    String Foto = usuario.getFotografia();
+    
+    String NombreCompleto = nombre + " " + ApellidoP + " " + ApelidoM;
+    
+    
+    String info;
+
+%>
+
+
 <body class="colorBody slideBarScroll">
     <div class ="static">
         <nav class="navbar navbar-expand-lg navColor">
@@ -56,7 +77,7 @@
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo">NachtDenos</h3>
+                <h3 class="titulo"> <% out.print(user); %> </h3>
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
@@ -66,9 +87,9 @@
                     <li>Edad:</li>
                 </ul>
                 <ul class="lista-datos">
-                    <li>Edson Arguello Tienda</li>
-                    <li>NachtDenos</li>
-                    <li>eeatienda2001@hotmail.com</li>
+                    <li><% out.print(NombreCompleto); %></li>
+                    <li><% out.print(user); %></li>
+                    <li><% out.print(correo); %></li>
                     <li>20 años</li>
                 </ul>
             </div>

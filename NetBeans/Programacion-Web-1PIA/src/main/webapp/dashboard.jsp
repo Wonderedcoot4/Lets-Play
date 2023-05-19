@@ -242,11 +242,12 @@
             <p  name="CorreoDash"class="post__headerSpecial"> <% out.print(usuario2.getCorreo()); %></p>
         </div>
         <div class="row colorText allignIcon">
-            <a href="Profile.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-body iconConfig"></i></i></i>
-                Perfil</a>
-            
+            <form action="ProfileInfoServlet" method="get">
+                <button type="submit" class="btn colorIcon" type="submit" ><i class="icon ion-md-body iconConfig"></i><a>
+                        Perfil</a></button>
+            </form>
             <form action="ProfileConfigServlet" method="get" >
-                <button type="submit" class="btn colorIcon" ><i class="icon ion-md-construct iconConfig"><p>Configuracion</p></i></button>
+                <button type="submit" class="btn colorIcon" ><i class="icon ion-md-construct iconConfig"><a>Configuracion</a></i></button>
           <!--  <a type="submit" href="configuration.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
                 Configuración</a>  -->
             </form>    

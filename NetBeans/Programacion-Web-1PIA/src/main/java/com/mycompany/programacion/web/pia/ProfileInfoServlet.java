@@ -25,11 +25,14 @@ import org.json.simple.JSONObject;
  *
  * @author isaac
  */
-@WebServlet(name = "ReturnToDashboard", urlPatterns = {"/ReturnToDashboard"})
-public class ReturnToDashboard extends HttpServlet {
+
+//Servlet para traer la informacion al perfil de usuario
+@WebServlet(name = "ProfileInfoServlet", urlPatterns = {"/ProfileInfoServlet"})
+public class ProfileInfoServlet extends HttpServlet {
     private Usuario us = new Usuario();
     Usuario instancia = new Usuario();
     conexionSQL con = new conexionSQL();
+   
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -38,38 +41,38 @@ public class ReturnToDashboard extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ReturnToDashboard</title>");            
+            out.println("<title>Servlet ProfileInfoServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ReturnToDashboard at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProfileInfoServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
     }
 
+ 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         String pantalla = "";
         System.out.println("Entrando al get");
         us = (Usuario) instancia.UsuarioLog();
-         String Accion = request.getParameter("accion");
+        String Accion = request.getParameter("accion");
         System.out.println("Usuario actual :  " + us.getUsuario() + "Correo : " + us.getCorreo());
         //Hacemos otro servlet y ya
        
-            System.out.println("Regresando al dashboard");
+            System.out.println("Entrando al perfil");
            
-            pantalla = "dashboard.jsp";
+            pantalla = "Profile.jsp";
             
             request.setAttribute("UsuarioLog", us);
             
-            System.out.println("Regresando...");
+            System.out.println("Ingresando...");
             
         RequestDispatcher rd = request.getRequestDispatcher(pantalla);      
         rd.forward(request, response);
-        
     }
+
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -77,6 +80,7 @@ public class ReturnToDashboard extends HttpServlet {
         processRequest(request, response);
     }
 
+ 
     @Override
     public String getServletInfo() {
         return "Short description";
