@@ -62,7 +62,7 @@ public class ProfileConfigServlet extends HttpServlet {
         us = (Usuario) instancia.UsuarioLog();
          String Accion = request.getParameter("accion");
         System.out.println("Usuario actual :  " + us.getUsuario() + "Correo : " + us.getCorreo());
-        
+        //Hacemos otro servlet y ya
         if("Return".equals(Accion))
         {
             System.out.println("Regresando al dashboard");
@@ -70,8 +70,10 @@ public class ProfileConfigServlet extends HttpServlet {
             pantalla = "dashboard.jsp";
             
             request.setAttribute("UsuarioLog", us);
+            
             System.out.println("Regresando...");
         }
+        
         else if (Accion == null) {
             
          if (us == null) {

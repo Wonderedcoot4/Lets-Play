@@ -26,8 +26,8 @@
     <div>
         <nav class="navbar navbar-expand-lg navColor">
             <div class="col alingImage">
-                <form method="get" action="ProfileConfigServlet">
-                    <button style="background: none" onclick="ReturnDashboard2()"><a class="navbar-brand"><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle" ></a></button>
+                <form action="ReturnToDashboard" method="get" >
+                    <button style="background: none" type="submit"><a class="navbar-brand" ><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle" ></a></button>
                 </form>
             </div>
             <div class="col">
