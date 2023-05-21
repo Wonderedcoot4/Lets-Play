@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+   
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
     <script defer src="profile.js"></script>
     <title>Perfil | Justplay</title>
@@ -41,13 +42,15 @@
 
 %>
 
-
 <body class="colorBody slideBarScroll">
+   
     <div class ="static">
         <nav class="navbar navbar-expand-lg navColor">
             
                 <div class="col alingImage">
-                    <a class="navbar-brand" href="dashboard.jsp"><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle"></a>
+                    <form action="ReturnToDashboard" method="get">
+                        <button type="submit" class="btn colorIcon"><a class="navbar-brand" type="submit"><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle"></a></button>
+                    </form>
                 </div>
                 <div class="col">
                     <form class="d-flex position-relative">
@@ -58,7 +61,16 @@
                 </div>
                 <div class="col alingFlex">
                     <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal5">
-                        <img src="./Imagenes/icon.png" alt="logo" width="55px" class="rounded-circle"></a>
+                        <img src="<%
+                    String imagen2 = usuario.getFotografia();
+                    int index2 = imagen2.indexOf("Imagenes");
+                    
+                    if (index2 != -1) {
+                            String result = imagen2.substring(index2);
+                            out.print(result);
+                        }
+                    
+                    %>" alt="logo" width="55px" class="rounded-circle"></a>
                     </button>
                 </div>
         </nav>
@@ -68,7 +80,16 @@
         <div class="perfil-usuario-header">
             <div class="perfil-usuario-portada">
                 <div class="perfil-usuario-avatar">
-                    <img src="./Imagenes/icon.png" alt="img-avatar">
+                    <img src="<%
+                    String imagen3 = usuario.getFotografia();
+                    int index3 = imagen3.indexOf("Imagenes");
+                    
+                    if (index3 != -1) {
+                            String result = imagen3.substring(index3);
+                            out.print(result);
+                        }
+                    
+                    %>" alt="img-avatar">
                 </div>
                 <button type="button" class="boton-portada">
                     <i class="far fa-image"></i> Cambiar fondo
@@ -77,20 +98,20 @@
         </div>
         <div class="perfil-usuario-body">
             <div class="perfil-usuario-bio">
-                <h3 class="titulo"> <% out.print(user); %> </h3>
+                <h3 class="titulo" name="UsuarioPerfil"> <% out.print(user); %> </h3>
             </div>
             <div class="perfil-usuario-footer">
                 <ul class="lista-datos">
                     <li>Nombre:</li>
                     <li>Usuario:</li>
                     <li>Email:</li>
-                    <li>Edad:</li>
+                   <!-- <li>Edad:</li> -->
                 </ul>
                 <ul class="lista-datos">
                     <li><% out.print(NombreCompleto); %></li>
                     <li><% out.print(user); %></li>
-                    <li><% out.print(correo); %></li>
-                    <li>20 años</li>
+                    <li><% out.print(correo ); %></li>
+                 <!--   <li>20 años</li>  -->
                 </ul>
             </div>
             
@@ -148,7 +169,16 @@
     <dialog id="modal5">
             <div class="row">
                 <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal5">
-                    <img src="./Imagenes/icon.png" alt="logo" width="80px" class="rounded-circle"></a>
+                    <img src="<%
+                    String imagen4 = usuario.getFotografia();
+                    int index4 = imagen4.indexOf("Imagenes");
+                    
+                    if (index4 != -1) {
+                            String result = imagen4.substring(index4);
+                            out.print(result);
+                        }
+                    
+                    %>" alt="logo" width="80px" class="rounded-circle"></a>
                 </button>
             </div>
             <div class="row colorText allignIcon">
@@ -220,6 +250,10 @@
     </dialog>
 
 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </body>
+
 </html>

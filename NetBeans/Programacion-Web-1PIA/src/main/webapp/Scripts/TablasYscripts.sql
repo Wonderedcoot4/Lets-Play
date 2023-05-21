@@ -194,6 +194,25 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE `ConsultaPublicacionesUsuario` (in Usuario varchar(500))
+BEGIN 
+	
+    Select pub.idPublicacion, pub.Contenido, pub.FechaCreacion, pub.Titulo, pub.FotoPublicacion, pub.IdPublicador, pub.idEstatusPost, us.NombreUsuario, cat.idCategoria, cat.Categoria, est.EstatusPublicacion, pub.FechaCreacion as FechaPublicacion from publicacion pub
+    join estatuspublicacion est
+    on est.idEstatusPublicacion = pub.idEstatusPost
+    join categoria cat
+    on cat.idCategoria = pub.idCategoria
+    join usuario us
+    on us.idUsuario = pub.IdPublicador
+    where est.EstatusPublicacion = 'Activo' and us.NombreUsuario = Usuario
+    order by pub.idPublicacion DESC LIMIT 0,10;
+	
+END //
+DELIMITER ;
+
+call ConsultaPublicacionesUsuario('Bossiet')
+
 
 
 Select * from publicacion;
@@ -211,3 +230,5 @@ select count(*) as Total from publicacion;
 drop procedure UpdateUsuario;
 CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder', '2023-05-12');
 CALL LoginUsuario('Arlender21', 'Wondered9');
+
+

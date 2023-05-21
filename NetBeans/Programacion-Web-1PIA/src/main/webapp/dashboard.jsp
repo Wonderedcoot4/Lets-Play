@@ -243,10 +243,12 @@
         </div>
         <div class="row colorText allignIcon">
             <form action="ProfileInfoServlet" method="get">
-                <button type="submit" class="btn colorIcon" type="submit" ><i class="icon ion-md-body iconConfig"></i><a>
+                <button type="submit" class="btn colorIcon" ><i class="icon ion-md-body iconConfig"></i><a>
                         Perfil</a></button>
             </form>
             <form action="ProfileConfigServlet" method="get" >
+                <input type="hidden" name="UserName" value="<% out.print(usuario2.getUsuario()); %>">
+                 <input type="hidden" name="AccionServlet" value="<%out.print("Recientes"); %>">
                 <button type="submit" class="btn colorIcon" ><i class="icon ion-md-construct iconConfig"><a>Configuracion</a></i></button>
           <!--  <a type="submit" href="configuration.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
                 Configuración</a>  -->

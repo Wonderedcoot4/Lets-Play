@@ -49,7 +49,7 @@ public class CreatePost extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String Accion = request.getParameter("accion");
+             String Accion = request.getParameter("accion");
         
         
             

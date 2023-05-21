@@ -36,6 +36,7 @@ public class Usuario {
         public String ConfirmarContraseña;
         public String Fotografia;
         public static Usuario log;
+        
     public void setFotografia(String Fotografia) {
         this.Fotografia = Fotografia;
     }
@@ -118,8 +119,8 @@ public class Usuario {
     }
 
    
-        conexionSQL con = new conexionSQL();
-        Connection cn;
+    conexionSQL con = new conexionSQL();
+    Connection cn;
         
          public void SetNombre(String name)
         {

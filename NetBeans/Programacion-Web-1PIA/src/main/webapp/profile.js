@@ -1,4 +1,9 @@
 
+$(document).ready(function(){
+   var publicaciones; 
+   getPublicacionesUsuario();
+});
+
 //Modal2
 const btnAbrirModal5 = document.querySelector("#btn-abrir-modal5");
 const btnCerrarModal5 = document.querySelector("#btn-cerrar-modal5");
@@ -25,3 +30,68 @@ btnAbrirModal6.addEventListener("click",()=>{
 btnCerrarModal6.addEventListener("click",()=>{
     modal6.close();
 })
+
+function getPublicacionesUsuario()
+{
+    console.log("GET PUBLICACIONES RECIENTES");
+    
+                $.ajax({
+                    
+                    url:"PublicacionesUsuario?accion=Recientes"
+                    ,type: "GET"
+                    ,dataType: "JSON"
+                    , success: function (data) {
+                        console.log("data", data);
+                        publicaciones = data;
+                          console.log("Entro el ajax");
+                        for (var i = 0; i < Object.keys(data).length; i++) 
+                        {
+                            console.log("Recuperando");
+                            console.log("Data : " + data[i]);
+                            
+                            $("#post").append(
+                                    $("<div>").addClass("post__avatar").append(
+                                        $("<img>").attr("src",  data[i].FotoPublicacion)).append(
+                                    $("<div>").addClass("post_body").append(
+                                        $("<div>").addClass("post_header").append(
+                                            $("<div>").addClass("post__headerText colorText").append(
+                                                $("<h3>").text(data[i].NombreUsuario).append(
+                                                $("<span>").addClass("post__headerSpecial").text(data[i].Categoria)))).append(
+                                        $("<div>").addClass("post__headerDescription colorText").append(
+                                            $("<h4>").text(data[i].Titulo).append(
+                                            $("<p>").text(data[i].Contenido))))).append(
+                                            ))
+                            )
+                                
+                                
+                
+                        }
+                        
+                        
+                    }
+                });
+           
+           
+           
+}
+
+/*
+  $("#DivRowPost").append(
+                                    $("<div>").addClass("feed").append
+                            (
+                                    $("<div>").addClass("post").attr("id", "idPublicacion" + data[i].idPublicacion).append
+                                        (
+                                        $("<div>").addClass("post_avatar").append(
+                                           $("<img>").attr("background-image : url=Imagenes/JustPlay.png") 
+                                           )
+                                        ).append(
+                                        $("<div>").addClass("post_body").append(
+                                         $("<div>").addClass("post__header").append(
+                                            $("<div>").addClass("post__headerText colorText").append(
+                                                $("<h5>").text(data[i].NombreUsuario).append(
+                                                $("<span>").addClass("post__headerSpecial").text(data[i].Categoria)))).append(
+                                            $("<div>").addClass("post__headerDescription colorText").append(
+                                                $("<h4>").text(data[i].Titulo).append(
+                                                $("<p>").text(data[i].Contenido))))).append(
+
+*/
