@@ -69,7 +69,7 @@ function getPublicacionesUsuario()
                                                         $("<button>").addClass("btn colorIcon").append(
                                                             $("<i>").addClass("icon ion-md-share iconConfig")))).append(
                                                    $("<div>").addClass("col allignIcon colorIcon").append(
-                                                        $("<button>").addClass("btn colorIcon").attr("id", "EditPostButton").append(
+                                                        $("<button>").addClass("btn colorIcon").attr("id", data[i].data[i].idPublicacion).attr("name", "ButtonEditPost").append(
                                                             $("<i>").addClass("icon ion-md-flower iconConfig")))))))
                                     
                                 

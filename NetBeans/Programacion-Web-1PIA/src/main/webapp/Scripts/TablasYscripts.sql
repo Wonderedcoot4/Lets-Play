@@ -155,11 +155,27 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE `consultaPostRecientesIndex`( in indice int, in LimitPost int)
+BEGIN 
+	Select pub.idPublicacion, pub.Contenido, pub.FechaCreacion, pub.Titulo, pub.FotoPublicacion, pub.IdPublicador, pub.idEstatusPost, us.NombreUsuario, cat.idCategoria, cat.Categoria, est.EstatusPublicacion, pub.FechaCreacion as FechaPublicacion from publicacion pub
+    join estatuspublicacion est
+    on est.idEstatusPublicacion = pub.idEstatusPost
+    join categoria cat
+    on cat.idCategoria = pub.idCategoria
+    join usuario us
+    on us.idUsuario = pub.IdPublicador
+    where est.EstatusPublicacion = 'Activo'
+    order by pub.idPublicacion DESC LIMIT indice,LimitPost;
+    
+END //
+DELIMITER ;
 
 
 
 
-drop procedure consultaPostRecientes
+
+drop procedure consultaPostRecientesIndex
 
  select idEstatusPublicacion FROM estatuspublicacion where EstatusPublicacion = 'Activo'
  select idCategoria FROM categoria where Categoria = 'Lucha'
@@ -211,8 +227,8 @@ BEGIN
 END //
 DELIMITER ;
 
-call ConsultaPublicacionesUsuario('Bossiet')
-
+call ConsultaPublicacionesUsuario('Wonder');
+call consultaPostRecientesIndex(10, 0);
 
 
 Select * from publicacion;
@@ -227,7 +243,7 @@ limit 0, 5;
 
 select count(*) as Total from publicacion;
 
-drop procedure UpdateUsuario;
+drop procedure ConsultaPublicacionesUsuario;
 CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder', '2023-05-12');
 CALL LoginUsuario('Arlender21', 'Wondered9');
 

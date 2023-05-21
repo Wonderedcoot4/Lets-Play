@@ -50,7 +50,7 @@ public class CreatePost extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
              String Accion = request.getParameter("accion");
-        
+            // String index = request.getParameter("Index");
         
             
             if ("Recientes".equals(Accion)) {
@@ -80,6 +80,37 @@ public class CreatePost extends HttpServlet {
                 }
                 System.out.println("Json : " +  json);
                 out.print(json);
+            }
+            List<Post> publis = null;
+            if ("index".equals(Accion)) 
+            {
+                 //int indice = Integer.parseInt(Accion);
+                 String Indice = request.getParameter("index");
+                 int indice = Integer.parseInt(Indice);
+                 System.out.println("Recientes, entrando en el get con indice" + indice);
+                 publis = instancia.consultarPublicacionesIndex(indice, 10);
+                 PrintWriter out = response.getWriter();
+                 JSONObject json = new JSONObject();
+            
+                for (int i = 0; i < publis.size(); i++) {
+                    JSONObject jsoncito = new JSONObject();
+                    jsoncito.put("idPublicacion", publis.get(i).getId());
+                    jsoncito.put("Contenido", publis.get(i).getContenido());
+                    jsoncito.put("Titulo", publis.get(i).getTitulo());
+                    jsoncito.put("FotoPublicacion", publis.get(i).getFoto());
+                    jsoncito.put("NombreUsuario", publis.get(i).getUsuario());
+                    jsoncito.put("idCategoria", publis.get(i).getIdCat());
+                    jsoncito.put("idEstatusPost", publis.get(i).getIdEstatus());
+                    jsoncito.put("EstatusPublicacion", publis.get(i).getEstatus());
+                    jsoncito.put("Categoria", publis.get(i).getCategoria());
+                    jsoncito.put("FechaCreacion", publis.get(i).getFecha());
+                    
+                    json.put(i, jsoncito);
+                    
+                }
+                  System.out.println("Json : " +  json);
+                  out.print(json);
+
             }
         
     }

@@ -96,6 +96,8 @@
             </div>
         </div>
         
+      
+        
         <div class="container mr-1">
             <div class="row" id="ColumnaPost">
                 <div class="col" id="DivRowPost">
@@ -148,10 +150,27 @@
                             <img src="./Imagenes/boton.png" width="80px" ></a>
                         </button>
                     </div>
+                
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center" >
+        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    </ul>
+  </nav>
             
+                
             </div>
         </div>
+          <div class="col" style="text-align: right">
+            <button class="btn btn-outline-primary btn-sm" id="btnVerTodas" onclick="getPublicacionesIndex(0)">Ver todas</button>
+             
+        </div>
     </div>
+            
+            
     <footer class="bg-dark text-center text-white">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
           <p>Pagina creada por:</p>

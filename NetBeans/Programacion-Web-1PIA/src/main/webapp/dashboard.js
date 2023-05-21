@@ -64,6 +64,60 @@ function getDatosUsuario()
 }
 
 
+
+function getPublicacionesIndex(index)
+{
+    console.log("GET PUBLICACIONES INDEX")
+    
+    $.ajax({
+        url:"CreatePost?accion=index&index=" + index
+        ,type: "GET"
+        ,dataType: "JSON"
+        , success: function (data){
+            console.log("data", data);
+            publicaciones = data;
+            
+            for (var i = 0; i < Object.keys(data).length; i++) {
+                $("#DivRowPost").append(
+                                    $("<div>").addClass("feed").append
+                            (
+                                    $("<div>").addClass("post").attr("id", "idPublicacion" + data[i].idPublicacion).append
+                                        (
+                                        $("<div>").addClass("post_avatar").append(
+                                           $("<img>").attr("background-image : url=Imagenes/JustPlay.png") 
+                                           )
+                                        ).append(
+                                        $("<div>").addClass("post_body").append(
+                                         $("<div>").addClass("post__header").append(
+                                            $("<div>").addClass("post__headerText colorText").append(
+                                                $("<h5>").text(data[i].NombreUsuario).append(
+                                                $("<span>").addClass("post__headerSpecial").text(data[i].Categoria)))).append(
+                                            $("<div>").addClass("post__headerDescription colorText").append(
+                                                $("<h4>").text(data[i].Titulo).append(
+                                                $("<p>").text(data[i].Contenido))))).append(
+                                            $("<div>").addClass("post__footer").append(
+                                                $("<div>").addClass("col allignIcon colorIcon").append(
+                                                    $("<button>").addClass("btn colorIcon").append(
+                                                        $("<i>").addClass("icon ion-ios-heart iconConfig")))).append(
+                                                $("<div>").addClass("col allignIcon colorIcon").append(
+                                                    $("<button>").addClass("btn colorIcon").append(
+                                                        $("<i>").addClass("icon ion-md-share iconConfig"))))))
+                                    
+                             )
+                             
+                                    
+                                );
+            }
+        }
+        , error: function(error)
+        {
+            console.log("Error", error);
+        }
+        
+    })
+}
+
+
 function getPublicacionesRecientes()
 {
     console.log("GET PUBLICACIONES RECIENTES")

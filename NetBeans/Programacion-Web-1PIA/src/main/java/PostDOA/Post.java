@@ -368,4 +368,56 @@ public class Post {
         return datos;
     }
     
+    public List<Post> consultarPublicacionesIndex(int indice, int Cantidad)
+    {
+        List<Post> datos = new ArrayList();
+        Connection conn;
+        PreparedStatement stm;
+        ResultSet rs;
+        int res;
+        
+        try{
+            con.getConnection();
+            cn = con.conectar();
+            
+            String statement = "{CALL consultaPostRecientesIndex(?,?)}";
+           
+            stm = cn.prepareCall(statement);
+            stm.setInt(1, indice);
+            stm.setInt(2, Cantidad);
+            
+            rs = stm.executeQuery();
+            
+            while(rs.next())
+            {
+               Post poste = new Post();
+               poste.setId(rs.getInt("idPublicacion"));
+               poste.setContenido(rs.getString("Contenido"));
+               poste.setFecha(rs.getString("FechaCreacion"));
+               poste.setTitulo(rs.getString("Titulo"));
+               poste.setFoto(rs.getString("FotoPublicacion"));
+               poste.setUsuario(rs.getString("NombreUsuario"));
+               poste.setIdCat(rs.getInt("idCategoria"));
+               poste.setIdEstatus(rs.getInt("idEstatusPost"));
+               poste.setCategoria(rs.getString("Categoria"));
+               poste.setEstatus(rs.getString("EstatusPublicacion"));
+               
+               datos.add(poste);
+               //Notas de isaac
+               /*
+               Ya entro en el get y guarda la consulta, verificar que marca en consola
+               Isaac 4:46pm 
+                */
+            }
+            cn.close();
+            System.out.println("Consulta exitosa");
+        }catch(Exception e)
+        {
+            System.out.println("Error en la consulta de post");
+            
+        }
+        
+        return datos;
+    }
+    
 }
