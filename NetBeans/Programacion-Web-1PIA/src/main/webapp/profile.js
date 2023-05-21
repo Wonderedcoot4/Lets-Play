@@ -49,19 +49,29 @@ function getPublicacionesUsuario()
                             console.log("Recuperando");
                             console.log("Data : " + data[i]);
                             
-                            $("#post").append(
-                                    $("<div>").addClass("post__avatar").append(
-                                        $("<img>").attr("src",  data[i].FotoPublicacion)).append(
-                                    $("<div>").addClass("post_body").append(
-                                        $("<div>").addClass("post_header").append(
-                                            $("<div>").addClass("post__headerText colorText").append(
-                                                $("<h3>").text(data[i].NombreUsuario).append(
-                                                $("<span>").addClass("post__headerSpecial").text(data[i].Categoria)))).append(
-                                        $("<div>").addClass("post__headerDescription colorText").append(
-                                            $("<h4>").text(data[i].Titulo).append(
-                                            $("<p>").text(data[i].Contenido))))).append(
-                                            ))
-                            )
+                            $("#DivRowPost").addClass("row").append(
+                                    $("<div>").addClass("post").append(
+                                        $("<div>").addClass("post_avatar").append(
+                                            $("<img>").attr("src", data[i].FotoPublicacion))).append(
+                                        $("<div>").addClass("post_body").append().append(
+                                            $("<div>").addClass("post_header").append(
+                                                 $("<div>").addClass("post__headerText colorText").append(
+                                                    $("<h3>").text(data[i].NombreUsuario).append(
+                                                    $("<span>").addClass("post__headerSpecial").text(data[i].Categoria)))).append(
+                                                 $("<div>").addClass("post__headerDescription colorText").append(
+                                                    $("<h4>").text(data[i].Titulo).append(
+                                                    $("<p>").text(data[i].Contenido))))).append(
+                                                 $("<div>").addClass("post__footer").append(
+                                                   $("<div>").addClass("col allignIcon colorIcon").append(
+                                                        $("<button>").addClass("btn colorIcon").append(
+                                                            $("<i>").addClass("icon ion-ios-heart iconConfig")))).append(
+                                                   $("<div>").addClass("col allignIcon colorIcon").append(
+                                                        $("<button>").addClass("btn colorIcon").append(
+                                                            $("<i>").addClass("icon ion-md-share iconConfig")))).append(
+                                                   $("<div>").addClass("col allignIcon colorIcon").append(
+                                                        $("<button>").addClass("btn colorIcon").attr("id", "EditPostButton").append(
+                                                            $("<i>").addClass("icon ion-md-flower iconConfig")))))))
+                                    
                                 
                                 
                 
@@ -74,6 +84,27 @@ function getPublicacionesUsuario()
            
            
 }
+/*
+ * $("<div>").addClass("post__avatar").append(
+                                        $("<img>").attr("src",  data[i].FotoPublicacion)).append(
+                                    $("<div>").addClass("post_body").append(
+                                        $("<div>").addClass("post_header").append(
+                                            $("<div>").addClass("post__headerText colorText").append(
+                                                $("<h3>").text(data[i].NombreUsuario).append(
+                                                $("<span>").addClass("post__headerSpecial").text(data[i].Categoria)))).append(
+                                        $("<div>").addClass("post__headerDescription colorText").append(
+                                            $("<h4>").text(data[i].Titulo).append(
+                                            $("<p>").text(data[i].Contenido))))).append(
+                                            ))
+                            )
+ * 
+ * 
+ * 
+ * 
+ */
+
+
+
 
 /*
   $("#DivRowPost").append(

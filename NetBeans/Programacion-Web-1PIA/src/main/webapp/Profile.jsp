@@ -116,10 +116,10 @@
             </div>
             
             <div class="publicacion-body">
-                <div class="row">
+                <div class="row" id="DivRowPost">
                     <p class="text-publi">Publicaciones</p>
                 </div>
-                <div class="post">
+                <div class="post" >
                     <div class="post__avatar">
                         <img src="./Imagenes/icon.png">
                     </div>
