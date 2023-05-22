@@ -95,9 +95,19 @@ function getPublicacionesIndex(index)
             publicaciones = data; //Ya con esto se despliega sola, quitarlo y listo
             /*PAGINADOR*/
             
+            var claseAnt = "";
+            if (pagActual == 1) {
+                claseAnt = "disabled"
+            }
+            
+            
+            
+            
             $("#PaginadorLi").empty();
             $("#PaginadorLi").addClass("pagination justify-content-center").append(
-                    $("<li>").addClass("page-item").append("<a>").addClass("page-link").text("Anterior"));
+                    $("<li>").addClass("page-item").addClass(claseAnt).append("<a>").addClass("page-link").text("Anterior"));
+            
+            
             
             /*Publicacion de las paginas*/
             
@@ -114,11 +124,15 @@ function getPublicacionesIndex(index)
                     );
             }
             
+            var claseSig = "";
+            if (pagActual == pags) {
+                claseSig = "disabled"
+            }
             
             
             
             $("#PaginadorLi").addClass("pagination justify-content-center").append(
-                    $("<li>").addClass("page-item").append("<a>").addClass("page-link").text("Siguiente"));
+                    $("<li>").addClass("page-item").addClass(claseSig).append("<a>").addClass("page-link").text("Siguiente"));
             
           
             
@@ -362,24 +376,26 @@ function getPaginadorClicks()
         var index = 0;
         var item = $(this).text();
         
-        if (item == "Siguiente") {
+//        if ($(this).hasClass("disabled")) {
+//            
+//        }
+        if (!$(this).hasClass("disabled")) {
+              
+            if (item == "Siguiente") {
             item = pagActual + 1;
-        }else if (item == "Anterior") {
+            }else if (item == "Anterior") {
             item = pagActual - 1;
-        }
-        else //Numero 
-        {
+            }
+            
+            item -1;
+           
             pagActual = item;
+            console.log("Pagina actual" + pagActual);
             index = (item*cantPublicaciones) - cantPublicaciones;
+            limpiarDashboard();
+            getPublicacionesIndex(index);
         }
-        /*
-        1- 0
-        2 -20 -10 -10
-        3 - 30 - 10 -20
-        */
-        pagActual = item;
-        limpiarDashboard();
-        getPublicacionesIndex(index);
+      
     });
 }
 
