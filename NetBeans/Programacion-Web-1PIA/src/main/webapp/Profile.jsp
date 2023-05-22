@@ -70,7 +70,7 @@
                             out.print(result);
                         }
                     
-                    %>" alt="logo" width="55px" class="rounded-circle"></a>
+                    %>" id="imagenPerfil" alt="logo" width="55px" class="rounded-circle"></a>
                     </button>
                 </div>
         </nav>
@@ -144,7 +144,7 @@
                                 <button class="btn colorIcon" type="submit"><i class="icon ion-md-share iconConfig"></i></button>
                             </div>
                             <div class="col allignIcon colorIcon">
-                                <button class="btn colorIcon" type="submit"><i class="icon ion-md-flower iconConfig"></i></button>
+                                <button class="btn colorIcon" id="btn-abrir-modal4" type="submit"><i class="icon ion-md-flower iconConfig"></i></button>
                             </div>
 
                         </div>
@@ -247,6 +247,44 @@
                     </div>
                 </div>
             </div>
+    </dialog>
+                
+     <dialog id="modal4">
+        <div class="row">
+            <div class="col-11"></div>
+            <div class="col-1">
+                <button class="btn colorIcon" id="btn-cerrar-modal4"><i class="icon ion-md-close iconConfig"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <input class="inTitle colorText" type="text" name="title" id="TituloPostModal" placeholder="Titulo..." value="Hola soy nuevo">
+        </div>
+        <div class="row">
+            <textarea class="inText colorText" placeholder="¿Que estas pensando?" rows="10" id="ContenidoPostModal">Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</textarea>
+            <select name="Categoria">
+                    <option value="AccionyAventura" name="categoria">Accion y Aventura</option>
+                    <option value="Lucha" name="categoria">Lucha</option>
+                    <option value="Carreras" name="categoria">Carreras</option>
+                    <option value="Clasicos" name="categoria">Clasicos</option>
+                    <option value="Plataformas" name="categoria">Plataformas</option>
+                    <option value="Independientes" name="categoria">Independientes</option>
+                    <option value="Familiares" name="categoria">Familiares</option>
+                    
+                </select>
+        </div>
+        <div class="row">
+            <div class="post__footer">
+                <div class="col colorIcon">
+                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-image iconConfig"></i></button>
+                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-compass iconConfig"></i></button>
+                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-happy iconConfig"></i></button>
+                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-trash iconConfig"></i></button>
+                </div>
+                <div class="col-1">
+                    <button class="btn colorIcon"><i class="icon ion-md-send iconConfig"></i></button>
+                </div>
+            </div>
+        </div>
     </dialog>
 
 

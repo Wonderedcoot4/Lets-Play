@@ -335,7 +335,7 @@ public class Post {
            stm.setString(1, user);
             
             rs = stm.executeQuery();
-            
+            //NO ME TRAJE LA FOTO DE PERFIL XD
             while(rs.next())
             {
                Post poste = new Post();

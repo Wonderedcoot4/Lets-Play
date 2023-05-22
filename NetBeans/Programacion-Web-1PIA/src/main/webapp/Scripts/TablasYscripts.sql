@@ -246,6 +246,7 @@ select count(idPublicacion) as Total from publicacion;
 
 
 Select * from publicacion;
+Select * from categoria;
 Select * from usuario 
 -- join pertinentes para los estatus y asi
 limit 0, 5;
@@ -260,5 +261,6 @@ select count(*) as Total from publicacion;
 drop procedure ConsultaPublicacionesUsuario;
 CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder', '2023-05-12');
 CALL LoginUsuario('Arlender21', 'Wondered9');
+CALL consultarTotalPublicaciones;
 
 
