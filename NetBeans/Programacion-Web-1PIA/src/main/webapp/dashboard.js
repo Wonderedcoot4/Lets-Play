@@ -9,7 +9,8 @@ var cantPublicaciones = 10;
 
 $(document).ready(function(){
    var publicaciones; 
-   // getPublicacionesRecientes();
+    getPublicacionesRecientes();
+    //getPublicacionesIndex(0);
     getClicks();
 });
 
@@ -382,12 +383,13 @@ function getPaginadorClicks()
         if (!$(this).hasClass("disabled")) {
               
             if (item == "Siguiente") {
+                
             item = pagActual + 1;
             }else if (item == "Anterior") {
             item = pagActual - 1;
             }
             
-            item -1;
+            
            
             pagActual = item;
             console.log("Pagina actual" + pagActual);
