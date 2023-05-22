@@ -2,11 +2,14 @@
 const btnAbrirModal = document.querySelector("#btn-abrir-modal");
 const btnCerrarModal = document.querySelector("#btn-cerrar-modal");
 const modal = document.querySelector("#modal");
+
+var pagActual = 1;
 //var publicaciones;
 
 $(document).ready(function(){
    var publicaciones; 
-    getPublicacionesRecientes();
+   // getPublicacionesRecientes();
+    getClicks();
 });
 
 
@@ -63,7 +66,20 @@ function getDatosUsuario()
     console.log("Entrando al get de configuracion perfil")
 }
 
+function getClicks()
+{
+    $("#btnVerTodas").on("click", function(){
+        limpiarDashboard();
+        $("#PaginadorRow").show()    
+    })
+}
 
+function limpiarDashboard()
+{
+    //$("#DivRowPost").empty();
+    //$("#ColumnaPost").empty();
+    $("#rowPublicaciones").empty();
+}
 
 function getPublicacionesIndex(index)
 {
@@ -75,7 +91,35 @@ function getPublicacionesIndex(index)
         ,dataType: "JSON"
         , success: function (data){
             console.log("data", data);
-            publicaciones = data;
+            publicaciones = data; //Ya con esto se despliega sola, quitarlo y listo
+            /*PAGINADOR*/
+            
+            $("#PaginadorLi").empty();
+            $("#PaginadorLi").addClass("pagination justify-content-center").append(
+                    $("<li>").addClass("page-item").append("<a>").addClass("page-link").text("Anterior"));
+            
+            /*Publicacion de las paginas*/
+            
+            var total = data[0].TotalPublicaciones;
+            var pags = Math.ceil(total/10);
+            
+            for (var i = 0; i < pags; i++) {
+                var claseActiva = '';
+                if (pagActual == i +1) claseActiva = "active";
+                    
+                
+                  $("#PaginadorLi").addClass("pagination justify-content-center").append(
+                    $("<li>").addClass("page-item").addClass(claseActiva).append("<a>").addClass("page-link").text(i + 1)
+                    );
+            }
+            
+            
+            
+            
+            $("#PaginadorLi").addClass("pagination justify-content-center").append(
+                    $("<li>").addClass("page-item").append("<a>").addClass("page-link").text("Siguiente"));
+            
+          
             
             for (var i = 0; i < Object.keys(data).length; i++) {
                 $("#DivRowPost").append(
@@ -108,6 +152,42 @@ function getPublicacionesIndex(index)
                                     
                                 );
             }
+            
+            
+            
+            //publicaciones = data; //Ya con esto se despliega sola, quitarlo y listo
+            
+//            for (var i = 0; i < Object.keys(data).length; i++) {
+//                $("#DivRowPost").append(
+//                                    $("<div>").addClass("feed").append
+//                            (
+//                                    $("<div>").addClass("post").attr("id", "idPublicacion" + data[i].idPublicacion).append
+//                                        (
+//                                        $("<div>").addClass("post_avatar").append(
+//                                           $("<img>").attr("background-image : url=Imagenes/JustPlay.png") 
+//                                           )
+//                                        ).append(
+//                                        $("<div>").addClass("post_body").append(
+//                                         $("<div>").addClass("post__header").append(
+//                                            $("<div>").addClass("post__headerText colorText").append(
+//                                                $("<h5>").text(data[i].NombreUsuario).append(
+//                                                $("<span>").addClass("post__headerSpecial").text(data[i].Categoria)))).append(
+//                                            $("<div>").addClass("post__headerDescription colorText").append(
+//                                                $("<h4>").text(data[i].Titulo).append(
+//                                                $("<p>").text(data[i].Contenido))))).append(
+//                                            $("<div>").addClass("post__footer").append(
+//                                                $("<div>").addClass("col allignIcon colorIcon").append(
+//                                                    $("<button>").addClass("btn colorIcon").append(
+//                                                        $("<i>").addClass("icon ion-ios-heart iconConfig")))).append(
+//                                                $("<div>").addClass("col allignIcon colorIcon").append(
+//                                                    $("<button>").addClass("btn colorIcon").append(
+//                                                        $("<i>").addClass("icon ion-md-share iconConfig"))))))
+//                                    
+//                             )
+//                             
+//                                    
+//                                );
+//            }
         }
         , error: function(error)
         {

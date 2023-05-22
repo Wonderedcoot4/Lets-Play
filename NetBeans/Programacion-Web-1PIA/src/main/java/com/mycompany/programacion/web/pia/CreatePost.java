@@ -91,9 +91,10 @@ public class CreatePost extends HttpServlet {
                  publis = instancia.consultarPublicacionesIndex(indice, 10);
                  PrintWriter out = response.getWriter();
                  JSONObject json = new JSONObject();
-            
+                 int totalPubs = instancia.consultarTotal();
                 for (int i = 0; i < publis.size(); i++) {
                     JSONObject jsoncito = new JSONObject();
+                    jsoncito.put("TotalPublicaciones", totalPubs);
                     jsoncito.put("idPublicacion", publis.get(i).getId());
                     jsoncito.put("Contenido", publis.get(i).getContenido());
                     jsoncito.put("Titulo", publis.get(i).getTitulo());

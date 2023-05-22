@@ -101,7 +101,7 @@
         <div class="container mr-1">
             <div class="row" id="ColumnaPost">
                 <div class="col" id="DivRowPost">
-                    <div class="feed">
+                    <div class="feed" id="rowPublicaciones">
                         <!--Post-->
                       
                         <!--Termina Post-->
@@ -150,16 +150,17 @@
                             <img src="./Imagenes/boton.png" width="80px" ></a>
                         </button>
                     </div>
-                
-  <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center" >
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-    </ul>
-  </nav>
+                <div class="row" id="PaginadorRow" style="display: none">              
+                     <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-center" id="PaginadorLi">
+                                             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                   <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                          </ul>
+                     </nav>
+                </div>
             
                 
             </div>

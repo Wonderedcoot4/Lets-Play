@@ -227,8 +227,22 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE `consultarTotalPublicaciones` ()
+BEGIN 
+	
+ select count(idPublicacion) as Total from publicacion;
+	
+END //
+DELIMITER ;
+
+
+
 call ConsultaPublicacionesUsuario('Wonder');
-call consultaPostRecientesIndex(10, 0);
+call consultaPostRecientesIndex(0, 10);
+
+select count(idPublicacion) as Total from publicacion;
+
 
 
 Select * from publicacion;

@@ -420,4 +420,40 @@ public class Post {
         return datos;
     }
     
+    
+     public int consultarTotal()
+    {
+        List<Post> datos = new ArrayList();
+        Connection conn;
+        PreparedStatement stm;
+        ResultSet rs;
+        int res;
+        int total = 0;
+        try{
+            con.getConnection();
+            cn = con.conectar();
+            
+            String statement = "{CALL consultarTotalPublicaciones}";
+           
+            stm = cn.prepareCall(statement);
+          
+            rs = stm.executeQuery();
+            
+            while(rs.next())
+            {
+               
+               total = rs.getInt("Total");
+            }
+            cn.close();
+            System.out.println("Consulta exitosa");
+        }catch(Exception e)
+        {
+            System.out.println("Error en la consulta de post");
+            
+        }
+        
+        return total;
+    }
+    
+    
 }
