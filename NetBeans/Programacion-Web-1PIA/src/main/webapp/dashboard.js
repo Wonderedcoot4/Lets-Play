@@ -4,6 +4,7 @@ const btnCerrarModal = document.querySelector("#btn-cerrar-modal");
 const modal = document.querySelector("#modal");
 
 var pagActual = 1;
+var cantPublicaciones = 10;
 //var publicaciones;
 
 $(document).ready(function(){
@@ -76,7 +77,7 @@ function getClicks()
 
 function limpiarDashboard()
 {
-    //$("#DivRowPost").empty();
+    $("#DivRowPost").empty();
     //$("#ColumnaPost").empty();
     $("#rowPublicaciones").empty();
 }
@@ -101,7 +102,7 @@ function getPublicacionesIndex(index)
             /*Publicacion de las paginas*/
             
             var total = data[0].TotalPublicaciones;
-            var pags = Math.ceil(total/10);
+            var pags = Math.ceil(total/cantPublicaciones);
             
             for (var i = 0; i < pags; i++) {
                 var claseActiva = '';
@@ -188,6 +189,7 @@ function getPublicacionesIndex(index)
 //                                    
 //                                );
 //            }
+                getPaginadorClicks();
         }
         , error: function(error)
         {
@@ -351,6 +353,35 @@ function getPublicacionesRecientes()
                             
  * 
  */
+
+function getPaginadorClicks()
+{
+    $(".page-item").on("click", function() 
+    {
+        console.log("THIS", $(this).text());
+        var index = 0;
+        var item = $(this).text();
+        
+        if (item == "Siguiente") {
+            item = pagActual + 1;
+        }else if (item == "Anterior") {
+            item = pagActual - 1;
+        }
+        else //Numero 
+        {
+            pagActual = item;
+            index = (item*cantPublicaciones) - cantPublicaciones;
+        }
+        /*
+        1- 0
+        2 -20 -10 -10
+        3 - 30 - 10 -20
+        */
+        pagActual = item;
+        limpiarDashboard();
+        getPublicacionesIndex(index);
+    });
+}
 
 
  function check(input)
