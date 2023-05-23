@@ -83,6 +83,6 @@ conexionSQL conexion = new conexionSQL();
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }

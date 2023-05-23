@@ -253,6 +253,24 @@ END //
 DELIMITER ;
 
 
+DELIMITER //
+CREATE PROCEDURE `busquedaPublicacion` (in PARAMDEBUSQUEDA varchar(250))
+BEGIN 
+		SELECT pub.idPublicacion, pub.Contenido, pub.IdEstatusPost, pub.FechaCreacion, pub.Titulo, pub.IdCategoria, pub.FotoPublicacion, pub.IdPublicador, us.FotoPerfl
+        from publicacion pub
+        join categoria cat
+        on cat.idCategoria = pub.IdCategoria
+        join estatuspublicacion est 
+        on est.idEstatusPublicacion = pub.IdEstatusPost
+        join usuario us
+        on us.idUsuario = pub.IdPublicador
+        where Contenido LIKE CONCAT('%',PARAMDEBUSQUEDA, '%') OR Titulo LIKE CONCAT('%',PARAMDEBUSQUEDA, '%');
+		
+	
+END //
+DELIMITER ;
+
+call busquedaPublicacion('honkai');
 
 call ConsultaPublicacionesUsuario('Wonder');
 call consultaPostRecientesIndex(0, 10);
@@ -274,9 +292,9 @@ limit 0, 5;
 
 select count(*) as Total from publicacion;
 
-update publicacion set IdCategoria = 2 where idPublicacion =6 
+update publicacion set IdCategoria = 2 where idPublicacion =6 ;
 
-drop procedure ActualizarPublicacion;
+drop procedure busquedaPublicacion;
 CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder', '2023-05-12');
 CALL LoginUsuario('Arlender21', 'Wondered9');
 CALL consultarTotalPublicaciones;
