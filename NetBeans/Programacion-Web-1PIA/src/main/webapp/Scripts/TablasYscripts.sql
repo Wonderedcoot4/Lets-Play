@@ -183,7 +183,7 @@ drop procedure consultaPostRecientesIndex
 DELIMITER //
 CREATE PROCEDURE `LoginUsuario` (in Usuario varchar(50), in Contraseña varchar(50))
 BEGIN 
-	Select NombreUsuario, Contrasena, idUsuario, FotoPerfl, Correo, Nombre, Telefono, FechaNacimiento, ApellidoPaterno, ApellidoMaterno, Contrasena from usuario
+	Select NombreUsuario, Contrasena, idUsuario, FotoPerfl, Correo, Nombre, Telefono, FechaNacimiento, ApellidoPaterno, ApellidoMaterno from usuario
     where binary NombreUsuario = usuario and binary Contrasena = Contraseña;
 	
 END //
@@ -239,7 +239,8 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE `BorrarrPublicacion` (in idPost int)
 BEGIN 
-	Delete from publicacion where idPublicacion = idPost;
+	update publicacion set idEstatusPost = 2
+    where idPublicacion = idPost;
 END //
 DELIMITER ;
 
@@ -256,7 +257,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE `busquedaPublicacion` (in PARAMDEBUSQUEDA varchar(250))
 BEGIN 
-		SELECT pub.idPublicacion, pub.Contenido, pub.IdEstatusPost, pub.FechaCreacion, pub.Titulo, pub.IdCategoria, pub.FotoPublicacion, pub.IdPublicador, us.FotoPerfl
+		SELECT pub.idPublicacion, pub.Contenido, pub.IdEstatusPost,est.EstatusPublicacion, pub.FechaCreacion, pub.Titulo, pub.IdCategoria, pub.FotoPublicacion, pub.IdPublicador, us.FotoPerfl, us.NombreUsuario, cat.Categoria
         from publicacion pub
         join categoria cat
         on cat.idCategoria = pub.IdCategoria
@@ -264,13 +265,30 @@ BEGIN
         on est.idEstatusPublicacion = pub.IdEstatusPost
         join usuario us
         on us.idUsuario = pub.IdPublicador
-        where Contenido LIKE CONCAT('%',PARAMDEBUSQUEDA, '%') OR Titulo LIKE CONCAT('%',PARAMDEBUSQUEDA, '%');
+        where est.EstatusPublicacion = 'Activo' and (Contenido LIKE CONCAT('%',PARAMDEBUSQUEDA, '%') OR Titulo LIKE CONCAT('%',PARAMDEBUSQUEDA, '%'));
 		
 	
 END //
 DELIMITER ;
 
-call busquedaPublicacion('honkai');
+DELIMITER //
+CREATE PROCEDURE `categoriaPublicacion` (in PARAMDEBUSQUEDA varchar(250))
+BEGIN 
+		SELECT pub.idPublicacion, pub.Contenido, pub.IdEstatusPost,est.EstatusPublicacion, pub.FechaCreacion, pub.Titulo, pub.IdCategoria, pub.FotoPublicacion, pub.IdPublicador, us.FotoPerfl
+        from publicacion pub
+        join categoria cat
+        on cat.idCategoria = pub.IdCategoria
+        join estatuspublicacion est 
+        on est.idEstatusPublicacion = pub.IdEstatusPost
+        join usuario us
+        on us.idUsuario = pub.IdPublicador
+        where est.EstatusPublicacion = 'Activo' and (Contenido LIKE CONCAT('%',PARAMDEBUSQUEDA, '%') OR Titulo LIKE CONCAT('%',PARAMDEBUSQUEDA, '%'));
+		
+	
+END //
+DELIMITER ;
+
+call busquedaPublicacion('kevin');
 
 call ConsultaPublicacionesUsuario('Wonder');
 call consultaPostRecientesIndex(0, 10);
@@ -280,6 +298,7 @@ select count(idPublicacion) as Total from publicacion;
 
 
 Select * from publicacion;
+Select * from estatuspublicacion;
 Select * from categoria;
 Select * from usuario 
 -- join pertinentes para los estatus y asi
@@ -296,7 +315,7 @@ update publicacion set IdCategoria = 2 where idPublicacion =6 ;
 
 drop procedure busquedaPublicacion;
 CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder', '2023-05-12');
-CALL LoginUsuario('Arlender21', 'Wondered9');
+CALL LoginUsuario('Wonder', '1234');
 CALL consultarTotalPublicaciones;
 
 

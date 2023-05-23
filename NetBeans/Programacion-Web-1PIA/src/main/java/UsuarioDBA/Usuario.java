@@ -167,9 +167,10 @@ public class Usuario {
             return false;
         }
         
-        public boolean login(String User, String pass)
+        public Object login(String User, String pass)
         {
             Usuario logged = new Usuario();
+            logged.setIdUsuario(0);
             try{
            
              con.getConnection();
@@ -188,21 +189,32 @@ public class Usuario {
                      logged.setUsuario(rs.getString("NombreUsuario"));
                      logged.setCorreo(rs.getString("Correo"));
                      logged.setFotografia(rs.getString("FotoPerfl"));
-                    
+                     logged.setIdUsuario(rs.getInt("idUsuario"));
+                     logged.setUsuario(rs.getString("NombreUsuario"));
+                     logged.setCorreo(rs.getString("Correo"));
+                     logged.setFotografia(rs.getString("FotoPerfl"));
+                     logged.setNombre(rs.getString("Nombre"));
+                     logged.setApellidoP(rs.getString("ApellidoPaterno"));
+                     logged.setApellidoM(rs.getString("ApellidoMaterno"));
+                     logged.setPassword(rs.getString("Contrasena"));
+                     logged.setFechaNacimiento(rs.getString("FechaNacimiento"));
+                     System.out.println("Login CORRECTO, DATOS GUARDADOS DE MANERA EXITOSA");
+                     log = logged;
                      con.desconectar();
-                     return true;
+                     con.desconectar();
+                     return log;
                      
                 }
             }catch(Exception e)
             {
             System.out.println("Error : " + e);
            
-            return false;
+            return log;
             }
            
             con.desconectar();
             System.out.println("Error : " + "User not Found");
-            return false;
+            return log;
         }
         
         public Object LoginUsuario_sp(String User, String pass)

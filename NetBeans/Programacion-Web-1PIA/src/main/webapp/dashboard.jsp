@@ -46,10 +46,13 @@
                 <a class="navbar-brand" href="#"><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle"></a>
             </div>
             <div class="col">
-                <form class="d-flex position-relative">
-                    <button class="btn colorIcon" type="submit" id="btn-abrir-modal3" ><i class="icon ion-md-menu"></i></button>
-                    <input class="form-control colorSearchBar colorText" type="search" placeholder="Buscar" aria-label="Buscar">
-                    <button class="btn position-absolute btn-search colorIcon" type="submit"><i class="icon ion-md-search"></i></button>
+                <form class="d-flex position-relative" method="get" action="BusquedaPostServlet">
+                   <!-- <button class="btn colorIcon" type="submit" id="btn-abrir-modal3" ><i class="icon ion-md-menu"></i></button> -->
+                    <!-- AQUI ES PARA LA BUSQUEDA NORMAL -->
+                    
+                        <input class="form-control colorSearchBar colorText" type="text" placeholder="Buscar" name="barrabusquedakev" id="BarraBusqueda" aria-label="Buscar">
+                    
+                        <button class="btn position-absolute btn-search colorIcon" id="botonBusquedaPost" type="submit"><i class="icon ion-md-search"></i></button>
                 </form>
             </div>
             <div class="col alingFlex">

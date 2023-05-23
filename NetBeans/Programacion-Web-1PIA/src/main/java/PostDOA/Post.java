@@ -23,9 +23,23 @@ public class Post {
     private int IdEstatus;
     private String Categoria;
     private String Estatus;
+    private String FotoPerfil;
+    private List<Post> postBuscado = new ArrayList<>();
+
+    public String getFotoPerfil() {
+        return FotoPerfil;
+    }
+
+    public void setFotoPerfil(String FotoPerfil) {
+        this.FotoPerfil = FotoPerfil;
+    }
 
     public void setCategoria(String Categoria) {
         this.Categoria = Categoria;
+    }
+
+    public List<Post> getPostBuscado() {
+        return postBuscado;
     }
 
     public void setEstatus(String Estatus) {
@@ -424,6 +438,60 @@ public class Post {
         return datos;
     }
     
+    
+    public List<Post> busquedaPublicaciones(String texto)
+    {
+        List<Post> datos = new ArrayList();
+        Connection conn;
+        PreparedStatement stm;
+        ResultSet rs;
+        int res;
+        
+        try{
+            con.getConnection();
+            cn = con.conectar();
+            
+            String statement = "{CALL busquedaPublicacion(?)}";
+           
+            stm = cn.prepareCall(statement);
+           stm.setString(1, texto);
+            
+            rs = stm.executeQuery();
+            //NO ME TRAJE LA FOTO DE PERFIL XD
+            while(rs.next())
+            {
+               Post poste = new Post();
+               poste.setId(rs.getInt("idPublicacion"));
+               poste.setContenido(rs.getString("Contenido"));
+               
+               poste.setFecha(rs.getString("FechaCreacion"));
+               poste.setTitulo(rs.getString("Titulo"));
+               poste.setFoto(rs.getString("FotoPublicacion"));
+               poste.setUsuario(rs.getString("NombreUsuario"));
+               poste.setIdCat(rs.getInt("idCategoria"));
+               poste.setIdEstatus(rs.getInt("idEstatusPost"));
+               poste.setCategoria(rs.getString("Categoria"));
+               poste.setFotoPerfil(rs.getString("FotoPerfl"));
+               poste.setEstatus(rs.getString("EstatusPublicacion"));
+               
+               datos.add(poste);
+               postBuscado.add(poste);
+               //Notas de isaac
+               /*
+               Ya entro en el get y guarda la consulta, verificar que marca en consola
+               Isaac 4:46pm 
+                */
+            }
+            cn.close();
+            System.out.println("Consulta exitosa");
+        }catch(Exception e)
+        {
+            System.out.println("Error en la consulta de post");
+            
+        }
+        
+        return datos;
+    }
     
     
     
