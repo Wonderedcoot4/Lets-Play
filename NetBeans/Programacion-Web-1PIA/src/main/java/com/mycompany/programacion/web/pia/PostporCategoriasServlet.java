@@ -74,18 +74,135 @@ public class PostporCategoriasServlet extends HttpServlet {
             String cat ="AccionyAventura";
                 System.out.println("Recientes, entrando en el get" + cat);
             List<Post> pubs = instancia.busquedaPostCategoria(cat);
+            if (pubs.size() == 0) {
+                System.out.println("No hay nada ");
+                pantalla ="dashboard.jsp";
+                request.setAttribute("UsuarioLog", usuario);
+                
+            }
+            else{
             System.out.println("Pubs: " + pubs.get(0).getTitulo());
             request.setAttribute("UsuarioLog", usuario);
             postito.getPostBuscado();
             pantalla ="PostPorCategoria.jsp";
-            request.getSession(false).setAttribute("Accion", cat);
-               
-        }
+            request.getSession(false).setAttribute("Accion", cat); 
+            }
+         }
+             if ("3".equals(Accion)) {
+            String cat ="Clasicos";
+                System.out.println("Recientes, entrando en el get" + cat);
+            List<Post> pubs = instancia.busquedaPostCategoria(cat);
+            if (pubs.size() == 0) {
+                System.out.println("No hay nada ");
+                pantalla ="dashboard.jsp";
+                request.setAttribute("UsuarioLog", usuario);
+                
+            }
+            else{
+            System.out.println("Pubs: " + pubs.get(0).getTitulo());
+            request.setAttribute("UsuarioLog", usuario);
+            postito.getPostBuscado();
+            pantalla ="PostPorCategoria.jsp";
+            request.getSession(false).setAttribute("Accion", cat); 
+            }
+         }
+                if ("4".equals(Accion)) {
+            String cat ="Plataformas";
+                System.out.println("Recientes, entrando en el get" + cat);
+            List<Post> pubs = instancia.busquedaPostCategoria(cat);
+            if (pubs.size() == 0) {
+                System.out.println("No hay nada ");
+                pantalla ="dashboard.jsp";
+                request.setAttribute("UsuarioLog", usuario);
+                
+            }
+            else{
+            System.out.println("Pubs: " + pubs.get(0).getTitulo());
+            request.setAttribute("UsuarioLog", usuario);
+            postito.getPostBuscado();
+            pantalla ="PostPorCategoria.jsp";
+            request.getSession(false).setAttribute("Accion", cat); 
+            }
+         }
+                 if ("8".equals(Accion)) {
+            String cat ="Independientes";
+                System.out.println("Recientes, entrando en el get" + cat);
+            List<Post> pubs = instancia.busquedaPostCategoria(cat);
+            if (pubs.size() == 0) {
+                System.out.println("No hay nada ");
+                pantalla ="dashboard.jsp";
+                request.setAttribute("UsuarioLog", usuario);
+                
+            }
+            else{
+            System.out.println("Pubs: " + pubs.get(0).getTitulo());
+            request.setAttribute("UsuarioLog", usuario);
+            postito.getPostBuscado();
+            pantalla ="PostPorCategoria.jsp";
+            request.getSession(false).setAttribute("Accion", cat); 
+            }
+         }
+           if ("7".equals(Accion)) {
+            String cat ="Familiares";
+                System.out.println("Recientes, entrando en el get" + cat);
+            List<Post> pubs = instancia.busquedaPostCategoria(cat);
+            if (pubs.size() == 0) {
+                System.out.println("No hay nada ");
+                pantalla ="dashboard.jsp";
+                request.setAttribute("UsuarioLog", usuario);
+                
+            }
+            else{
+            System.out.println("Pubs: " + pubs.get(0).getTitulo());
+            request.setAttribute("UsuarioLog", usuario);
+            postito.getPostBuscado();
+            pantalla ="PostPorCategoria.jsp";
+            request.getSession(false).setAttribute("Accion", cat); 
+            }
+         }
+           if ("6".equals(Accion)) {
+            String cat ="Carreras";
+                System.out.println("Recientes, entrando en el get" + cat);
+            List<Post> pubs = instancia.busquedaPostCategoria(cat);
+            if (pubs.size() == 0) {
+                System.out.println("No hay nada ");
+                pantalla ="dashboard.jsp";
+                request.setAttribute("UsuarioLog", usuario);
+                
+            }
+            else{
+            System.out.println("Pubs: " + pubs.get(0).getTitulo());
+            request.setAttribute("UsuarioLog", usuario);
+            postito.getPostBuscado();
+            pantalla ="PostPorCategoria.jsp";
+            request.getSession(false).setAttribute("Accion", cat); 
+            }
+         }
+             if ("9".equals(Accion)) {
+            String cat ="Disparos";
+                System.out.println("Recientes, entrando en el get" + cat);
+            List<Post> pubs = instancia.busquedaPostCategoria(cat);
+            if (pubs.size() == 0) {
+                System.out.println("No hay nada ");
+                pantalla ="dashboard.jsp";
+                request.setAttribute("UsuarioLog", usuario);
+                
+            }
+            else{
+            System.out.println("Pubs: " + pubs.get(0).getTitulo());
+            request.setAttribute("UsuarioLog", usuario);
+            postito.getPostBuscado();
+            pantalla ="PostPorCategoria.jsp";
+            request.getSession(false).setAttribute("Accion", cat); 
+            }
+         }
       
-      
+            
+            
             RequestDispatcher rd = request.getRequestDispatcher(pantalla);      
             rd.forward(request, response);
         
+    
     }
 
    
