@@ -54,11 +54,20 @@ public class PostporCategoriasServlet extends HttpServlet {
             String cat ="Lucha";
                 System.out.println("Recientes, entrando en el get" + cat);
             List<Post> pubs = instancia.busquedaPostCategoria(cat);
+            
+            if (pubs.size() == 0) {
+                System.out.println("No hay nada ");
+                pantalla ="dashboard.jsp";
+                request.setAttribute("UsuarioLog", usuario);
+                
+            }
+            else{
             System.out.println("Pubs: " + pubs.get(0).getTitulo());
             request.setAttribute("UsuarioLog", usuario);
             postito.getPostBuscado();
             pantalla ="PostPorCategoria.jsp";
             request.getSession(false).setAttribute("Accion", cat);
+            }
                
         }
          if ("2".equals(Accion)) {
@@ -73,7 +82,9 @@ public class PostporCategoriasServlet extends HttpServlet {
                
         }
       
-         response.sendRedirect(pantalla);
+      
+            RequestDispatcher rd = request.getRequestDispatcher(pantalla);      
+            rd.forward(request, response);
         
     }
 
