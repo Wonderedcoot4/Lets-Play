@@ -129,7 +129,7 @@ public class CreatePost extends HttpServlet {
         String Title;
         String Titulo = request.getParameter("TituloText");
         String Contenido = request.getParameter("Contenido");
-        String Categoria = request.getParameter("categoria"); 
+        String Categoria = request.getParameter("Categoria"); 
         String UsuarioDash = request.getParameter("UsuarioActual"); 
         String Estatus = "Activo";
         String filename = null;

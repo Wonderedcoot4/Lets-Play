@@ -206,13 +206,16 @@
             <div class="post__footer">
                 <div class="col colorIcon">
                     <div class="checkbox-inline">
-                    <p><input class="form-check-input" type="checkbox" id="c01" name="categoria" value="AccionyAventura" >Accion y Aventura</p>
-                    <p><input class="form-check-input" type="checkbox" id="c02" name="categoria" value="Lucha" >Lucha</p>
-                    <p><input class="form-check-input" type="checkbox" id="c03" name="categoria" value="Carreras" >Carreras</p>
-                    <p><input class="form-check-input" type="checkbox" id="c04" name="categoria" value="Clasicos" >Clasicos</p>
-                    <p><input class="form-check-input" type="checkbox" id="c05" name="categoria" value="Plataformas" >Plataformas</p>
-                    <p><input class="form-check-input" type="checkbox" id="c06" name="categoria" value="Independientes" >Independientes</p>
-                    <p><input class="form-check-input" type="checkbox" id="c07" name="categoria" value="Familiares">Familiares</p>
+                      <select name="Categoria" id="cbCategoria">
+                    <option value="AccionyAventura" name="categoriacb">Accion y Aventura</option>
+                    <option value="Lucha" name="categoriacb">Lucha</option>
+                    <option value="Carreras" name="categoriacb">Carreras</option>
+                    <option value="Clasicos" name="categoriacb">Clasicos</option>
+                    <option value="Plataformas" name="categoriacb">Plataformas</option>
+                    <option value="Independientes" name="categoriacb">Independientes</option>
+                    <option value="Familiares" name="categoriacb">Familiares</option>
+                    
+                    </select>
                     <input class="form-check-input" type="hidden" id="c07" name="UsuarioActual" value="<% out.print(usuario2.getUsuario());  %>">
                  
                 </div>
