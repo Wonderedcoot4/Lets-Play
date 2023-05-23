@@ -79,13 +79,20 @@ $(document).on("click", ".editar", function(){
     
     modal4.showModal();
     var Nombre= document.getElementById("modal4");
-    var Nombre2= document.getElementById("DivRowPost");
+    var Nombre2= document.getElementById("POSTID");
             var TituloPost = Nombre2.querySelector("#id");
             var Elemento = Nombre.querySelector("#TituloPostModal");
             var Elemento2 = Nombre.querySelector("#ContenidoPostModal");
-            var Elemento2 = Nombre.querySelector("#ContenidoPostModal");
+            var Elemento3 = Nombre.querySelector("#cbCategoria");
+            var Elemento4 = Nombre.querySelector("#postId");
+            var Elemento5 = Nombre.querySelector("#postId2");
             Elemento.value = this.dataset.titulo;
             Elemento2.value = this.dataset.contenido;
+            Elemento3.value = this.dataset.categoria;
+            Elemento4.value = this.dataset.idpost;
+            Elemento5.value = this.dataset.idPublicacion;
+            console.log(Elemento4);
+            console.log(Elemento5);
             
 }); 
 
@@ -111,14 +118,15 @@ function getPublicacionesUsuario()
                             
                             var kevin =  data[i].FotoPublicacion.toString().substring(data[i].FotoPublicacion.toString().indexOf("Imagenes"));
                             $("#DivRowPost").addClass("row").append(
-                                    $("<div>").addClass("post").attr("id", data[i].idPublicacion).append(
+                                    $("<div>").addClass("post").attr("id", "POSTID").attr("data-idPublicacion", data[i].idPublicacion).append(
                                         $("<div>").addClass("post_avatar").append(
                                             $("<img>").addClass("rounded-circle").attr("src", fotoPerfil).attr("height", "50px").attr("width", "50px"))).append(
                                         $("<div>").addClass("post_body").append().append(
                                             $("<div>").addClass("post_header").append(
                                                  $("<div>").addClass("post__headerText colorText").append(
                                                     $("<h3>").text(data[i].NombreUsuario).append(
-                                                    $("<span>").addClass("post__headerSpecial").text(data[i].Categoria)))).append(
+                                                    $("<span>").addClass("post__headerSpecial").text(data[i].Categoria))).append(
+                                                    $("<h3>").text(data[i].idPublicacion).attr("data-idpost", data[i].idPublicacion))).append(
                                                  $("<div>").addClass("post__headerDescription colorText").append(
                                                     $("<h4>").text(data[i].Titulo).append(
                                                     $("<p>").text(data[i].Contenido)).append(
@@ -131,7 +139,7 @@ function getPublicacionesUsuario()
                                                         $("<button>").addClass("btn colorIcon").append(
                                                             $("<i>").addClass("icon ion-md-share iconConfig")))).append(
                                                    $("<div>").addClass("col allignIcon colorIcon").append(
-                                                        $("<button>").addClass("btn colorIcon").addClass("editar").attr("data-titulo", data[i].Titulo).attr("data-contenido", data[i].Contenido).attr("data-foto", data[i].FotoPublicacion).attr("data-Categoria", data[i].Categoria).attr("type", "submit").attr("id", "btn-abrir-modal4").attr("name", "ButtonEditPost").append(
+                                                        $("<button>").addClass("btn colorIcon").addClass("editar").attr("data-titulo", data[i].Titulo).attr("data-contenido", data[i].Contenido).attr("data-foto", data[i].FotoPublicacion).attr("data-categoria", data[i].Categoria).attr("data-idPost", data[i].idPublicacion).attr("type", "submit").attr("id", "btn-abrir-modal4").attr("name", "ButtonEditPost").append(
                                                             $("<i>").addClass("icon ion-md-flower iconConfig")))))))
                                     
                                 

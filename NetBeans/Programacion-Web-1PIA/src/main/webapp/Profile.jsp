@@ -250,6 +250,7 @@
     </dialog>
                 
      <dialog id="modal4">
+         <form action="EditarPublicacionServlet" method="post" name="postForm">
         <div class="row">
             <div class="col-11"></div>
             <div class="col-1">
@@ -260,8 +261,9 @@
             <input class="inTitle colorText" type="text" name="title" id="TituloPostModal" placeholder="Titulo..." value="Hola soy nuevo">
         </div>
         <div class="row">
-            <textarea class="inText colorText" placeholder="¿Que estas pensando?" rows="10" id="ContenidoPostModal">Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</textarea>
-            <select name="Categoria">
+             
+            <textarea name="Contenido" class="inText colorText" placeholder="¿Que estas pensando?" rows="10" id="ContenidoPostModal">Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</textarea>
+            <select name="Categoria" id="cbCategoria">
                     <option value="AccionyAventura" name="categoria">Accion y Aventura</option>
                     <option value="Lucha" name="categoria">Lucha</option>
                     <option value="Carreras" name="categoria">Carreras</option>
@@ -271,6 +273,9 @@
                     <option value="Familiares" name="categoria">Familiares</option>
                     
                 </select>
+           
+            <input type="hidden" id="postId" name="postIdInput">
+            
         </div>
         <div class="row">
             <div class="post__footer">
@@ -281,10 +286,11 @@
                     <button class="btn colorIcon" type="submit"><i class="icon ion-md-trash iconConfig"></i></button>
                 </div>
                 <div class="col-1">
-                    <button class="btn colorIcon"><i class="icon ion-md-send iconConfig"></i></button>
+                    <button type="submit" class="btn colorIcon"><i class="icon ion-md-send iconConfig"></i></button>
                 </div>
             </div>
         </div>
+         </form>
     </dialog>
 
 

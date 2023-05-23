@@ -138,7 +138,7 @@ public class ProfileConfigServlet extends HttpServlet {
              Part part = request.getPart("archivo");
                NombreArchivo = extractFileName(part);
         
-              String dirSave = "C:\\Users\\isaac\\Desktop\\Programacion Web 1\\Programacion-Web\\NetBeans\\Programacion-Web-1PIA\\src\\main\\webapp\\Imagenes" + File.separator + NombreArchivo;
+              String dirSave = "C:\\Users\\isaac\\Desktop\\Programacion Web 1\\Programacion-Web\\NetBeans\\Programacion-Web\\NetBeans\\Programacion-Web-1PIA\\src\\main\\webapp\\Imagenes" + File.separator + NombreArchivo;
              File fileSaveDir = new File(dirSave);
              part.write(fileSaveDir + File.separator);
             Usuario us = new Usuario();

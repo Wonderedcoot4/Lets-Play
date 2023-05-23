@@ -75,7 +75,7 @@ public class RegistroServlet extends HttpServlet {
         String NombreArchivo;
         String fileName;
         NombreArchivo = extractFileName(part);
-        String dirSave = "C:\\Users\\isaac\\Desktop\\Programacion Web 1\\Programacion-Web\\NetBeans\\Programacion-Web-1PIA\\src\\main\\webapp\\Imagenes" + File.separator + NombreArchivo;
+        String dirSave = "C:\\Users\\isaac\\Desktop\\Programacion Web 1\\Programacion-Web\\NetBeans\\Programacion-Web\\NetBeans\\Programacion-Web-1PIA\\src\\main\\webapp\\Imagenes" + File.separator + NombreArchivo;
         File fileSaveDir = new File(dirSave);
         
         part.write(fileSaveDir + File.separator);
