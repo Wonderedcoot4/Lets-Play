@@ -228,6 +228,22 @@ END //
 DELIMITER ;
 
 DELIMITER //
+CREATE PROCEDURE `ActualizarPublicacion` (in TituloPublicacion varchar(500), in ContenidoPost varchar(500), in CategoriaPost varchar(100), in idPost int)
+BEGIN 
+	set @idCategoria = (select idCategoria from categoria where Categoria = CategoriaPost); 
+	Update publicacion set Titulo = TituloPublicacion, Contenido = ContenidoPost, IdCategoria = @idCategoria
+	where idPublicacion =idPost;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE `BorrarrPublicacion` (in idPost int)
+BEGIN 
+	Delete from publicacion where idPublicacion = idPost;
+END //
+DELIMITER ;
+
+DELIMITER //
 CREATE PROCEDURE `consultarTotalPublicaciones` ()
 BEGIN 
 	
@@ -258,7 +274,9 @@ limit 0, 5;
 
 select count(*) as Total from publicacion;
 
-drop procedure ConsultaPublicacionesUsuario;
+update publicacion set IdCategoria = 2 where idPublicacion =6 
+
+drop procedure ActualizarPublicacion;
 CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder', '2023-05-12');
 CALL LoginUsuario('Arlender21', 'Wondered9');
 CALL consultarTotalPublicaciones;

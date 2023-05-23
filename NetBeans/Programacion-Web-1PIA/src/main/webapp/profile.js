@@ -53,6 +53,10 @@ const modal6 = document.querySelector("#modal6");
 const btnAbrirModal8 = document.querySelector("#btn-abrir-modal4");
 const btnCerrarModal8 = document.querySelector("#btn-cerrar-modal4");
 const modal4 = document.querySelector("#modal4");
+//Modal 12
+const btnAbrirModal12 = document.querySelector("#btn-abrir-modal4");
+const btnCerrarModal12 = document.querySelector("#btn-cerrar-modal4");
+const modal12 = document.querySelector("#modal12");
 
 
 btnAbrirModal6.addEventListener("click",()=>{
@@ -96,6 +100,29 @@ $(document).on("click", ".editar", function(){
             
 }); 
 
+$(document).on("click", ".eliminar", function(){
+    var nombre;
+    alert("Borrar publicacion!!");
+    
+    modal12.showModal();
+    var Nombre= document.getElementById("modal12");
+    var Nombre2= document.getElementById("POSTID");
+            var TituloPost = Nombre2.querySelector("#id");
+            var Elemento7 = Nombre.querySelector("#TituloPostModal2");
+            var Elemento8 = Nombre.querySelector("#ContenidoPostModal2");
+            var Elemento9 = Nombre.querySelector("#cbCategoria2");
+            var Elemento10 = Nombre.querySelector("#postId3");
+            var Elemento11 = Nombre.querySelector("#postId4");
+            Elemento7.value = this.dataset.titulo;
+            Elemento8.value = this.dataset.contenido;
+            Elemento9.value = this.dataset.categoria;
+            Elemento10.value = this.dataset.idpost;
+            Elemento11.value = this.dataset.idPublicacion;
+            console.log(Elemento10);
+            console.log(Elemento11);
+            
+}); 
+
 
 function getPublicacionesUsuario()
 {
@@ -136,7 +163,7 @@ function getPublicacionesUsuario()
                                                         $("<button>").addClass("btn colorIcon").append(
                                                             $("<i>").addClass("icon ion-ios-heart iconConfig")))).append(
                                                    $("<div>").addClass("col allignIcon colorIcon").append(
-                                                        $("<button>").addClass("btn colorIcon").append(
+                                                        $("<button>").addClass("btn colorIcon").addClass("eliminar").attr("data-titulo", data[i].Titulo).attr("data-contenido", data[i].Contenido).attr("data-foto", data[i].FotoPublicacion).attr("data-categoria", data[i].Categoria).attr("data-idPost", data[i].idPublicacion).append(
                                                             $("<i>").addClass("icon ion-md-share iconConfig")))).append(
                                                    $("<div>").addClass("col allignIcon colorIcon").append(
                                                         $("<button>").addClass("btn colorIcon").addClass("editar").attr("data-titulo", data[i].Titulo).attr("data-contenido", data[i].Contenido).attr("data-foto", data[i].FotoPublicacion).attr("data-categoria", data[i].Categoria).attr("data-idPost", data[i].idPublicacion).attr("type", "submit").attr("id", "btn-abrir-modal4").attr("name", "ButtonEditPost").append(

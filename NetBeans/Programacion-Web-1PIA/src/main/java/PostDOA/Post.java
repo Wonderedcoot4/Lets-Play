@@ -277,6 +277,33 @@ public class Post {
        
     }  
       
+        public boolean borrarPost(int idPost)
+    {
+        try {
+            int res = 0;
+              con.getConnection();
+              cn = con.conectar();
+            
+            String statement = "{CALL BorrarrPublicacion(?)}";
+            PreparedStatement stm = cn.prepareCall(statement);
+            stm.setInt(1, idPost);
+            stm.execute();
+           
+            con.desconectar();
+            return true;
+            
+            
+            //Intentar luego como la profe hize una tabla con 3 datos llamados categoria 1, 2 y 3 y esos con join correspondian a cierta categoria en otra tabla
+        } catch (Exception e ) {
+            System.out.println("Error no se inserto en la DB");
+            System.out.println(e.toString());
+            con.desconectar();
+            return false;
+        }
+       
+    }  
+        
+      
     
     public int getId()
     {

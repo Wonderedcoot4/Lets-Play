@@ -292,6 +292,52 @@
         </div>
          </form>
     </dialog>
+                
+     <dialog id="modal12">
+         <form action="BorrarPublicacion" method="post" name="postForm">
+        <div class="row">
+            <div class="col-11"></div>
+            <div class="col-1">
+                <button class="btn colorIcon" id="btn-cerrar-modal4"><i class="icon ion-md-close iconConfig"></i></button>
+            </div>
+        </div>
+        <div class="row">
+            <input class="inTitle colorText" type="text" name="title2" id="TituloPostModal2" placeholder="Titulo..." value="Hola soy nuevo">
+        </div>
+        <div class="row">
+             
+            <textarea name="Contenido" class="inText colorText" placeholder="¿Que estas pensando?" rows="10" id="ContenidoPostModal2">Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</textarea>
+            <select name="Categoria" id="cbCategoria2">
+                    <option value="AccionyAventura" name="categoria">Accion y Aventura</option>
+                    <option value="Lucha" name="categoria">Lucha</option>
+                    <option value="Carreras" name="categoria">Carreras</option>
+                    <option value="Clasicos" name="categoria">Clasicos</option>
+                    <option value="Plataformas" name="categoria">Plataformas</option>
+                    <option value="Independientes" name="categoria">Independientes</option>
+                    <option value="Familiares" name="categoria">Familiares</option>
+                    
+                </select>
+           
+            <input type="" id="postId3" name="postIdInput">
+            <input type="" id="postId4" name="postIdInput2">
+            
+        </div>
+        <div class="row">
+            <div class="post__footer">
+                <div class="col colorIcon">
+                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-image iconConfig"></i></button>
+                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-compass iconConfig"></i></button>
+                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-happy iconConfig"></i></button>
+                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-trash iconConfig"></i></button>
+                </div>
+                <div class="col-1">
+                    <button type="submit" class="btn colorIcon"><i class="icon ion-md-send iconConfig"></i></button>
+                </div>
+            </div>
+        </div>
+         </form>
+    </dialog>
+            
 
 
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
