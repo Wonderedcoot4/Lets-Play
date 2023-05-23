@@ -77,7 +77,7 @@
             </div>
             
             <div class="menu">
-                <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
+               <a href="PostporCategoriasServlet?catPost=1" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
                     Lucha</a>
 
                 <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
@@ -91,7 +91,7 @@
                     Familiares</a>
                 <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
                     Carreras</a>
-                <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
+                <a href="PostporCategoriasServlet?catPost=2" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
                     Acción y Aventura</a>
                 <a href="#" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
                     Disparos</a>

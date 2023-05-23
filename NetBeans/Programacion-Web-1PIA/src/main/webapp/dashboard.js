@@ -147,13 +147,14 @@ function getPublicacionesIndex(index)
           
             
             for (var i = 0; i < Object.keys(data).length; i++) {
+                var kevin =  data[i].FotoPublicacion.toString().substring(data[i].FotoPublicacion.toString().indexOf("Imagenes"));
                 $("#DivRowPost").append(
                                     $("<div>").addClass("feed").append
                             (
                                     $("<div>").addClass("post").attr("id", "idPublicacion" + data[i].idPublicacion).append
                                         (
                                         $("<div>").addClass("post_avatar").append(
-                                           $("<img>").attr("background-image : url=Imagenes/JustPlay.png") 
+                                           $("<img>").attr("src", kevin).attr("height", "50px").attr("width", "50px") 
                                            )
                                         ).append(
                                         $("<div>").addClass("post_body").append(
@@ -163,7 +164,8 @@ function getPublicacionesIndex(index)
                                                 $("<span>").addClass("post__headerSpecial").text(data[i].Categoria)))).append(
                                             $("<div>").addClass("post__headerDescription colorText").append(
                                                 $("<h4>").text(data[i].Titulo).append(
-                                                $("<p>").text(data[i].Contenido))))).append(
+                                                $("<p>").text(data[i].Contenido))).append(
+                                                $("<img>").attr("src", kevin).attr("height", "200px").attr("width", "200px")))).append(
                                             $("<div>").addClass("post__footer").append(
                                                 $("<div>").addClass("col allignIcon colorIcon").append(
                                                     $("<button>").addClass("btn colorIcon").append(

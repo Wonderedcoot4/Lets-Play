@@ -70,15 +70,15 @@ public class Login extends HttpServlet {
         String username = request.getParameter("emailUsuario");
         String password = request.getParameter("passUsuario");
         Usuario usua = new Usuario();
-        Boolean isSuccess = usua.login(username, password);
-        if (isSuccess == true) {
-            response.sendRedirect("configuration.html");
-        }
-        else
-        {
-            out.println("Usuario o contraseña incorrecto");
-        }
-        
+       // Boolean isSuccess = usua.login(username, password);
+//        if (isSuccess == true) {
+//            response.sendRedirect("configuration.html");
+//        }
+//        else
+//        {
+//            out.println("Usuario o contraseña incorrecto");
+//        }
+//        
     }
 
     @Override

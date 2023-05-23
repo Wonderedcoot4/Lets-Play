@@ -17,9 +17,12 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
         <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
-        <script defer src="dashboard.js"></script>
+        <link href="./DataTable/datatables.min.css" rel="stylesheet">
+        <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+        <script  src="./DataTable/datatables.min.js"></script>
             <title>JSP Page</title>
     </head>
     <body class="slideBarScroll" style="background-color: black">
@@ -47,23 +50,20 @@
         <br>
         <br>
         
-        
-        <%
-          Post postEncontrados = new Post(); 
-          String accion;
-          accion = (String) request.getSession(false).getAttribute("Accion");
-        %>
-        
-        <%
-            
-           for(Post elemento:postEncontrados.busquedaPublicaciones(accion))
-           {
-           
-           
-            
-        %>
-        
-        <div class="feed" id="rowPublicaciones">
+        <table id="tablapublicaciones">
+            <thead>
+            <tr>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <%
+                Post post = new Post();
+                for(Post elemento:post.busquedaPostCategoria((String) request.getSession(false).getAttribute("Accion")))
+                {
+                %>
+                <tr><td>
+                     <div class="feed" id="rowPublicaciones">
                         <!--Post-->
                       
                         <!--Termina Post-->
@@ -72,38 +72,21 @@
                         
                         <div class="post" id="PostCentro">
                             <div class="post__avatar">
-                                <img src="<%
-                    String imagen2 = elemento.getFotoPerfil();
-                    int index2 = imagen2.indexOf("Imagenes");
-                    
-                    if (index2 != -1) {
-                            String result = imagen2.substring(index2);
-                            out.print(result);
-                        }
-                    
-                                %>" height="125px" width="50px">
+                                <img src="" height="125px" width="50px">
                             </div>
                             <div class="post__body">
                                 <div class="post__header">
                                     <div class="post__headerText colorText">
                                         <h3>
-                                            <% out.print(elemento.getUsuario()); %>
-                                            <span class="post__headerSpecial"><% out.print(elemento.getCategoria()); %></span>
+                                            <% out.print(elemento.getTitulo()); %>
+                                            <span class="post__headerSpecial"></span>
                                         </h3>
                                     </div>
                                     <div class="post__headerDescription colorText">
-                                        <h4><% out.print(elemento.getTitulo()); %></h4>
-                                        <p><% out.print(elemento.getContenido()); %></p>
-                                        <img src=" <%
-                    String imagen3 = elemento.getFoto();
-                    int index3 = imagen3.indexOf("Imagenes");
-                    
-                    if (index3 != -1) {
-                            String result = imagen3.substring(index3);
-                            out.print(result);
-                        }
-                    
-                    %>">
+                                        <h4></h4>
+                                        <p><</p>
+                                        <img src=" 
+                   ">
                                     </div>
                                 </div>
                                 <div class="post__footer">
@@ -123,9 +106,39 @@
                         
                     </div>
         
-        <%
+                        
+                    </td></tr>
+                <%
+                    }
+                %>
+            </tbody>
             
-            }
-            %>
+        </table>
+        
+
+       
+    
+       <script>
+        $(document).ready(function() {
+            $('#tablapublicaciones').DataTable({
+                "paging":true,
+                "pagingType":"full_numbers",
+                "dom": '<"top"lp>rt<"bottom"lp><"clear">',
+                "language": {
+                    "emptyTable": "Aún no hay publicaciones, ¡sé el primero!",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente",
+                        "first": "Inicio",
+                        "last":"Final"
+                    }
+                },
+                "ordering":false,
+                "searching":false,
+                "lengthChange":false,
+                "pageLength":10
+            });
+        });
+    </script>            
     </body>
 </html>

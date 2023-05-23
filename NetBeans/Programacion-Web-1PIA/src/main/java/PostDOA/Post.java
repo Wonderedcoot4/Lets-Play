@@ -582,5 +582,57 @@ public class Post {
         return total;
     }
     
+      
+    public List<Post> busquedaPostCategoria(String texto)
+    {
+        List<Post> datos = new ArrayList();
+        Connection conn;
+        PreparedStatement stm;
+        ResultSet rs;
+        int res;
+        
+        try{
+            con.getConnection();
+            cn = con.conectar();
+            
+            String statement = "{CALL categoriaPublicacion(?)}";
+           
+            stm = cn.prepareCall(statement);
+           stm.setString(1, texto);
+            
+            rs = stm.executeQuery();
+            
+            while(rs.next())
+            {
+               Post poste = new Post();
+               poste.setId(rs.getInt("idPublicacion"));
+               poste.setContenido(rs.getString("Contenido"));
+               poste.setFecha(rs.getString("FechaCreacion"));
+               poste.setTitulo(rs.getString("Titulo"));
+               poste.setFoto(rs.getString("FotoPublicacion"));
+               poste.setUsuario(rs.getString("NombreUsuario"));
+               poste.setIdCat(rs.getInt("idCategoria"));
+               poste.setIdEstatus(rs.getInt("idEstatusPost"));
+               poste.setCategoria(rs.getString("Categoria"));
+               poste.setFotoPerfil(rs.getString("FotoPerfl"));
+               poste.setEstatus(rs.getString("EstatusPublicacion"));
+               
+               datos.add(poste);
+               postBuscado.add(poste);
+            }
+            cn.close();
+            System.out.println("Consulta exitosa");
+        }catch(Exception e)
+        {
+            System.out.println("Error en la consulta de post");
+            
+        }
+        
+        return datos;
+    }
     
+    
+     
+     
+     
 }

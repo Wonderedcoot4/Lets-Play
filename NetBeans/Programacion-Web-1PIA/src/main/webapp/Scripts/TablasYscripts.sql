@@ -221,7 +221,7 @@ BEGIN
     on cat.idCategoria = pub.idCategoria
     join usuario us
     on us.idUsuario = pub.IdPublicador
-    where est.EstatusPublicacion = 'Activo' and us.NombreUsuario = Usuario
+    where us.NombreUsuario = Usuario
     order by pub.idPublicacion DESC LIMIT 0,10;
 	
 END //
@@ -231,7 +231,7 @@ DELIMITER //
 CREATE PROCEDURE `ActualizarPublicacion` (in TituloPublicacion varchar(500), in ContenidoPost varchar(500), in CategoriaPost varchar(100), in idPost int)
 BEGIN 
 	set @idCategoria = (select idCategoria from categoria where Categoria = CategoriaPost); 
-	Update publicacion set Titulo = TituloPublicacion, Contenido = ContenidoPost, IdCategoria = @idCategoria
+	Update publicacion set Titulo = TituloPublicacion, Contenido = ContenidoPost, IdCategoria = @idCategoria, idEstatusPost = 1
 	where idPublicacion =idPost;
 END //
 DELIMITER ;
@@ -274,7 +274,8 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE `categoriaPublicacion` (in PARAMDEBUSQUEDA varchar(250))
 BEGIN 
-		SELECT pub.idPublicacion, pub.Contenido, pub.IdEstatusPost,est.EstatusPublicacion, pub.FechaCreacion, pub.Titulo, pub.IdCategoria, pub.FotoPublicacion, pub.IdPublicador, us.FotoPerfl
+        set @idCat = (Select idCategoria from categoria where Categoria =PARAMDEBUSQUEDA);
+		SELECT pub.idPublicacion, pub.Contenido, pub.IdEstatusPost,est.EstatusPublicacion, pub.FechaCreacion, pub.Titulo, pub.IdCategoria, pub.FotoPublicacion, pub.IdPublicador, us.FotoPerfl, us.NombreUsuario,  cat.Categoria
         from publicacion pub
         join categoria cat
         on cat.idCategoria = pub.IdCategoria
@@ -282,7 +283,7 @@ BEGIN
         on est.idEstatusPublicacion = pub.IdEstatusPost
         join usuario us
         on us.idUsuario = pub.IdPublicador
-        where est.EstatusPublicacion = 'Activo' and (Contenido LIKE CONCAT('%',PARAMDEBUSQUEDA, '%') OR Titulo LIKE CONCAT('%',PARAMDEBUSQUEDA, '%'));
+        where cat.idCategoria = @idCat;
 		
 	
 END //
@@ -313,9 +314,10 @@ select count(*) as Total from publicacion;
 
 update publicacion set IdCategoria = 2 where idPublicacion =6 ;
 
-drop procedure busquedaPublicacion;
+drop procedure categoriaPublicacion;
 CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder', '2023-05-12');
 CALL LoginUsuario('Wonder', '1234');
 CALL consultarTotalPublicaciones;
+CALL categoriaPublicacion('Lucha');
 
 
