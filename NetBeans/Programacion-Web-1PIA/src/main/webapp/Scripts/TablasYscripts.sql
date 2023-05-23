@@ -289,6 +289,42 @@ BEGIN
 END //
 DELIMITER ;
 
+
+delimiter //
+create procedure sp_BusquedaAvanzada(IN p_titulo varchar(50),
+    IN p_texto varchar(250), IN p_categoria bigint, IN p_fechain date, IN p_fechafin date)
+begin
+	IF(p_fechain IS NULL AND p_fechafin IS NOT NULL) THEN
+	SELECT publicacion.idPublicacion, publicacion.Titulo, publicacion.Contenido,
+            publicacion.FechaCreacion, publicacion.FotoPublicacion, publicacion.IdEstatusPost,
+            usuario.NombreUsuario, categoria.Categoria
+            FROM publicacion INNER JOIN categoria ON categoria.idCategoria=publicacion.IdCategoria
+            INNER JOIN usuario ON usuario.idUsuario=publicacion.IdPublicador  WHERE publicacion.IdEstatusPost=1 AND (publicacion.Contenido LIKE CONCAT('%',IFNULL(p_texto,publicacion.Contenido),'%') OR publicacion.Titulo LIKE CONCAT('%', IFNULL(p_texto,publicacion.Titulo),'%')) AND publicacion.FechaCreacion<=p_fechafin AND publicacion.IdCategoria=ifnull(p_categoria, publicacion.IdCategoria) ORDER BY publicacion.FechaCreacion DESC;
+            END IF;
+            IF(p_fechafin IS NULL AND p_fechain IS NOT NULL) THEN
+	SELECT publicacion.idPublicacion, publicacion.Titulo, publicacion.Contenido,
+            publicacion.FechaCreacion, publicacion.FotoPublicacion, publicacion.IdEstatusPost,
+            usuario.NombreUsuario, categoria.Categoria
+            FROM publicacion INNER JOIN categoria ON categoria.idCategoria=publicacion.IdCategoria
+            INNER JOIN usuario ON usuario.idUsuario=publicacion.IdPublicador  WHERE publicacion.IdEstatusPost=1 AND (publicacion.Contenido LIKE CONCAT('%',IFNULL(p_texto,publicacion.Contenido),'%') OR publicacion.Titulo LIKE CONCAT('%', IFNULL(p_texto,publicacion.Titulo),'%')) AND publicacion.FechaCreacion>=p_fechain AND publicacion.IdCategoria=ifnull(p_categoria, publicacion.IdCategoria) ORDER BY publicacion.FechaCreacion DESC;
+            END IF;
+            IF(p_fechain IS NULL AND p_fechafin is NULL) THEN
+	SELECT publicacion.idPublicacion, publicacion.Titulo, publicacion.Contenido,
+            publicacion.FechaCreacion, publicacion.FotoPublicacion, publicacion.IdEstatusPost,
+            usuario.NombreUsuario, categoria.Categoria
+            FROM publicacion INNER JOIN categoria ON categoria.idCategoria=publicacion.IdCategoria
+            INNER JOIN usuario ON usuario.idUsuario=publicacion.IdPublicador  WHERE publicacion.IdEstatusPost=1 AND (publicacion.Contenido LIKE CONCAT('%',IFNULL(p_texto,publicacion.Contenido),'%') OR publicacion.Titulo LIKE CONCAT('%', IFNULL(p_texto,publicacion.Titulo),'%')) AND publicacion.IdCategoria=ifnull(p_categoria, publicacion.IdCategoria) ORDER BY publicacion.FechaCreacion DESC;
+            END IF;
+            IF(p_fechain IS NOT NULL AND p_fechafin IS NOT NULL) THEN
+	SELECT publicacion.idPublicacion, publicacion.Titulo, publicacion.Contenido,
+            publicacion.FechaCreacion, publicacion.FotoPublicacion, publicacion.IdEstatusPost,
+            usuario.NombreUsuario, categoria.Categoria
+            FROM publicacion INNER JOIN categoria ON categoria.idCategoria=publicacion.IdCategoria
+            INNER JOIN usuario ON usuario.idUsuario=publicacion.IdPublicador  WHERE publicacion.IdEstatusPost=1 AND (publicacion.Contenido LIKE CONCAT('%',IFNULL(p_texto,publicacion.Contenido),'%') OR publicacion.Titulo LIKE CONCAT('%', IFNULL(p_texto,publicacion.Titulo),'%')) AND publicacion.FechaCreacion>=p_fechain AND publicacion.FechaCreacion<=p_fechafin AND publicacion.IdCategoria=ifnull(p_categoria, publicacion.IdCategoria) ORDER BY publicacion.FechaCreacion DESC;
+		end if;
+END//
+DELIMITER ;
+
 call busquedaPublicacion('kevin');
 
 call ConsultaPublicacionesUsuario('Wonder');
@@ -319,5 +355,6 @@ CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Des
 CALL LoginUsuario('Wonder', '1234');
 CALL consultarTotalPublicaciones;
 CALL categoriaPublicacion('Lucha');
-
+CALL sp_BusquedaAvanzada('', '', 3, '2023-05-21', '2023-05-23');
+  --  IN p_texto varchar(250), IN p_categoria bigint, IN p_fechain date, IN p_fechafin date)
 

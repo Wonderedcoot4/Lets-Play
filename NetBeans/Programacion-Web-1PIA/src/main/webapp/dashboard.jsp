@@ -95,6 +95,8 @@
                     Acción y Aventura</a>
                 <a href="PostporCategoriasServlet?catPost=9" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
                     Disparos</a>
+                 <a href="BusquedaAvanzada.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
+                    Busqueda Avanzada</a>
                 
             </div>
         </div>
