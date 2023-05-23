@@ -1,8 +1,3 @@
-<%-- 
-    Document   : PostEncontrado
-    Created on : 23 may 2023, 2:22:27
-    Author     : isaac
---%>
 
 <%@page import="PostDOA.Post"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
