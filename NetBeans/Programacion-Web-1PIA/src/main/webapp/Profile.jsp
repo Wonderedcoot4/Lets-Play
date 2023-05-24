@@ -91,9 +91,7 @@
                     
                     %>" alt="img-avatar">
                 </div>
-                <button type="button" class="boton-portada">
-                    <i class="far fa-image"></i> Cambiar fondo
-                </button>
+                
             </div>
         </div>
         <div class="perfil-usuario-body">

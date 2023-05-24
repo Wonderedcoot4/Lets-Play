@@ -680,7 +680,7 @@ public class Post {
                poste.setIdCat(rs.getInt("idCategoria"));
                poste.setIdEstatus(rs.getInt("idEstatusPost"));
                poste.setCategoria(rs.getString("Categoria"));
-               //poste.setFotoPerfil(rs.getString("FotoPerfl"));
+               poste.setFotoPerfil(rs.getString("FotoPerfl"));
               // poste.setEstatus(rs.getString("EstatusPublicacion"));
                
                datos.add(poste);

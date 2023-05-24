@@ -61,7 +61,7 @@
                    <!-- <button class="btn colorIcon" type="submit" id="btn-abrir-modal3" ><i class="icon ion-md-menu"></i></button> -->
                     <!-- AQUI ES PARA LA BUSQUEDA NORMAL -->
                     
-                        <input class="form-control colorSearchBar colorText" type="text" placeholder="Buscar" name="barrabusquedakev" id="BarraBusqueda" aria-label="Buscar">
+                        <input class="form-control colorSearchBar colorText" type="text" placeholder="Buscar" name="barrabusquedakev" id="BarraBusqueda" aria-label="Buscar" required>
                     
                         <button class="btn position-absolute btn-search colorIcon" id="botonBusquedaPost" type="submit"><i class="icon ion-md-search"></i></button>
                 </form>
@@ -208,15 +208,13 @@
         <form action="CreatePost" method="post" name="postForm" enctype="multipart/form-data">
         <div class="row">
             <div class="col-11"></div>
-            <div class="col-1">
-                <button class="btn colorIcon" id="id-no-cerrar" ><i class="icon ion-md-close iconConfig"></i></button>
-            </div>
+            
         </div>
         <div class="row">
-            <input class="inTitle colorText" type="text" name="TituloText" placeholder="Titulo...">
+            <input class="inTitle colorText" type="text" name="TituloText" placeholder="Titulo..." required>
         </div>
         <div class="row">
-            <textarea name="Contenido"class="inText colorText" id="exampleFormControlTextarea1" placeholder="¿Que estas pensando?" rows="10"></textarea>
+            <textarea name="Contenido"class="inText colorText" id="exampleFormControlTextarea1" placeholder="¿Que estas pensando?" rows="10" required></textarea>
         </div>
         <div class="row">
             <div class="post__footer">
@@ -236,13 +234,13 @@
                  
                 </div>
                     <!--<button class="btn colorIcon" type="submit"><i class="icon ion-md-image iconConfig"></i></button> Boton Original como estaba antes de cambiarse, en caso de querer agregarlo-->
-                    <input class="input" type="file" accept=".jpg, .jpeg, .png" name="Fotografia">
+                    <input class="input" type="file" accept=".jpg, .jpeg, .png" name="Fotografia" required>
                     <!--<button class="btn colorIcon" type="submit"><i class="icon ion-md-compass iconConfig"></i></button>
                     <button class="btn colorIcon" type="submit"><i class="icon ion-md-happy iconConfig"></i></button>-->
                 </div>
                 <div class="col-1">
                     <!--EL BOTON ESTA LLAMADO AL SERVLET CUIDADO-->
-                    <button class="btn colorIcon" id="btn-cerrar-modal"><i class="icon ion-md-send iconConfig"></i></button>
+                    <button class="btn colorIcon" ><i class="icon ion-md-send iconConfig"></i></button>
                 </div>
                 
             </div>
