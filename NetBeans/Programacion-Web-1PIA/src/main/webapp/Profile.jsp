@@ -254,6 +254,7 @@
             <div class="col-11"></div>
             <div class="col-1">
                 <button class="btn colorIcon" id="btn-cerrar-modal4"><i class="icon ion-md-close iconConfig"></i></button>
+                <!-- -->
             </div>
         </div>
         <div class="row">
