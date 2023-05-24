@@ -183,8 +183,8 @@ drop procedure consultaPostRecientesIndex
 DELIMITER //
 CREATE PROCEDURE `LoginUsuario` (in Usuario varchar(50), in Contraseña varchar(50))
 BEGIN 
-	Select NombreUsuario, Contrasena, idUsuario, FotoPerfl, Correo, Nombre, Telefono, FechaNacimiento, ApellidoPaterno, ApellidoMaterno from usuario
-    where binary NombreUsuario = usuario and binary Contrasena = Contraseña;
+	Select us.NombreUsuario, us.Contrasena, us.idUsuario, us.FotoPerfl, us.Correo, us.Nombre, us.Telefono, us.FechaNacimiento, us.ApellidoPaterno, us.ApellidoMaterno from usuario us
+    where binary us.NombreUsuario = usuario and binary us.Contrasena = Contraseña;
 	
 END //
 DELIMITER ;
@@ -350,9 +350,9 @@ select count(*) as Total from publicacion;
 
 update publicacion set IdCategoria = 2 where idPublicacion =6 ;
 
-drop procedure sp_BusquedaAvanzada;
+drop procedure LoginUsuario();
 CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder', '2023-05-12');
-CALL LoginUsuario('Wonder', '1234');
+CALL LoginUsuario('Wonder', '');
 CALL consultarTotalPublicaciones;
 CALL categoriaPublicacion('Lucha');
 CALL sp_BusquedaAvanzada('Holi', 'Holi', 2, '2023-05-21', '2023-05-23');
