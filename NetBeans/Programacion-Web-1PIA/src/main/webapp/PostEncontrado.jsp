@@ -18,7 +18,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
         <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
-        <link href="dashboard.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
         <script defer src="dashboard.js"></script>
             <title>JSP Page</title>

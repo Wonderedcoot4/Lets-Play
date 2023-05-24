@@ -57,12 +57,6 @@ public class BusquedaAvanzada extends HttpServlet {
         
             System.out.println("Busqueda entrando en el get");
             List<Post> pubs = instancia.busquedaAvanzada(textico, textico2, Categoria, Fecha1, Fecha2);
-            if (pubs.size() == 0) {
-            System.out.println("Error no se encontro nada");
-             pantalla = "BusquedaAvanzada.jsp";
-            }
-            else
-            {
             request.setAttribute("UsuarioLog", usuario);
             postito.getPostBuscado();
              pantalla = "PostBusquedaAvanzada.jsp";
@@ -73,7 +67,6 @@ public class BusquedaAvanzada extends HttpServlet {
             postito.setPostBuscado(pubs);
             postFound = pubs;
              request.getSession(false).setAttribute("Accion", postFound);
-            }
                
         
             RequestDispatcher rd = request.getRequestDispatcher(pantalla);      
