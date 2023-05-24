@@ -114,6 +114,11 @@ public class Usuario {
     {
         this.log = log;
     }
+    
+    public void CerrarSesion()
+    {
+        this.log = null;
+    }
     public void setPassword(String Password) {
         this.Password = Password;
     }

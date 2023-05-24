@@ -29,15 +29,26 @@
       Usuario usuario = new Usuario();
       Usuario usuario2 = new Usuario();
       
+      
+     
       // usuario = (Usuario) request.getSession().getAttribute("UsuarioLog");
       
       //System.out.println("Usuario dashboard " + usuario);
      // String text;
       //usuario = (Usuario) session.getAttribute("UsuarioLog");
+      
       usuario2 = (Usuario) request.getAttribute("UsuarioLog");
+       if (request.getAttribute("UsuarioLog") == null) 
+       {
+           RequestDispatcher rd = request.getRequestDispatcher("index.jsp");      
+           rd.forward(request, response);
+        
+       }
+       else{
       System.out.println("Usuario dashboard : " + usuario2.getUsuario());
       System.out.println("Correo dashboard : " + usuario2.getCorreo());
       System.out.println("Foto dashboard : " + usuario2.getFotografia());
+     }
      
     %>
     <div class="static">
@@ -281,9 +292,9 @@
           <!--  <a type="submit" href="configuration.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
                 Configuración</a>  -->
             </form>    
-            
-            <a href="Principal.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-exit iconConfig"></i></i>
-                Cerrar Sesión</a>
+            <form action="CerrarSesion" method="post">
+                <button type="submit" class="btn colorIcon" ><i class="icon ion-md-construct iconConfig"><a>Cerrar Sesion</a></i></button>
+            </form>
         </div>
         <div class="row">
             <button class="btn colorIcon" id="btn-cerrar-modal2"><i class="icon ion-md-close iconConfig"></i></button>
