@@ -150,7 +150,7 @@ BEGIN
     join usuario us
     on us.idUsuario = pub.IdPublicador
     where est.EstatusPublicacion = 'Activo'
-    order by pub.idPublicacion DESC LIMIT 0,10;
+    order by pub.idPublicacion DESC;
     
 END //
 DELIMITER ;
@@ -350,7 +350,7 @@ select count(*) as Total from publicacion;
 
 update publicacion set IdCategoria = 2 where idPublicacion =6 ;
 
-drop procedure sp_BusquedaAvanzada;
+drop procedure consultaPostRecientes;
 CALL creacionPost('Aja','Pipipi','Activo','AccionyAventura', 'C:\Users\isaac\Desktop\Programacion Web 1\Programacion-Web\NetBeans\PrograWeb1-PIA\src\main\webapp\Imagenes\makeitmeme_5YHaI.jpeg', 'Wonder', '2023-05-12');
 CALL LoginUsuario('Wonder', 'Wondered9');
 CALL consultarTotalPublicaciones;

@@ -18,6 +18,7 @@ import PostDOA.Post;
 import UsuarioDBA.Usuario;
 import jakarta.servlet.RequestDispatcher;
 import static java.lang.System.out;
+import java.util.ArrayList;
 import java.util.List;
 import org.json.simple.JSONObject;
 
@@ -30,6 +31,7 @@ public class ReturnToDashboard extends HttpServlet {
     private Usuario us = new Usuario();
     Usuario instancia = new Usuario();
     conexionSQL con = new conexionSQL();
+     Post post = new Post();
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -50,14 +52,22 @@ public class ReturnToDashboard extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+         List<Post> postDatatable = new ArrayList<>();
         String pantalla = "";
         System.out.println("Entrando al get");
         us = (Usuario) instancia.UsuarioLog();
          String Accion = request.getParameter("accion");
         System.out.println("Usuario actual :  " + us.getUsuario() + "Correo : " + us.getCorreo());
         //Hacemos otro servlet y ya
-       
+        postDatatable = post.consultarRecientes();
+            if (postDatatable.size() == 0) {
+                pantalla = "index.jsp";
+                out.println("Sobrecarga de informacion");
+            }
+             else
+            {
+                request.setAttribute("PostRecientes", postDatatable);
+            }
             System.out.println("Regresando al dashboard");
            
             pantalla = "dashboard.jsp";

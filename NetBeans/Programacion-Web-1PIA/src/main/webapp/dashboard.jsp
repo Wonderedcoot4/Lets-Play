@@ -456,12 +456,14 @@
                         "next": "Siguiente",
                         "first": "Inicio",
                         "last":"Final"
+                         
                     }
                 },
                 "ordering":false,
                 "searching":false,
                 "lengthChange":false,
                 "pageLength":10
+                
             });
         });
     </script>  
