@@ -31,11 +31,7 @@
                 </form>
             </div>
             <div class="col">
-                <form class="d-flex position-relative">
-                    <button class="btn colorIcon" type="submit" id="btn-abrir-modal8" ><i class="icon ion-md-menu"></i></button>
-                    <input class="form-control colorSearchBar colorText" type="search" placeholder="Buscar" aria-label="Buscar">
-                    <button class="btn position-absolute btn-search colorIcon" type="submit"><i class="icon ion-md-search"></i></button>
-                </form>
+                
             </div>
             <div class="col alingFlex">
                 <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal7">
@@ -179,11 +175,17 @@
             <p class="post__headerSpecial"> <% out.print(usuario.getCorreo()); %></p>
         </div>
         <div class="row colorText allignIcon">
-            <a href="Profile.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-body iconConfig"></i></i></i>
-                Perfil</a>
-
-            <a href="configuration.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
-                Configuración</a>
+            <form action="ProfileInfoServlet" method="get">
+                <button type="submit" class="btn colorIcon" ><i class="icon ion-md-body iconConfig"></i><a>
+                        Perfil</a></button>
+            </form>
+           <form action="ProfileConfigServlet" method="get" >
+                <input type="hidden" name="UserName" value="<% out.print(usuario.getUsuario()); %>">
+                 <input type="hidden" name="AccionServlet" value="<%out.print("Recientes"); %>">
+                <button type="submit" class="btn colorIcon" ><i class="icon ion-md-construct iconConfig"><a>Configuracion</a></i></button>
+          <!--  <a type="submit" href="configuration.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
+                Configuración</a>  -->
+            </form>    
 
             <a href="Principal.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-exit iconConfig"></i></i>
                 Cerrar Sesión</a>

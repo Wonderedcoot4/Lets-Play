@@ -23,13 +23,14 @@
         <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
         <script  src="./DataTable/datatables.min.js"></script>
         <script defer src="dashboard.js"></script>
+        <link href="dashboard.css" rel="stylesheet">
             <title>JSP Page</title>
     </head>
-    <body class="slideBarScroll" style="background-color: black">
+    <body class="colorBody slideBarScroll">
         <div class="static">
             <nav class="navbar navbar-expand-lg navColor">
                 <div class="col alingImage">
-                    <form action="ReturnToDashboard" method="get">
+                     <form action="ReturnToDashboard" method="get">
                     <button style="background-color: black"class="btn colorIcon" href="#"><img src="./Imagenes/JustPlay2.png" alt="logo" width="45px" class="rounded-circle"></button>
                     </form>
                 </div>
@@ -41,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col alingFlex">
-                    <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
+                    <button type="button" class="btn colorIcon" data-bs-container="body" id="btn-abrir-modal2">
                         <img src="./Imagenes/icon.png" alt="logo" width="55px" class="rounded-circle"></a>
                 </div>
             </nav>
@@ -85,7 +86,16 @@
                         
                         <div class="post" id="PostCentro">
                             <div class="post__avatar">
-                                <img src="<% %>" height="125px" width="50px">
+                                <img src="<%
+                    String imagen2 = elemento.getFotoPerfil();
+                    int index2 = imagen2.indexOf("Imagenes");
+                    
+                    if (index2 != -1) {
+                            String result = imagen2.substring(index2);
+                            out.print(result);
+                        }
+                    
+                                %>" height="125px" width="50px">
                             </div>
                             <div class="post__body">
                                 <div class="post__header">
@@ -98,7 +108,16 @@
                                     <div class="post__headerDescription colorText">
                                         <h4><% out.print(elemento.getTitulo()); %></h4>
                                         <p><% out.print(elemento.getContenido()); %></p>
-                                        <img src="">
+                                        <img src="<%
+                    String imagen4 = elemento.getFoto();
+                    int index4 = imagen4.indexOf("Imagenes");
+                    
+                    if (index4 != -1) {
+                            String result = imagen4.substring(index4);
+                            out.print(result);
+                        }
+                    
+                                %>">
                                     </div>
                                 </div>
                                 <div class="post__footer">

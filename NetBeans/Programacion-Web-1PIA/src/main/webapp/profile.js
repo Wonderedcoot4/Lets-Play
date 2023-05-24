@@ -59,13 +59,6 @@ const btnCerrarModal12 = document.querySelector("#btn-cerrar-modal4");
 const modal12 = document.querySelector("#modal12");
 
 
-btnAbrirModal6.addEventListener("click",()=>{
-    modal6.showModal();
-})
-
-btnCerrarModal6.addEventListener("click",()=>{
-    modal6.close();
-})
 
 btnAbrirModal8.addEventListener("click",()=>{
     console.log("Entro al click event");
@@ -78,6 +71,29 @@ btnCerrarModal8.addEventListener("click",()=>{
 
 
 $(document).on("click", ".editar", function(){
+    var nombre;
+    alert("Editar publicacion!!");
+    
+    modal4.showModal();
+    var Nombre= document.getElementById("modal4");
+    var Nombre2= document.getElementById("POSTID");
+            var TituloPost = Nombre2.querySelector("#id");
+            var Elemento = Nombre.querySelector("#TituloPostModal");
+            var Elemento2 = Nombre.querySelector("#ContenidoPostModal");
+            var Elemento3 = Nombre.querySelector("#cbCategoria");
+            var Elemento4 = Nombre.querySelector("#postId");
+            var Elemento5 = Nombre.querySelector("#postId2");
+            Elemento.value = this.dataset.titulo;
+            Elemento2.value = this.dataset.contenido;
+            Elemento3.value = this.dataset.categoria;
+            Elemento4.value = this.dataset.idpost;
+            Elemento5.value = this.dataset.idPublicacion;
+            console.log(Elemento4);
+            console.log(Elemento5);
+            
+});
+
+$(document).on("click", ".editar2", function(){
     var nombre;
     alert("Editar publicacion!!");
     
@@ -166,7 +182,7 @@ function getPublicacionesUsuario()
                                                         $("<button>").addClass("btn colorIcon").addClass("eliminar").attr("data-titulo", data[i].Titulo).attr("data-contenido", data[i].Contenido).attr("data-foto", data[i].FotoPublicacion).attr("data-categoria", data[i].Categoria).attr("data-idPost", data[i].idPublicacion).append(
                                                             $("<i>").addClass("icon ion-md-share iconConfig")))).append(
                                                    $("<div>").addClass("col allignIcon colorIcon").append(
-                                                        $("<button>").addClass("btn colorIcon").addClass("editar").attr("data-titulo", data[i].Titulo).attr("data-contenido", data[i].Contenido).attr("data-foto", data[i].FotoPublicacion).attr("data-categoria", data[i].Categoria).attr("data-idPost", data[i].idPublicacion).attr("type", "submit").attr("id", "btn-abrir-modal4").attr("name", "ButtonEditPost").append(
+                                                        $("<button>").addClass("btn colorIcon").addClass("editar").addClass("editar2").attr("data-titulo", data[i].Titulo).attr("data-contenido", data[i].Contenido).attr("data-foto", data[i].FotoPublicacion).attr("data-categoria", data[i].Categoria).attr("data-idPost", data[i].idPublicacion).attr("type", "submit").attr("id", "btn-abrir-modal4").attr("name", "ButtonEditPost").append(
                                                             $("<i>").addClass("icon ion-md-flower iconConfig")))))))
                                     
                                 

@@ -25,7 +25,7 @@
         <script  src="./DataTable/datatables.min.js"></script>
             <title>JSP Page</title>
     </head>
-    <body class="slideBarScroll" style="background-color: black">
+    <body class="slideBarScroll" style="background-color: #1c2022">
         <div class="static">
             <nav class="navbar navbar-expand-lg navColor">
                 <div class="col alingImage">
@@ -34,11 +34,7 @@
                     </form>
                 </div>
                 <div class="col">
-                    <div class="d-flex position-relative">
-                        <button class="btn colorIcon" id="btn-abrir-modal3" ><i class="icon ion-md-menu"></i></button>
-                        <input class="form-control colorSearchBar colorText" type="search" placeholder="Buscar" aria-label="Buscar">
-                        <button class="btn position-absolute btn-search colorIcon" ><i class="icon ion-md-search"></i></button>
-                    </div>
+                   
                 </div>
                 <div class="col alingFlex">
                     <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
@@ -72,21 +68,38 @@
                         
                         <div class="post" id="PostCentro">
                             <div class="post__avatar">
-                                <img src="" height="125px" width="50px">
+                                <img src="<%
+                    String imagen4 = elemento.getFotoPerfil();
+                    int index4 = imagen4.indexOf("Imagenes");
+                    
+                    if (index4 != -1) {
+                            String result = imagen4.substring(index4);
+                            out.print(result);
+                        }
+                    
+                    %>" height="125px" width="50px">
                             </div>
                             <div class="post__body">
                                 <div class="post__header">
                                     <div class="post__headerText colorText">
                                         <h3>
-                                            <% out.print(elemento.getTitulo()); %>
-                                            <span class="post__headerSpecial"></span>
+                                            <% out.print(elemento.getUsuario()); %>
+                                            <span class="post__headerSpecial"> <% out.print(elemento.getCategoria()); %> </span>
                                         </h3>
                                     </div>
                                     <div class="post__headerDescription colorText">
-                                        <h4></h4>
-                                        <p><</p>
-                                        <img src=" 
-                   ">
+                                        <h4><% out.print(elemento.getTitulo()); %> </h4>
+                                        <p><% out.print(elemento.getContenido()); %></p>
+                                        <img src=" <%
+                    String imagen3 = elemento.getFoto();
+                    int index3 = imagen3.indexOf("Imagenes");
+                    
+                    if (index3 != -1) {
+                            String result = imagen3.substring(index3);
+                            out.print(result);
+                        }
+                    
+                                        %>" height="250px" width="250px">
                                     </div>
                                 </div>
                                 <div class="post__footer">

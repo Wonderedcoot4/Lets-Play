@@ -25,7 +25,9 @@ btnCerrarModal.addEventListener("click",()=>{
 
 //Modal2
 const btnAbrirModal2 = document.querySelector("#btn-abrir-modal2");
+const btnAbrirModal6 = document.querySelector("#btn-abrir-modal2");
 const btnCerrarModal2 = document.querySelector("#btn-cerrar-modal2");
+const btnCerrarModal6 = document.querySelector("#btn-cerrar-modal2");
 const modal2 = document.querySelector("#modal2");
 
 btnAbrirModal2.addEventListener("click",()=>{
@@ -35,6 +37,15 @@ btnAbrirModal2.addEventListener("click",()=>{
 btnCerrarModal2.addEventListener("click",()=>{
     modal2.close();
 })
+
+btnAbrirModal6.addEventListener("click",()=>{
+    modal2.showModal();
+})
+
+btnCerrarModal6.addEventListener("click",()=>{
+    modal2.close();
+})
+
 
 
 const btnBusquedaPost = document.querySelector("#botonBusquedaPost");

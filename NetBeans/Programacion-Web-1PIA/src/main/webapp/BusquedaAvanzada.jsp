@@ -20,9 +20,25 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
     <script defer src="dashboard.js"></script>
     <title>Principal | Justplay</title>
+    <script>
+        function validarFormulario() {
+          var nombre = document.forms["prueba"]["TituloPost"].value ;
+          var email = document.forms["prueba"]["ContenidoPost"].value;
+          
+          if (nombre == "" && email == "") {
+            var error = document.getElementById("error-message");
+            error.innerHTML = "Por favor, complete al menos uno de los campos, ya sea titulo o contenido con contenido que sepa que tiene la publicacion";
+            error.style.display = "block";
+            return false;
+          }
+        }
+      </script>
     </head>
-    <body class="colorBody slideBarScroll" style="background-color: gray">
+    <body class="colorBody slideBarScroll">
         
+
+        
+
          <div class="static">
         <nav class="navbar navbar-expand-lg navColor">
             <div class="col alingImage">
@@ -39,7 +55,7 @@
                 </form>
             </div>
             <div class="col alingFlex">
-                <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
+                <button type="button" class="btn colorIcon" data-bs-container="body" id="btn-abrir-modal2">
                     <img src="" alt="logo" width="55px" class="rounded-circle"></a>
             </div>
         </nav>
@@ -52,17 +68,17 @@
         <br><!-- comment -->
         <br><!-- comment -->
          <br>
-        <form action='BusquedaAvanzada' method="GET" style="text-align: center;">
+        <form name="prueba" action='BusquedaAvanzada' method="GET" style="text-align: center;" onsubmit="return validarFormulario()">
     <div class="form-group" style="text-align: center; margin-bottom: 1rem;">
-        <p>Titulo publicacion</p>
+        <h1 class="post__headerSpecial">Titulo publicacion</h1>
       <input style="
     width:600px; display:inline;" type="search" class="form-control" id="inputKeyword" name="TituloPost" placeholder="¿Qué deseas buscar?">
-      <p>Contenido publicacion</p>
+      <h1 class="post__headerSpecial">Contenido publicacion</h1>
      <input style="
     width:600px; display:inline;" type="search" class="form-control" id="inputKeyword" name="ContenidoPost" placeholder="¿Qué deseas buscar?">
       <br>
       <br>
-      <label for="inputState">Categoria</label>
+      <label class="post__headerSpecial" for="inputState">Categoria</label>
          <select style="
               width:450px; display:inline;"  id="inputCat" class="form-control" name="catselec" value="Categoria">
           <!--<option selected value="0">TODAS</option>-->
@@ -78,11 +94,12 @@
      </div>
            <div class="form-group" style="text-align: center; margin-bottom: 1rem;">
                 <input id="fechainicial" name="fechainicialname" onkeydown="filtrarInput(event)" style="width: 200px;display:inline;" type="text" value="2023-03-02" class="form-control">
-        <h5 class="pt-2" style="display:inline;"> hasta </h5>
+        <h5 class="post__headerSpecial" style="display:inline;"> hasta </h5>
         <input id="fechafinal" name="fechafinalname" onkeydown="filtrarInput(event)" style="width: 200px;display:inline;" type="text" value="2023-03-02" class="form-control">
-        <span>Escribe la fecha en formato: yyyy-mm-dd</span>
+        <span class="post__headerSpecial">Escribe la fecha en formato: yyyy-mm-dd</span>
            </div>
     <button class="btn btn-outline-success" id="botonSearch" type="submit" style="width: 200px;"> <i class="fa-solid fa-magnifying-glass"></i> Filtrar</button>
+    <div class="post__headerSpecial" id="error-message" class="error-message"></div>
     </form>
     </body>
 </html>

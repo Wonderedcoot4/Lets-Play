@@ -53,11 +53,7 @@
                     </form>
                 </div>
                 <div class="col">
-                    <form class="d-flex position-relative">
-                        <button class="btn colorIcon" type="submit"><i class="icon ion-md-menu" id="btn-abrir-modal6"></i></button>
-                        <input class="form-control colorSearchBar colorText" type="search" placeholder="Buscar" aria-label="Buscar">
-                        <button class="btn position-absolute btn-search colorIcon" type="submit"><i class="icon ion-md-search"></i></button>
-                    </form>
+                    
                 </div>
                 <div class="col alingFlex">
                     <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal5">
@@ -91,9 +87,7 @@
                     
                     %>" alt="img-avatar">
                 </div>
-                <button type="button" class="boton-portada">
-                    <i class="far fa-image"></i> Cambiar fondo
-                </button>
+                
             </div>
         </div>
         <div class="perfil-usuario-body">
@@ -182,16 +176,21 @@
                 </button>
             </div>
             <div class="row colorText allignIcon">
-                <h3>NachtDenos</h3>
-                <p class="post__headerSpecial">eeatienda2001@hotmail.com</p>
+                <h3><% out.print(user); %></h3>
+                <p class="post__headerSpecial"><% out.print(correo ); %></p>
             </div>
             <div class="row colorText allignIcon">
-                <a href="Profile.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-body iconConfig"></i></i></i>
-                    Perfil</a>
-
-                <a href="configuration.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
-                    Configuración</a>
-
+                <form action="ProfileInfoServlet" method="get">
+                <button type="submit" class="btn colorIcon" ><i class="icon ion-md-body iconConfig"></i><a>
+                        Perfil</a></button>
+            </form>
+ <form action="ProfileConfigServlet" method="get" >
+                <input type="hidden" name="UserName" value="<% out.print(usuario.getUsuario()); %>">
+                 <input type="hidden" name="AccionServlet" value="<%out.print("Recientes"); %>">
+                <button type="submit" class="btn colorIcon" ><i class="icon ion-md-construct iconConfig"><a>Configuracion</a></i></button>
+          <!--  <a type="submit" href="configuration.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-construct iconConfig"></i></i>
+                Configuración</a>  -->
+            </form>    
                 <a href="Principal.jsp" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-exit iconConfig"></i></i>
                     Cerrar Sesión</a>
             </div>
@@ -258,11 +257,11 @@
             </div>
         </div>
         <div class="row">
-            <input class="inTitle colorText" type="text" name="title" id="TituloPostModal" placeholder="Titulo..." value="Hola soy nuevo">
+            <input class="inTitle colorText" type="text" name="title" id="TituloPostModal" placeholder="Titulo..." value="Hola soy nuevo" required>
         </div>
         <div class="row">
              
-            <textarea name="Contenido" class="inText colorText" placeholder="¿Que estas pensando?" rows="10" id="ContenidoPostModal">Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</textarea>
+            <textarea name="Contenido" class="inText colorText" placeholder="¿Que estas pensando?" rows="10" id="ContenidoPostModal" required>Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</textarea>
             <select name="Categoria" id="cbCategoria">
                     <option value="AccionyAventura" name="categoria">Accion y Aventura</option>
                     <option value="Lucha" name="categoria">Lucha</option>
@@ -279,12 +278,7 @@
         </div>
         <div class="row">
             <div class="post__footer">
-                <div class="col colorIcon">
-                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-image iconConfig"></i></button>
-                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-compass iconConfig"></i></button>
-                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-happy iconConfig"></i></button>
-                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-trash iconConfig"></i></button>
-                </div>
+                
                 <div class="col-1">
                     <button type="submit" class="btn colorIcon"><i class="icon ion-md-send iconConfig"></i></button>
                 </div>
@@ -297,16 +291,14 @@
          <form action="BorrarPublicacion" method="post" name="postForm">
         <div class="row">
             <div class="col-11"></div>
-            <div class="col-1">
-                <button class="btn colorIcon" id="btn-cerrar-modal4"><i class="icon ion-md-close iconConfig"></i></button>
-            </div>
+            
         </div>
         <div class="row">
-            <input class="inTitle colorText" type="text" name="title2" id="TituloPostModal2" placeholder="Titulo..." value="Hola soy nuevo">
+            <input class="inTitle colorText" type="text" name="title2" id="TituloPostModal2" placeholder="Titulo..." value="Hola soy nuevo" required>
         </div>
         <div class="row">
              
-            <textarea name="Contenido" class="inText colorText" placeholder="¿Que estas pensando?" rows="10" id="ContenidoPostModal2">Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</textarea>
+            <textarea name="Contenido" class="inText colorText" placeholder="¿Que estas pensando?" rows="10" id="ContenidoPostModal2" required>Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</textarea>
             <select name="Categoria" id="cbCategoria2">
                     <option value="AccionyAventura" name="categoria">Accion y Aventura</option>
                     <option value="Lucha" name="categoria">Lucha</option>
@@ -318,18 +310,13 @@
                     
                 </select>
            
-            <input type="" id="postId3" name="postIdInput">
-            <input type="" id="postId4" name="postIdInput2">
+            <input type="hidden" id="postId3" name="postIdInput">
+            <input type="hidden" id="postId4" name="postIdInput2">
             
         </div>
         <div class="row">
             <div class="post__footer">
-                <div class="col colorIcon">
-                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-image iconConfig"></i></button>
-                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-compass iconConfig"></i></button>
-                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-happy iconConfig"></i></button>
-                    <button class="btn colorIcon" type="submit"><i class="icon ion-md-trash iconConfig"></i></button>
-                </div>
+                
                 <div class="col-1">
                     <button type="submit" class="btn colorIcon"><i class="icon ion-md-send iconConfig"></i></button>
                 </div>
