@@ -8,6 +8,9 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="PostDOA.Post"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -56,7 +59,8 @@
           Post postEncontrados = new Post(); 
           List<Post> postEncontrado = new ArrayList<>();
           String accion;
-          postEncontrado = (List) request.getSession(false).getAttribute("Accion");
+          postEncontrado = (List) request.getSession(false).getAttribute("Postfound");
+      
         %>
         
         
@@ -87,11 +91,11 @@
                         <div class="post" id="PostCentro">
                             <div class="post__avatar">
                                 <img src="<%
-                    String imagen2 = elemento.getFotoPerfil();
-                    int index2 = imagen2.indexOf("Imagenes");
+                    String imagen5 = elemento.getFotoPerfil();
+                    int index5 = imagen5.indexOf("Imagenes");
                     
-                    if (index2 != -1) {
-                            String result = imagen2.substring(index2);
+                    if (index5 != -1) {
+                            String result = imagen5.substring(index5);
                             out.print(result);
                         }
                     

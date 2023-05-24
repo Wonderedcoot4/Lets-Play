@@ -42,7 +42,9 @@
          <div class="static">
         <nav class="navbar navbar-expand-lg navColor">
             <div class="col alingImage">
-                <a class="navbar-brand" href="#"><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle"></a>
+                <form action="ReturnToDashboard" method="get" >
+                    <button style="background: none " type="submit" ><a class="navbar-brand" ><img src="./Imagenes/JustPlay2.png" alt="logo" width="55px" class="rounded-circle" ></a></button>
+                </form>
             </div>
             <div class="col">
                 <form class="d-flex position-relative" method="get" action="BusquedaPostServlet">

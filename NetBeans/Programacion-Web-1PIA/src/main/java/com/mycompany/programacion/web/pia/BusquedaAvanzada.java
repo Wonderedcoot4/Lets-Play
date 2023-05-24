@@ -72,7 +72,7 @@ public class BusquedaAvanzada extends HttpServlet {
             System.out.println("Pubs: " + pubs.get(0).getTitulo());
             postito.setPostBuscado(pubs);
             postFound = pubs;
-             request.getSession(false).setAttribute("Accion", postFound);
+             request.getSession(false).setAttribute("Postfound", postFound);
             }
         
             RequestDispatcher rd = request.getRequestDispatcher(pantalla);      
