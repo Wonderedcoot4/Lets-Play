@@ -52,24 +52,28 @@
         <br><!-- comment -->
         <br><!-- comment -->
          <br>
-        <form action='AdvancedSearchServ' method="GET" style="text-align: center;">
+        <form action='BusquedaAvanzada' method="GET" style="text-align: center;">
     <div class="form-group" style="text-align: center; margin-bottom: 1rem;">
+        <p>Titulo publicacion</p>
       <input style="
-    width:600px; display:inline;" type="search" class="form-control" id="inputKeyword" name="keywordname" placeholder="¿Qué deseas buscar?">
-
+    width:600px; display:inline;" type="search" class="form-control" id="inputKeyword" name="TituloPost" placeholder="¿Qué deseas buscar?">
+      <p>Contenido publicacion</p>
+     <input style="
+    width:600px; display:inline;" type="search" class="form-control" id="inputKeyword" name="ContenidoPost" placeholder="¿Qué deseas buscar?">
+      <br>
       <br>
       <label for="inputState">Categoria</label>
          <select style="
-              width:600px; display:inline;"  id="inputCat" class="form-control" name="catselec">
-          <option selected value="0">TODAS</option>
-          <option value="1">CAFÉ</option>
-          <option value="2">TÉ</option>
-          <option value="3">MATCHA</option>
-          <option value="4">CAFÉ HELADO</option>
-          <option value="5">LATTE</option>
-          <option value="6">DESAYUNO</option>
-          <option value="7">CITA</option>
-          <option value="8">AESTHETIC</option>
+              width:450px; display:inline;"  id="inputCat" class="form-control" name="catselec" value="Categoria">
+          <!--<option selected value="0">TODAS</option>-->
+          <option name="Categoriacb" value="1">Lucha</option>
+          <option name="Categoriacb" value="2">Accion y Aventura</option>
+          <option name="Categoriacb" value="3">Clasicos</option>
+          <option name="Categoriacb" value="4">Plataformas</option>
+          <option name="Categoriacb" value="5">Carreras</option>
+          <option name="Categoriacb" value="6">Disparos</option>
+          <option name="Categoriacb" value="7">Familiares</option>
+          <option name="Categoriacb" value="8">Independientes</option>
       </select>
      </div>
            <div class="form-group" style="text-align: center; margin-bottom: 1rem;">

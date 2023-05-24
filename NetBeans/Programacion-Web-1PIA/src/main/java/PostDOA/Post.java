@@ -4,9 +4,11 @@ package PostDOA;
 import Config.conexionSQL;
 import java.io.File;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -92,6 +94,10 @@ public class Post {
         this.Foto = Foto;
     }
     private String Foto;
+
+    public void setPostBuscado(List<Post> postBuscado) {
+        this.postBuscado = postBuscado;
+    }
     
    
     public Post()
@@ -628,8 +634,71 @@ public class Post {
             
         }
         
+        
         return datos;
     }
+    
+    
+      public List<Post> busquedaAvanzada(String Titulo, String Contenido, String Categoria, String FechaI, String FechaF)
+    {
+        List<Post> datos = new ArrayList();
+        Connection conn;
+        PreparedStatement stm;
+        ResultSet rs;
+        int res;
+        
+        try{
+            con.getConnection();
+            cn = con.conectar();
+            
+            String statement = "{CALL sp_BusquedaAvanzada(?,?,?,?,?)}";
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd:mm:ss");
+            LocalDate fechai = LocalDate.parse(FechaI);
+            LocalDate fechaF = LocalDate.parse(FechaF);
+            LocalDateTime now = LocalDateTime.now();
+            String fecha = java.time.LocalDate.now().toString();
+            
+            
+            stm = cn.prepareCall(statement);
+           stm.setString(1, Titulo);
+           stm.setString(2, Contenido);
+           stm.setString(3, Categoria);
+           stm.setString(4, FechaI);
+           stm.setString(5, FechaF);
+            
+            rs = stm.executeQuery();
+            
+            while(rs.next())
+            {
+               Post poste = new Post();
+               poste.setId(rs.getInt("idPublicacion"));
+               poste.setContenido(rs.getString("Contenido"));
+               poste.setFecha(rs.getString("FechaCreacion"));
+               poste.setTitulo(rs.getString("Titulo"));
+               poste.setFoto(rs.getString("FotoPublicacion"));
+               poste.setUsuario(rs.getString("NombreUsuario"));
+               poste.setIdCat(rs.getInt("idCategoria"));
+               poste.setIdEstatus(rs.getInt("idEstatusPost"));
+               poste.setCategoria(rs.getString("Categoria"));
+               //poste.setFotoPerfil(rs.getString("FotoPerfl"));
+              // poste.setEstatus(rs.getString("EstatusPublicacion"));
+               
+               datos.add(poste);
+               postBuscado.add(poste);
+            }
+            cn.close();
+            System.out.println("Consulta exitosa");
+        }catch(Exception e)
+        {
+            System.out.println("Error en la consulta de post de busqueda Avanzada");
+            
+        }
+        
+        
+        return datos;
+    }
+    
+    
     
     
      
