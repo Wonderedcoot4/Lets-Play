@@ -56,6 +56,13 @@ public class BusquedaPostServlet extends HttpServlet {
             System.out.println("Recientes, entrando en el get" + textico);
             List<Post> pubs = instancia.busquedaPublicaciones(textico);
             request.setAttribute("UsuarioLog", usuario);
+            if (pubs.size() == 0) {
+            pantalla = "dashboard.jsp";
+              System.out.println("No se encontro nada");
+               request.setAttribute("UsuarioLog", usuario);
+           }
+            else
+            {
             postito.getPostBuscado();
              pantalla = "PostEncontrado.jsp";
                 System.out.println("Saliendo del get");
@@ -63,7 +70,7 @@ public class BusquedaPostServlet extends HttpServlet {
              System.out.println("Realizado");
             System.out.println("Pubs: " + pubs.get(0).getTitulo());
              request.getSession(false).setAttribute("Accion", textico);
-               
+            }
         
                  RequestDispatcher rd = request.getRequestDispatcher(pantalla);      
                 rd.forward(request, response);

@@ -307,7 +307,7 @@
                     <option value="Clasicos" name="categoria">Clasicos</option>
                     <option value="Plataformas" name="categoria">Plataformas</option>
                     <option value="Independientes" name="categoria">Independientes</option>
-                    <option value="Familiares" name="categoria">Familiares</option>
+                  
                     
                 </select>
            
