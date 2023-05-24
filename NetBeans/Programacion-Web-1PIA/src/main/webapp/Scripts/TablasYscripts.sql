@@ -142,7 +142,7 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE `consultaPostRecientes`()
 BEGIN 
-	Select pub.idPublicacion, pub.Contenido, pub.FechaCreacion, pub.Titulo, pub.FotoPublicacion, pub.IdPublicador, pub.idEstatusPost, us.NombreUsuario, cat.idCategoria, cat.Categoria, est.EstatusPublicacion, pub.FechaCreacion as FechaPublicacion from publicacion pub
+	Select pub.idPublicacion, pub.Contenido, pub.FechaCreacion, pub.Titulo, pub.FotoPublicacion, pub.IdPublicador, pub.idEstatusPost, us.NombreUsuario, cat.idCategoria, cat.Categoria, est.EstatusPublicacion, pub.FechaCreacion as FechaPublicacion, us.FotoPerfl from publicacion pub
     join estatuspublicacion est
     on est.idEstatusPublicacion = pub.idEstatusPost
     join categoria cat

@@ -7,12 +7,12 @@ var pagActual = 1;
 var cantPublicaciones = 10;
 //var publicaciones;
 
-$(document).ready(function(){
-   var publicaciones; 
-    getPublicacionesRecientes();
-    //getPublicacionesIndex(0);
-    getClicks();
-});
+//$(document).ready(function(){
+//   var publicaciones; 
+//    getPublicacionesRecientes();
+//    //getPublicacionesIndex(0);
+//    getClicks();
+//});
 
 
 btnAbrirModal.addEventListener("click",()=>{

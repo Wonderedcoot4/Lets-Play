@@ -4,6 +4,9 @@
     Author     : isaac
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="PostDOA.Post"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="UsuarioDBA.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,6 +22,10 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script  src="./DataTable/datatables.min.js"></script>
+    <link href="./DataTable/datatables.min.css" rel="stylesheet">
+   
     <script defer src="dashboard.js"></script>
     <title>Principal | Justplay</title>
 </head>
@@ -28,7 +35,7 @@
       
       Usuario usuario = new Usuario();
       Usuario usuario2 = new Usuario();
-      
+      List<Post> postEncontrado = new ArrayList<>();
       
      
       // usuario = (Usuario) request.getSession().getAttribute("UsuarioLog");
@@ -38,6 +45,7 @@
       //usuario = (Usuario) session.getAttribute("UsuarioLog");
       
       usuario2 = (Usuario) request.getAttribute("UsuarioLog");
+      postEncontrado = (List) request.getAttribute("PostRecientes");
        if (request.getAttribute("UsuarioLog") == null) 
        {
            RequestDispatcher rd = request.getRequestDispatcher("index.jsp");      
@@ -138,24 +146,56 @@
                         <!--Post-->
                       
                         <!--Termina Post-->
-                        
+            <table id="tablapublicaciones">
+            <thead>
+            <tr>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <%
+                Post post = new Post();
+                for(Post elemento:postEncontrado)
+                {
+                %>
+                <tr><td>
                         
                         
                         <div class="post" id="PostCentro">
                             <div class="post__avatar">
-                                <img src="./Imagenes/icon.png">
+                                <img src=" <%
+                    String imagen4 = elemento.getFotoPerfil();
+                    int index4 = imagen4.indexOf("Imagenes");
+                    
+                    if (index4 != -1) {
+                            String result = imagen4.substring(index4);
+                            out.print(result);
+                        }
+                    
+                                %>">
                             </div>
                             <div class="post__body">
                                 <div class="post__header">
                                     <div class="post__headerText colorText">
                                         <h3>
-                                            NachtDenos
-                                            <span class="post__headerSpecial">#Disparos</span>
+                                           <% out.print(elemento.getUsuario()); %>
+                                            <span class="post__headerSpecial"><% out.print(elemento.getCategoria()); %></span>
                                         </h3>
                                     </div>
                                     <div class="post__headerDescription colorText">
-                                        <h4>Hola soy nuevo</h4>
-                                        <p>Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</p>
+                                        <h4><% out.print(elemento.getTitulo()); %></h4>
+                                        <p><% out.print(elemento.getContenido()); %></p>
+                                        <img src="<%
+                    String imagen5 = elemento.getFoto();
+                    int index5 = imagen5.indexOf("Imagenes");
+                    
+                    if (index5 != -1) {
+                            String result = imagen5.substring(index5);
+                            out.print(result);
+                        }
+                    
+                                %>
+                                             ">
                                     </div>
                                 </div>
                                 <div class="post__footer">
@@ -175,7 +215,14 @@
                         
                     </div>
                 
-                    
+                                 
+                    </td></tr>
+                <%
+                    }
+                %>
+            </tbody>
+            
+        </table>
 
                 </div>
                       <div class="sticky-bottom" style="text-align: right;">
@@ -198,21 +245,18 @@
                 
             </div>
         </div>
-          <div class="col" style="text-align: right">
-            <button class="btn btn-outline-primary btn-sm" id="btnVerTodas" onclick="getPublicacionesIndex(0)">Ver todas</button>
-             
-        </div>
-    </div>
-            
-            
-    <footer class="bg-dark text-center text-white">
+          <footer class="bg-dark text-center text-white">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
           <p>Pagina creada por:</p>
           <p>Edson Eduardo Arguello Tienda & Isaac Espinoza Morales</p>
           <p>LMAD | UANL</p>
 
         </div>
-      </footer>
+      </footer> 
+    </div>
+            
+            
+    
       <!--Obtencion de info usuario -->
    
     
@@ -247,6 +291,7 @@
                     <option value="Plataformas" name="categoriacb">Plataformas</option>
                     <option value="Independientes" name="categoriacb">Independientes</option>
                     <option value="Familiares" name="categoriacb">Familiares</option>
+                    <option value="Disparos" name="categoriacb">Disparos</option>
                     
                     </select>
                     <input class="form-check-input" type="hidden" id="c07" name="UsuarioActual" value="<% out.print(usuario2.getUsuario());  %>">
@@ -396,10 +441,33 @@
         </div>
     </dialog>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+      <script>
+        $(document).ready(function() {
+            $('#tablapublicaciones').DataTable({
+                "paging":true,
+                "pagingType":"full_numbers",
+                "dom": '<"top"lp>rt<"bottom"lp><"clear">',
+                "language": {
+                    "emptyTable": "Aún no hay publicaciones, ¡sé el primero!",
+                    "paginate": {
+                        "previous": "Anterior",
+                        "next": "Siguiente",
+                        "first": "Inicio",
+                        "last":"Final"
+                    }
+                },
+                "ordering":false,
+                "searching":false,
+                "lengthChange":false,
+                "pageLength":10
+            });
+        });
+    </script>  
 
 <script src="dashboard.js"></script>
+
 </body>
 </html>
 

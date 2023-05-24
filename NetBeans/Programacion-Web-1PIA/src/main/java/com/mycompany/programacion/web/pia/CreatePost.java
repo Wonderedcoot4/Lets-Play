@@ -15,6 +15,8 @@ import java.io.File;
 import PostDOA.Post;
 import UsuarioDBA.Usuario;
 import jakarta.servlet.RequestDispatcher;
+import static java.lang.System.out;
+import java.util.ArrayList;
 import java.util.List;
 import org.json.simple.JSONObject;
 
@@ -135,7 +137,7 @@ public class CreatePost extends HttpServlet {
         String filename = null;
         Part part = request.getPart("Fotografia");
         filename = extractFileName(part);
-        
+         List<Post> postDatatable = new ArrayList<>();
 //        System.out.println("Filename " + filename);
 //        if (filename != "") {
 //            System.out.println("WRITE " + filename);
@@ -152,6 +154,15 @@ public class CreatePost extends HttpServlet {
         
         int obj = instancia.agregarPost(Titulo, Contenido, Estatus, Categoria, fileSaveDir, UsuarioDash);
         if (obj == 0) {
+            postDatatable = post.consultarRecientes();
+            if (postDatatable.size() == 0) {
+                pantalla = "index.jsp";
+                out.println("Sobrecarga de informacion");
+            }
+             else
+            {
+                request.setAttribute("PostRecientes", postDatatable);
+            }
              System.out.println("Kevin se la come por que entramos al get");
              request.setAttribute("UsuarioLog", usuario);
              pantalla = "dashboard.jsp";

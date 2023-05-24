@@ -3,6 +3,7 @@ package com.mycompany.programacion.web.pia;
 
 import UsuarioDBA.Usuario;
 import Config.conexionSQL;
+import PostDOA.Post;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,6 +20,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -28,7 +31,7 @@ import java.sql.Statement;
 public class LoginServlet extends HttpServlet {
      Usuario user = new Usuario();
      conexionSQL conexion = new conexionSQL();
-     
+     Post post = new Post();
    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -40,7 +43,7 @@ public class LoginServlet extends HttpServlet {
        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
     
-         
+         List<Post> postDatatable = new ArrayList<>();
         PrintWriter out = response.getWriter();
         HttpSession session;
         //Login de usuario y password
@@ -50,12 +53,21 @@ public class LoginServlet extends HttpServlet {
         
         Usuario instancia = new Usuario();
         String pantalla;
-        Usuario log = (Usuario) instancia.LoginUsuario_sp(username, password);;
+        Usuario log = (Usuario) instancia.LoginUsuario_sp(username, password);
         if (log.getIdUsuario()!= 0) {
             //session.setAttribute("UsuarioLog", log);
             request.setAttribute("UsuarioLog", log);
             //response.sendRedirect("dashboard.jsp");
             pantalla = "dashboard.jsp";
+            postDatatable = post.consultarRecientes();
+            if (postDatatable.size() == 0) {
+                pantalla = "index.jsp";
+                 out.println("Usuario o contraseña incorrecto");
+            }
+            else
+            {
+                request.setAttribute("PostRecientes", postDatatable);
+            }
           
         }
         else
@@ -70,55 +82,3 @@ public class LoginServlet extends HttpServlet {
        }
 }
 
-/*
-response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        //Login de usuario y password
-        String username = request.getParameter("emailUsuario");
-        String password = request.getParameter("passUsuario");
-        String stamentMySql = "Select * from usuario where NombreUsuario ='" + username + "' Contraseña'" + password + "'";
-        try{
-        Class.forName( "com.mysql.jdbc.Driver");
-        conexion.getConnection();
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/Prueba", "root", "123456" );
-        
-            Statement stm = con.createStatement();
-            ResultSet rs = stm.executeQuery("select * from usuario where NombreUsuario='" + username  + "' and Contraseña ='" + password + "'"); 
-            if (rs.next() ==  true) {
-                HttpSession session = request.getSession();
-                response.sendRedirect("Profile.jsp");
-            }
-            else
-            {
-                 out.println("No estas dado de alta");
-                 response.sendRedirect("index.jsp");
-            }
-            
-        }
-        catch(Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
-        
-       }
-*/
-/*
-{
-    
-        response.setContentType("text/jsp");
-        PrintWriter out = response.getWriter();
-        //Login de usuario y password
-        String username = request.getParameter("emailUsuario");
-        String password = request.getParameter("passUsuario");
-        String stamentMySql = "Select * from usuario where NombreUsuario ='" + username + "' Contraseña'" + password + "'";
-        var obj = user;
-        var isSuccess = obj.login(username, password);;
-        if (isSuccess == true) {
-            response.sendRedirect("Profile.jsp");
-        }
-        else
-        {
-            out.println("Usuario o contraseña incorrecto");
-        }
-       }
-*/
