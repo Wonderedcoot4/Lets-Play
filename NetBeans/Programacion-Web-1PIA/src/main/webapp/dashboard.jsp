@@ -123,8 +123,7 @@
                     Plataformas</a>
                 <a href="PostporCategoriasServlet?catPost=8" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
                     Independientes</a>
-                <a href="PostporCategoriasServlet?catPost=7" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
-                    Familiares</a>
+                
                 <a href="PostporCategoriasServlet?catPost=6" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
                     Carreras</a>
                 <a href="PostporCategoriasServlet?catPost=2" class="d-block colorText texHover p-3 border-0"><i class="icon ion-md-star"></i></i>
@@ -155,6 +154,7 @@
             <tbody>
                 <%
                 Post post = new Post();
+                postEncontrado = (List) post.consultarRecientes();
                 for(Post elemento:postEncontrado)
                 {
                 %>
@@ -290,7 +290,6 @@
                     <option value="Clasicos" name="categoriacb">Clasicos</option>
                     <option value="Plataformas" name="categoriacb">Plataformas</option>
                     <option value="Independientes" name="categoriacb">Independientes</option>
-                    <option value="Familiares" name="categoriacb">Familiares</option>
                     <option value="Disparos" name="categoriacb">Disparos</option>
                     
                     </select>

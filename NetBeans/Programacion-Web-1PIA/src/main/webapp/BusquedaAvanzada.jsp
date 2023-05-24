@@ -47,19 +47,9 @@
                 </form>
             </div>
             <div class="col">
-                <form class="d-flex position-relative" method="get" action="BusquedaPostServlet">
-                   <!-- <button class="btn colorIcon" type="submit" id="btn-abrir-modal3" ><i class="icon ion-md-menu"></i></button> -->
-                    <!-- AQUI ES PARA LA BUSQUEDA NORMAL -->
-                    
-                        <input class="form-control colorSearchBar colorText" type="text" placeholder="Buscar" name="barrabusquedakev" id="BarraBusqueda" aria-label="Buscar">
-                    
-                        <button class="btn position-absolute btn-search colorIcon" id="botonBusquedaPost" type="submit"><i class="icon ion-md-search"></i></button>
-                </form>
+                
             </div>
-            <div class="col alingFlex">
-                <button type="button" class="btn colorIcon" data-bs-container="body" id="btn-abrir-modal2">
-                    <img src="" alt="logo" width="55px" class="rounded-circle"></a>
-            </div>
+            
         </nav>
     </div>
         
@@ -90,7 +80,6 @@
           <option name="Categoriacb" value="4">Plataformas</option>
           <option name="Categoriacb" value="5">Carreras</option>
           <option name="Categoriacb" value="6">Disparos</option>
-          <option name="Categoriacb" value="7">Familiares</option>
           <option name="Categoriacb" value="8">Independientes</option>
       </select>
      </div>

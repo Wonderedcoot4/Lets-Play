@@ -38,11 +38,7 @@
                     </form>
                 </div>
                 <div class="col">
-                    <div class="d-flex position-relative">
-                        <button class="btn colorIcon" id="btn-abrir-modal3" ><i class="icon ion-md-menu"></i></button>
-                        <input class="form-control colorSearchBar colorText" type="search" placeholder="Buscar" aria-label="Buscar">
-                        <button class="btn position-absolute btn-search colorIcon" ><i class="icon ion-md-search"></i></button>
-                    </div>
+                   
                 </div>
                 <div class="col alingFlex">
                     <button type="button" class="btn colorIcon" data-bs-container="body" id="btn-abrir-modal2">

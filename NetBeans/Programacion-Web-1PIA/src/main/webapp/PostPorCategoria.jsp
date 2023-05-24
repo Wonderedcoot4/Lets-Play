@@ -36,10 +36,7 @@
                 <div class="col">
                    
                 </div>
-                <div class="col alingFlex">
-                    <button type="button" class="mybutton" data-bs-container="body" id="btn-abrir-modal2">
-                        <img src="./Imagenes/icon.png" alt="logo" width="55px" class="rounded-circle"></a>
-                </div>
+               
             </nav>
         </div>
         <br>

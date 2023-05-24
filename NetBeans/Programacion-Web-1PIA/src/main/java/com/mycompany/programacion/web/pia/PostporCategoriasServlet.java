@@ -15,6 +15,7 @@ import java.io.File;
 import PostDOA.Post;
 import UsuarioDBA.Usuario;
 import jakarta.servlet.RequestDispatcher;
+import java.util.ArrayList;
 import java.util.List;
 import org.json.simple.JSONObject;
 
@@ -144,6 +145,7 @@ public class PostporCategoriasServlet extends HttpServlet {
          }
            if ("7".equals(Accion)) {
             String cat ="Familiares";
+            List<Post> postRecientes = new ArrayList<>();
                 System.out.println("Recientes, entrando en el get" + cat);
             List<Post> pubs = instancia.busquedaPostCategoria(cat);
             if (pubs.size() == 0) {
@@ -155,9 +157,11 @@ public class PostporCategoriasServlet extends HttpServlet {
             else{
             System.out.println("Pubs: " + pubs.get(0).getTitulo());
             request.setAttribute("UsuarioLog", usuario);
+            postRecientes = instancia.consultarRecientes();
             postito.getPostBuscado();
             pantalla ="PostPorCategoria.jsp";
             request.getSession(false).setAttribute("Accion", cat); 
+            request.getSession(false).setAttribute("PostRecientes", postRecientes); 
             }
          }
            if ("6".equals(Accion)) {

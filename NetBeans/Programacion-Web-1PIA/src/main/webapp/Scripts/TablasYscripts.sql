@@ -283,7 +283,7 @@ BEGIN
         on est.idEstatusPublicacion = pub.IdEstatusPost
         join usuario us
         on us.idUsuario = pub.IdPublicador
-        where cat.idCategoria = @idCat;
+        where cat.idCategoria = @idCat and est.EstatusPublicacion = 'Activo'
 		
 	
 END //
