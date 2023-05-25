@@ -113,38 +113,8 @@
                 <div class="row" id="DivRowPost">
                     <p class="text-publi">Publicaciones</p>
                 </div>
-                <div class="post" >
-                    <div class="post__avatar">
-                        <img src="./Imagenes/icon.png">
-                    </div>
-                    <div class="post__body">
-                        <div class="post__header">
-                            <div class="post__headerText colorText">
-                                <h3>
-                                    NachtDenos
-                                    <span class="post__headerSpecial">#Disparos</span>
-                                </h3>
-                            </div>
-                            <div class="post__headerDescription colorText">
-                                <h4>Hola soy nuevo</h2>
-                                <p>Hola soy nuevo, pero no nuevo de nacer, nuevo en la pagina.</p>
-                            </div>
-                        </div>
-                        <div class="post__footer">
-                            <div class="col allignIcon colorIcon">
-                                <button class="btn colorIcon" type="submit"><i class="icon ion-ios-heart iconConfig"></i></button>
-                            </div>
-                            <div class="col allignIcon colorIcon">
-                                <button class="btn colorIcon" type="submit"><i class="icon ion-md-share iconConfig"></i></button>
-                            </div>
-                            <div class="col allignIcon colorIcon">
-                                <button class="btn colorIcon" id="btn-abrir-modal4" type="submit"><i class="icon ion-md-flower iconConfig"></i></button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
+                
+            </div> 
         </div>
     </div>
     <div>

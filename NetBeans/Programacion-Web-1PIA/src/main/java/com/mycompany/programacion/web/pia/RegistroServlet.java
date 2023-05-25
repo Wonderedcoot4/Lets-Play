@@ -69,6 +69,7 @@ public class RegistroServlet extends HttpServlet {
         String FechaNacimiento = request.getParameter("FechaBirthDTP");
         String Usuario = request.getParameter("UsuarioText");
         String pass = request.getParameter("Passwordtext");
+        String passConfirm = request.getParameter("Contratext");
         
         Part part = request.getPart("archivito");
         
@@ -94,7 +95,8 @@ public class RegistroServlet extends HttpServlet {
             System.out.println("EL CORREO YA ESTA REPETIDO");
             return;
         }
-         Boolean isSuccess = user.InsertarImagen(Nombre, ApellidoPaterno, ApellidoMaterno, Email, FechaNacimiento, Usuario, pass, fileSaveDir);
+
+            Boolean isSuccess = user.InsertarImagen(Nombre, ApellidoPaterno, ApellidoMaterno, Email, FechaNacimiento, Usuario, pass, fileSaveDir);
             if (isSuccess) {
             response.sendRedirect("index.jsp");
          }
@@ -102,6 +104,8 @@ public class RegistroServlet extends HttpServlet {
          {
            response.sendRedirect("Registro.jsp");
          }
+            
+         
              // String ContraseñaConfirm = request.getParameter("");
     }
     @Override

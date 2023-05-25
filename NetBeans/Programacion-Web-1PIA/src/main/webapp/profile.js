@@ -179,10 +179,10 @@ function getPublicacionesUsuario()
                                                         $("<button>").addClass("btn colorIcon").append(
                                                             $("<i>").addClass("icon ion-ios-heart iconConfig")))).append(
                                                    $("<div>").addClass("col allignIcon colorIcon").append(
-                                                        $("<button>").addClass("btn colorIcon").addClass("eliminar").attr("data-titulo", data[i].Titulo).attr("data-contenido", data[i].Contenido).attr("data-foto", data[i].FotoPublicacion).attr("data-categoria", data[i].Categoria).attr("data-idPost", data[i].idPublicacion).append(
+                                                        $("<button>").addClass("btn colorIcon").text("Borrar Post").addClass("eliminar").attr("data-titulo", data[i].Titulo).attr("data-contenido", data[i].Contenido).attr("data-foto", data[i].FotoPublicacion).attr("data-categoria", data[i].Categoria).attr("data-idPost", data[i].idPublicacion).append(
                                                             $("<i>").addClass("icon ion-md-share iconConfig")))).append(
                                                    $("<div>").addClass("col allignIcon colorIcon").append(
-                                                        $("<button>").addClass("btn colorIcon").addClass("editar").addClass("editar2").attr("data-titulo", data[i].Titulo).attr("data-contenido", data[i].Contenido).attr("data-foto", data[i].FotoPublicacion).attr("data-categoria", data[i].Categoria).attr("data-idPost", data[i].idPublicacion).attr("type", "submit").attr("id", "btn-abrir-modal4").attr("name", "ButtonEditPost").append(
+                                                        $("<button>").addClass("btn colorIcon").text("Editar Post").addClass("editar").addClass("editar2").attr("data-titulo", data[i].Titulo).attr("data-contenido", data[i].Contenido).attr("data-foto", data[i].FotoPublicacion).attr("data-categoria", data[i].Categoria).attr("data-idPost", data[i].idPublicacion).attr("type", "submit").attr("id", "btn-abrir-modal4").attr("name", "ButtonEditPost").append(
                                                             $("<i>").addClass("icon ion-md-flower iconConfig")))))))
                                     
                                 
